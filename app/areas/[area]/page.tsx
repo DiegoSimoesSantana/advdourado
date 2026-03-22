@@ -27,6 +27,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: areaData.seoTitle,
     description: areaData.seoDescription,
+    openGraph: {
+      title: areaData.seoTitle,
+      description: areaData.seoDescription,
+      url: `${siteConfig.contact.siteUrl}/areas/${areaData.id}`,
+      type: 'article',
+    },
   }
 }
 
@@ -47,6 +53,7 @@ export default async function AreaPage({ params }: Props) {
     .filter((article) => !!article)
     .slice(0, 3)
 
+  // JSON-LD schemas
   const legalServiceSchema = {
     '@context': 'https://schema.org',
     '@type': 'LegalService',
@@ -65,7 +72,6 @@ export default async function AreaPage({ params }: Props) {
       addressCountry: 'BR',
     },
   }
-
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -78,7 +84,6 @@ export default async function AreaPage({ params }: Props) {
       },
     })),
   }
-
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -98,6 +103,83 @@ export default async function AreaPage({ params }: Props) {
       {
         '@type': 'ListItem',
         position: 3,
+        name: areaData.title,
+        item: `${siteConfig.contact.siteUrl}/areas/${areaData.id}`,
+      },
+    ],
+  }
+
+  return (
+    <main className="min-h-screen bg-background px-4 py-14 sm:px-6 md:px-8">
+      <script type="application/ld+json" suppressHydrationWarning dangerouslySetInnerHTML={{ __html: JSON.stringify(legalServiceSchema) }} />
+      <script type="application/ld+json" suppressHydrationWarning dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" suppressHydrationWarning dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <div className="mx-auto max-w-4xl animate-fadein">
+        <nav className="mb-6 text-sm text-primary/80 animate-fadein delay-100">
+          <Link href="/areas" className="hover:underline">Áreas de atuação</Link>
+          <span className="mx-2">/</span>
+          <span className="font-semibold">{areaData.title}</span>
+        </nav>
+        <h1 className="text-4xl font-serif text-foreground md:text-5xl animate-slideup">{areaData.title}</h1>
+        <p className="mt-4 text-lg leading-8 text-foreground/75 animate-fadein delay-100">{areaData.summary}</p>
+
+        <section className="mt-10 animate-fadein delay-200">
+          <h2 className="text-2xl font-serif text-foreground mb-3">Como podemos ajudar?</h2>
+          <ul className="list-disc pl-6 space-y-2 text-foreground/80">
+            {areaData.benefits?.map((benefit) => (
+              <li key={benefit}>{benefit}</li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="mt-10 animate-fadein delay-300">
+          <h2 className="text-2xl font-serif text-foreground mb-3">Perguntas frequentes</h2>
+          <ul className="divide-y divide-border">
+            {areaData.faq.map((item, idx) => (
+              <li key={item.question} className="py-4">
+                <details className="group">
+                  <summary className="cursor-pointer text-lg font-semibold text-primary group-open:text-foreground transition-colors">
+                    {item.question}
+                  </summary>
+                  <div className="mt-2 text-foreground/80 text-base animate-fadein delay-100">
+                    {item.answer}
+                  </div>
+                </details>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {relatedArticles.length > 0 && (
+          <section className="mt-10 animate-fadein delay-400">
+            <h2 className="text-2xl font-serif text-foreground mb-3">Conteúdo recomendado</h2>
+            <div className="grid gap-4 md:grid-cols-2">
+              {relatedArticles.map((article) => (
+                <Link key={article.slug} href={`/blog/${article.slug}`} className="block p-4 rounded-xl border border-border bg-white shadow-sm hover:shadow-lg transition-all">
+                  <h3 className="text-lg font-semibold text-primary mb-1">{article.title}</h3>
+                  <p className="text-sm text-foreground/70">{article.excerpt}</p>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <section className="mt-12 flex flex-col items-center gap-4 animate-fadein delay-500">
+          <span className="text-base text-foreground/80">Precisa de orientação personalizada?</span>
+          <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+            <Button size="lg" className="bg-primary text-white font-bold shadow-lg hover:bg-primary/90 transition-all duration-200">
+              Falar com especialista
+            </Button>
+          </a>
+        </section>
+
+        <footer className="mt-20 text-xs text-center text-foreground/50 animate-fadein delay-600">
+          {siteConfig.brand.legalName} | OAB {siteConfig.brand.oab} | {siteConfig.contact.address}
+        </footer>
+      </div>
+    </main>
+  )
+}
         name: areaData.title,
         item: `${siteConfig.contact.siteUrl}/areas/${areaData.id}`,
       },

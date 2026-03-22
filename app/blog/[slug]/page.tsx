@@ -1,76 +1,79 @@
-'use client'
+"use client";
 
-import { notFound } from 'next/navigation'
-import Link from 'next/link'
-import { getArticleBySlug, getRelatedArticles } from '@/lib/blog-data'
-import { Button } from '@/components/ui/button'
-import { ArrowLeft, ArrowRight } from 'lucide-react'
-import { Breadcrumb } from '@/components/breadcrumb'
-import { useEffect } from 'react'
-import { trackArticleView, trackWhatsAppClick } from '@/lib/analytics'
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import { getArticleBySlug, getRelatedArticles } from "@/lib/blog-data";
+import { Button } from "@/components/ui/button";
+import { Breadcrumb } from "@/components/breadcrumb";
+import { useEffect } from "react";
+import { trackArticleView } from "@/lib/analytics";
+import { siteConfig } from "@/lib/site-config";
 
 export default function ArticlePage({ params }: { params: { slug: string } }) {
-  const article = getArticleBySlug(params.slug)
-  const relatedArticles = getRelatedArticles(params.slug)
+  const article = getArticleBySlug(params.slug);
+  const relatedArticles = getRelatedArticles(params.slug);
 
   useEffect(() => {
     if (article) {
-      trackArticleView(article.slug, article.title, article.category, article.readTime)
+      trackArticleView(article.slug, article.title, article.category, article.readTime);
     }
-  }, [article])
+  }, [article]);
 
   if (!article) {
-    notFound()
+    notFound();
   }
 
-  return (
-    <main className="min-h-screen bg-background">
-      {/* Back Button - Responsive */}
-      <section className="bg-background border-b border-border sticky top-0 z-30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
-          <Breadcrumb
-            items={[
-              { label: 'Blog', href: '/blog' },
-              { label: article.categoryName, href: `/blog?category=${article.category}` },
-              { label: article.title, href: `/blog/${article.slug}` },
-            ]}
-          />
-        </div>
-      </section>
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": article.title,
+    "description": article.excerpt,
+    "image": article.image,
+    "author": {
+      "@type": "Person",
+      "name": article.author,
+    },
+    "datePublished": article.date,
+    "publisher": {
+      "@type": "Organization",
+      "name": siteConfig.brand.legalName,
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${siteConfig.contact.siteUrl}/images/logo.png`,
+      },
+    },
+    "mainEntityOfPage": `${siteConfig.contact.siteUrl}/blog/${article.slug}`,
+  };
 
-      {/* Article Header - Responsive */}
-      <section className="py-8 sm:py-12 md:py-16 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: '#ECE5DC' }}>
-        <div className="max-w-4xl mx-auto">
-          {/* Category */}
+  return (
+    <main className="min-h-screen bg-background px-4 py-14 sm:px-6 md:px-8">
+      <script type="application/ld+json" suppressHydrationWarning dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <div className="mx-auto max-w-4xl animate-fadein">
+        <nav className="mb-6 text-sm text-primary/80 animate-fadein delay-100">
+          <Link href="/blog" className="hover:underline">Blog</Link>
+          <span className="mx-2">/</span>
+          <span className="font-semibold">{article.title}</span>
+        </nav>
+        <section className="py-8 sm:py-12 md:py-16 px-0 animate-fadein delay-200">
           <div className="mb-4">
             <Link href={`/blog?category=${article.category}`}>
-              <span className="inline-block px-3 py-1 text-xs font-semibold rounded-full transition-all" style={{ backgroundColor: '#FFF8E7', color: '#C99300' }}>
+              <span className="inline-block px-3 py-1 text-xs font-semibold rounded-full transition-all bg-[#FFF8E7] text-[#C99300]">
                 {article.categoryName}
               </span>
             </Link>
           </div>
-
-          {/* Title */}
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 leading-tight text-balance" style={{ color: '#044B39' }}>
-            {article.title}
-          </h1>
-
-          {/* Subtitle */}
-          <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-balance" style={{ color: '#2D2823' }}>
-            {article.subtitle}
-          </p>
-
-          {/* Meta Information - Responsive */}
-          <div className="flex flex-wrap gap-4 sm:gap-6 text-xs sm:text-sm border-t pt-4 sm:pt-6" style={{ color: '#666', borderColor: '#C99300' }}>
+          <h1 className="text-4xl font-serif text-foreground md:text-5xl mb-3 sm:mb-4 leading-tight animate-slideup">{article.title}</h1>
+          <p className="text-lg mb-6 sm:mb-8 text-foreground/80 animate-fadein delay-100">{article.subtitle}</p>
+          <div className="flex flex-wrap gap-4 sm:gap-6 text-xs sm:text-sm border-t pt-4 sm:pt-6 text-foreground/60 border-primary/20">
             <div>
-              <span className="font-semibold" style={{ color: '#2D2823' }}>Por</span> {article.author}
+              <span className="font-semibold text-foreground">Por</span> {article.author}
             </div>
             <div>
               <time dateTime={article.date}>
-                {new Date(article.date).toLocaleDateString('pt-BR', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
+                {new Date(article.date).toLocaleDateString("pt-BR", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
                 })}
               </time>
             </div>
@@ -78,12 +81,8 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
               <span>{article.readTime} min de leitura</span>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Featured Image - Responsive */}
-      <section className="py-6 sm:py-8 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
+        </section>
+        <section className="py-6 sm:py-8 animate-fadein delay-300">
           <div className="rounded-lg overflow-hidden shadow-lg h-64 sm:h-80 md:h-96 bg-gray-200">
             <img
               src={article.image || "/placeholder.svg"}
@@ -91,13 +90,47 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
               className="w-full h-full object-cover"
             />
           </div>
-        </div>
-      </section>
-
-      {/* Article Content - Responsive */}
-      <section className="py-8 sm:py-12 md:py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
+        </section>
+        <section className="py-8 sm:py-12 md:py-16 animate-fadein delay-400">
           <article className="prose max-w-none">
+            {article.content}
+          </article>
+        </section>
+        {relatedArticles.length > 0 && (
+          <section className="mt-10 animate-fadein delay-500">
+            <h2 className="text-2xl font-serif text-foreground mb-3">Veja também</h2>
+            <div className="grid gap-4 md:grid-cols-2">
+              {relatedArticles.map((rel) => (
+                <Link key={rel.slug} href={`/blog/${rel.slug}`} className="block p-4 rounded-xl border border-border bg-white shadow-sm hover:shadow-lg transition-all">
+                  <h3 className="text-lg font-semibold text-primary mb-1">{rel.title}</h3>
+                  <p className="text-sm text-foreground/70">{rel.excerpt}</p>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+        <section className="mt-12 flex flex-col items-center gap-4 animate-fadein delay-600">
+          <span className="text-base text-foreground/80">Precisa de orientação jurídica personalizada?</span>
+          <Link href="/contato">
+            <Button size="lg" className="bg-primary text-white font-bold shadow-lg hover:bg-primary/90 transition-all duration-200">
+              Fale com o escritório
+            </Button>
+          </Link>
+        </section>
+        <footer className="mt-20 border-t border-gray-200 pt-8 pb-12">
+          <div className="text-center text-sm text-gray-500 space-y-2">
+            <p>© {new Date().getFullYear()} Bruna Dourado Advocacia &amp; Consultoria. Todos os direitos reservados.</p>
+            <p>OAB/BA 71507</p>
+            <p className="text-xs mt-4">
+              As informações deste site têm finalidade exclusivamente institucional e informativa, não substituindo consulta jurídica formal e individualizada.<br />
+              Este site está em conformidade com o Provimento nº 205/2021 do Conselho Federal da OAB e com a LGPD.
+            </p>
+          </div>
+        </footer>
+      </div>
+    </main>
+  );
+}
             <div
               className="text-sm sm:text-base leading-relaxed space-y-4 sm:space-y-6"
               style={{ color: '#2D2823' }}
