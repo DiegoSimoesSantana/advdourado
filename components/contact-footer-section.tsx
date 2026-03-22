@@ -246,7 +246,9 @@ Relato inicial: ${formData.message}`
               <span className="font-semibold">71507</span>
             </div>
             <div className="flex items-center gap-2 text-sm text-white/60">
-              Desenvolvido com <Heart className="w-4 h-4 text-primary" />
+              Desenvolvido por <a href="https://ssantana.com.br" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">ssantana.com.br</a>
+              <span className="mx-1">|</span>
+              <span>versão {new Date().getFullYear()}{(new Date().getMonth()+1).toString().padStart(2,'0')}{new Date().getDate().toString().padStart(2,'0')}{new Date().getHours().toString().padStart(2,'0')}{new Date().getMinutes().toString().padStart(2,'0')}</span>
             </div>
           </div>
         </div>
