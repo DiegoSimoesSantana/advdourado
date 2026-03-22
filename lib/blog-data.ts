@@ -131,48 +131,6 @@ export const PILAR3_ARTICLES: BlogArticle[] = [
     cta: 'Dúvidas sobre FGTS ou multa? Fale com a equipe ADVDourado para análise gratuita.',
   },
 ];
-    tags: ['horas extras', 'cálculo trabalhista', 'direitos trabalhistas', 'adicional noturno'],
-    relatedArticles: ['rescisao-contrato-trabalho-tipos-calculos-prazos', 'fgts-multa-40-saque-rescisao-guia-completo'],
-    seoKeywords: ['horas extras', 'cálculo hora extra', 'adicional noturno', 'direitos CLT'],
-    cta: 'Precisa de ajuda para calcular ou cobrar horas extras? Fale conosco via WhatsApp para uma análise gratuita.',
-  },
-  {
-    id: '1002',
-    slug: 'rescisao-contrato-trabalho-tipos-calculos-prazos',
-    title: 'Rescisão de contrato de trabalho: tipos, cálculos e prazos',
-    subtitle: 'Entenda as diferenças entre demissão sem justa causa, com justa causa e pedido de demissão.',
-    category: 'trabalhista',
-    categoryName: 'Direito Trabalhista',
-    author: 'Bruna Dourado - OAB/BA 12345',
-    date: '2025-03-22',
-    readTime: 10,
-    image: '/images/blog/rescisao-contrato.jpg',
-    excerpt: 'Entenda as diferenças entre demissão sem justa causa, com justa causa e pedido de demissão. Guia completo para calcular verbas rescisórias.',
-    content: `<h2>Modalidades de rescisão trabalhista</h2>
-    tags: ['rescisão', 'demissão', 'verbas rescisórias', 'justa causa'],
-    relatedArticles: ['calculo-horas-extras-guia-completo', 'fgts-multa-40-saque-rescisao-guia-completo'],
-    seoKeywords: ['rescisão contrato', 'verbas rescisórias', 'demissão', 'justa causa'],
-    cta: 'Dúvidas sobre rescisão? Fale com a equipe ADVDourado para análise gratuita.',
-  },
-  {
-    id: '1003',
-    slug: 'fgts-multa-40-saque-rescisao-guia-completo',
-    title: 'FGTS e multa de 40%: guia completo sobre saque-rescisão e saque-aniversário',
-    subtitle: 'Aprenda a consultar seu FGTS, calcular a multa de 40% e entenda as diferenças entre saque-rescisão e saque-aniversário.',
-    category: 'trabalhista',
-    categoryName: 'Direito Trabalhista',
-    author: 'Bruna Dourado - OAB/BA 12345',
-    date: '2025-03-22',
-    readTime: 9,
-    image: '/images/blog/fgts-multa.jpg',
-    excerpt: 'Aprenda a consultar seu FGTS, calcular a multa de 40% e entenda as diferenças entre saque-rescisão e saque-aniversário.',
-    content: `<h2>O que é o FGTS?</h2>
-    tags: ['FGTS', 'multa 40%', 'saque-rescisão', 'saque-aniversário'],
-    relatedArticles: ['calculo-horas-extras-guia-completo', 'rescisao-contrato-trabalho-tipos-calculos-prazos'],
-    seoKeywords: ['FGTS', 'multa 40%', 'saque-rescisão', 'saque-aniversário'],
-    cta: 'Dúvidas sobre FGTS ou multa? Fale com a equipe ADVDourado para análise gratuita.',
-  },
-]
 
 ## Por Que os Planos Negam Procedimentos?
 
