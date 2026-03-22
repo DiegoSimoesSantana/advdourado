@@ -1,83 +1,34 @@
+// Categorias do blog para filtros e navegação
+export const BLOG_CATEGORIES = {
+  saude: { name: 'Plano de Saúde' },
+  voos: { name: 'Voos e Viagens' },
+  bancos: { name: 'Direitos Bancários' },
+  compras: { name: 'Compras Online e Lojas' },
+  trabalhista: { name: 'Direito Trabalhista' },
+};
 // Blog data structure with all articles, categories, and metadata
 export interface BlogArticle {
-  id: string
-  slug: string
-  title: string
-  subtitle: string
-  category: 'saude' | 'voos' | 'bancos' | 'compras'
-  categoryName: string
-  author: 'Bruna Dourado'
-  date: string
-  readTime: number
-  image: string
-  excerpt: string
-  content: string
-  tags: string[]
-  relatedArticles?: string[] // slugs of related articles for internal linking
-  seoKeywords: string[]
-  cta: string // Call to action specific to article
-}
-
-export const BLOG_CATEGORIES = {
-  saude: {
-    name: 'Plano de Saúde',
-    slug: 'saude',
-    description: 'Seus direitos como beneficiário de plano de saúde',
-    color: 'primary',
-  },
-  voos: {
-    name: 'Voos e Viagens',
-    slug: 'voos',
-    description: 'Proteção de passageiros aéreos no Brasil',
-    color: 'accent',
-  },
-  bancos: {
-    name: 'Direitos Bancários',
-    slug: 'bancos',
-    description: 'Defenda-se contra práticas abusivas de bancos',
-    color: 'secondary',
-  },
-  compras: {
-    name: 'Compras Online e Lojas',
-    slug: 'compras',
-    description: 'Direitos do consumidor em compras e devoluções',
-    color: 'muted',
-  },
-  trabalhista: {
-    name: 'Direito Trabalhista',
-    slug: 'trabalhista',
-    description: 'Cálculos, rescisão, FGTS, direitos de trabalhadores e empresas',
-    color: 'warning',
-  },
+  id: string;
+  slug: string;
+  title: string;
+  subtitle: string;
+  category: 'saude' | 'voos' | 'bancos' | 'compras' | 'trabalhista';
+  categoryName: string;
+  author: string;
+  date: string;
+  readTime: number;
+  image: string;
+  excerpt: string;
+  content: string;
+  tags: string[];
+  relatedArticles?: string[];
+  seoKeywords: string[];
+  cta: string;
 }
 
 // PILAR 1: PLANO DE SAÚDE - 4 ARTIGOS ESTRATÉGICOS
 const PILAR1_ARTICLES_EXISTING: BlogArticle[] = [
   {
-    id: '1',
-    slug: 'negativa-procedimento-5-passos',
-    title: 'Negativa de Procedimento: 5 Passos Para Reverter',
-    subtitle: 'O plano negou seu procedimento? Veja como reverter essa decisão na Justiça',
-    category: 'saude',
-    categoryName: 'Plano de Saúde',
-    author: 'Bruna Dourado',
-    date: '2024-11-15',
-    readTime: 8,
-    image: '/negativa-procedimento-saude-decis-o-judicial.jpg',
-    excerpt: 'Aprenda os 5 passos comprovados para reverter uma negativa de procedimento do seu plano de saúde. Inclui exemplos reais e legislação aplicável.',
-    content: `A negativa de procedimento é uma das maiores reclamações dos beneficiários de planos de saúde. Muitas vezes, essas negativas são injustificadas e violam direitos fundamentais do consumidor.`,
-    tags: ['negativa', 'procedimento', 'plano-saúde', 'direitos'],
-    relatedArticles: ['reajuste-abusivo-plano-saude', 'carencia-plano-saude'],
-    seoKeywords: ['negativa procedimento plano saúde', 'reverter negativa', 'plano saúde não cobre', 'ação plano saúde'],
-    cta: 'Sua negativa foi injusta? Fale conosco via WhatsApp para uma análise gratuita',
-  },
-  // ...outros artigos do pilar 1...
-];
-
-// Artigos do pilar 3 (trabalhista)
-export const PILAR3_ARTICLES: BlogArticle[] = [
-  {
-    id: '1001',
     slug: 'calculo-horas-extras-guia-completo',
     title: 'Como calcular horas extras: guia completo para trabalhadores e empresas',
     subtitle: 'Aprenda a calcular horas extras, adicionais noturnos e descubra seus direitos trabalhistas.',
@@ -129,195 +80,7 @@ export const PILAR3_ARTICLES: BlogArticle[] = [
     relatedArticles: ['calculo-horas-extras-guia-completo', 'rescisao-contrato-trabalho-tipos-calculos-prazos'],
     seoKeywords: ['FGTS', 'multa 40%', 'saque-rescisão', 'saque-aniversário'],
     cta: 'Dúvidas sobre FGTS ou multa? Fale com a equipe ADVDourado para análise gratuita.',
-  },
-];
-- Uma ação judicial tem altíssimas chances de êxito
-- A jurisprudência é pacífica: plano que nega procedimento deve indenizar
 
-### Passo 5: Ação Judicial - A Solução Definitiva
-Uma ação na Justiça é geralmente rápida e resolutiva:
-- Conseguimos liminares em 24-48 horas para procedimentos urgentes
-- A condenação inclui reembolso + danos morais
-- Taxa de êxito ultrapassa 95% nesses casos
-
-## Legislação Aplicável
-
-A Constituição Federal e o Código de Defesa do Consumidor são sua melhor defesa:
-- Art. 196, CF: "A saúde é direito de todos"
-- Art. 6º, CDC: direito à qualidade e segurança
-- Lei 9.656/98: Lei de Planos de Saúde
-
-## Quanto Podemos Recuperar?
-
-Em casos de negativa injusta, você pode recuperar:
-- 100% do valor do procedimento realizado
-- Danos morais (geralmente entre 5-30 mil reais)
-- Custas judiciais
-
-## Casos Comuns de Êxito
-
-Negamos procedimentos nos últimos 6 meses:
-- Tratamentos de câncer: 12 casos, 100% de êxito
-- Cirurgias: 8 casos, 100% de êxito
-- Tomografias e ressonâncias: 15 casos, 100% de êxito`,
-    tags: ['negativa', 'procedimento', 'plano-saúde', 'direitos'],
-    relatedArticles: ['reajuste-abusivo-plano-saude', 'carencia-plano-saude'],
-    seoKeywords: ['negativa procedimento plano saúde', 'reverter negativa', 'plano saúde não cobre', 'ação plano saúde'],
-    cta: 'Sua negativa foi injusta? Fale conosco via WhatsApp para uma análise gratuita',
-  },
-  {
-    id: '2',
-    slug: 'reajuste-abusivo-plano-saude',
-    title: 'Reajuste Abusivo no Plano de Saúde: Como Contestar',
-    subtitle: 'Seu plano aumentou demais? Descubra se esse reajuste é ilegal',
-    category: 'saude',
-    categoryName: 'Plano de Saúde',
-    author: 'Bruna Dourado',
-    date: '2024-11-14',
-    readTime: 7,
-    image: '/reajuste-plano-saude-contrato.jpg',
-    excerpt: 'Entenda quando um reajuste é considerado abusivo pela lei e como contestá-lo judicialmente.',
-    content: `## O Que É Um Reajuste Abusivo?
-
-A ANS estabelece limites para reajustes anuais em planos de saúde. Reajustes acima desses limites (sem justificativa) são considerados abusivos.
-
-### Limites de Reajuste (2024)
-- Pessoa física: até 8,74% ao ano
-- Pessoa jurídica: percentual determinado por faixa etária
-
-Se seu reajuste ultrapassou esses limites sem causa justificada, você tem direito a contestar.
-
-## Causas Justificadas Para Reajuste
-        tags: ['rescisão', 'demissão', 'verbas rescisórias', 'justa causa'],
-        relatedArticles: ['calculo-horas-extras-guia-completo', 'fgts-multa-40-saque-rescisao-guia-completo'],
-        seoKeywords: ['rescisão contrato', 'verbas rescisórias', 'demissão', 'justa causa'],
-        cta: 'Dúvidas sobre rescisão? Fale com a equipe ADVDourado para análise gratuita.',
-      },
-      {
-        id: '1003',
-        slug: 'fgts-multa-40-saque-rescisao-guia-completo',
-        title: 'FGTS e multa de 40%: guia completo sobre saque-rescisão e saque-aniversário',
-        subtitle: 'Aprenda a consultar seu FGTS, calcular a multa de 40% e entenda as diferenças entre saque-rescisão e saque-aniversário.',
-        category: 'trabalhista',
-        categoryName: 'Direito Trabalhista',
-        author: 'Bruna Dourado - OAB/BA 12345',
-        date: '2025-03-22',
-        readTime: 9,
-        image: '/images/blog/fgts-multa.jpg',
-        excerpt: 'Aprenda a consultar seu FGTS, calcular a multa de 40% e entenda as diferenças entre saque-rescisão e saque-aniversário.',
-        content: `<h2>O que é o FGTS?</h2>
-
-Segundo a ANS, reajuste acima do limite pode ser justificado por:
-1. Mudança de faixa etária (a cada 10 anos)
-2. Alteração do número de beneficiários na apólice
-3. Variação de custos médicos comprovada
-4. Mudança de cobertura ou rede credenciada
-
-## Como Contestar Um Reajuste Abusivo
-
-### Etapa 1: Analise o Contrato
-- Verifique a cláusula de reajuste
-- Compare com os índices permitidos pela ANS
-- Identifique se há justificativa válida
-
-### Etapa 2: Solicite Justificativa ao Plano
-Envie carta formal solicitando justificativa para o reajuste superior ao permitido.
-
-### Etapa 3: Reclamação na ANS
-Acesse a ouvidoria da ANS e formalize reclamação.
-
-### Etapa 4: Ação Judicial
-Se a ANS não resolver, ação judicial é o caminho. A jurisprudência é favor do consumidor.
-
-## Quanto Pode Ser Reembolsado
-
-Se vencer, você pode recuperar:
-- Diferença paga além do limite legal
-- Taxas de juros sobre o valor cobrado indevidamente
-- Danos morais
-
-## Estatísticas
-
-Em 2023, a ANS recebeu mais de 50 mil reclamações sobre reajustes. Destes, 70% foram considerados abusivos.`,
-    tags: ['reajuste', 'abusivo', 'ANS', 'direitos-consumidor'],
-    relatedArticles: ['negativa-procedimento-5-passos', 'carencia-plano-saude'],
-    seoKeywords: ['reajuste abusivo plano saúde', 'contestar reajuste', 'reajuste acima da ANS', 'plano saúde caro'],
-    cta: 'Seu reajuste parece abusivo? Vamos analisar juntos',
-  },
-  {
-    id: '3',
-    slug: 'carencia-plano-saude',
-    title: 'Carência no Plano de Saúde: Quando É Ilegal',
-    subtitle: 'Entenda os períodos de carência e quando eles violam seus direitos',
-    category: 'saude',
-    categoryName: 'Plano de Saúde',
-    author: 'Bruna Dourado',
-    date: '2024-11-13',
-    readTime: 6,
-    image: '/carencia-plano-saude-urgencia.jpg',
-    excerpt: 'Saiba quais períodos de carência são legais e quando você pode exigir cobertura mesmo dentro do período de carência.',
-    content: `## O Que É Período de Carência?
-
-Carência é o período entre a contratação do plano e o início da cobertura. É uma proteção do plano contra fraudes, mas tem limitações legais.
-        tags: ['FGTS', 'multa 40%', 'saque-rescisão', 'saque-aniversário'],
-        relatedArticles: ['calculo-horas-extras-guia-completo', 'rescisao-contrato-trabalho-tipos-calculos-prazos'],
-        seoKeywords: ['FGTS', 'multa 40%', 'saque-rescisão', 'saque-aniversário'],
-        cta: 'Dúvidas sobre FGTS ou multa? Fale com a equipe ADVDourado para análise gratuita.',
-      },
-    ]
-
-## Limites Legais de Carência
-
-Segundo a Lei 9.656/98 e Resolução Normativa 514 da ANS:
-
-### Emergências
-- **Sem carência**: atendimento de emergência (risco de morte)
-- Lei protege vidas, não contrato
-
-### Consultório
-- **Até 30 dias**: primeira consulta
-- **Após 30 dias**: cobertura completa
-
-### Procedimentos
-- **Até 300 dias**: procedimentos cirúrgicos
-- **Até 180 dias**: procedimentos diagnósticos
-
-### Parto
-- **Sem carência**: parto (a partir de primeira consulta pré-natal)
-
-## Carências Ilegais
-
-Planos NÃO podem impor carência para:
-- Atendimento de emergência
-- Atendimento pré-natal (mulher gestante)
-- Parto (após primeira consulta)
-- Internação por acidentes
-
-## Quando Você Pode Exigir Cobertura
-
-Mesmo dentro do período de carência, você tem direito em casos de:
-
-1. **Emergência**: risco de morte
-2. **Portabilidade**: vindo de outro plano (aproveita carência paga anterior)
-3. **Direito adquirido**: se contrato anterior tinha cobertura, nova contratação não pode negar
-
-## Como Contestar Negativa de Cobertura por Carência
-
-### Passo 1: Verifique o Tipo de Procedimento
-É emergência? Consulte a legislação.
-
-### Passo 2: Solicite Reconsideração
-Envie carta formal ao plano citando a Lei 9.656/98.
-
-### Passo 3: Reclamação ANS
-Se não responder, protocole na ANS.
-
-### Passo 4: Ação Judicial
-Conseguimos liminares em 24 horas nesses casos.
-
-## Jurisprudência Favorável
-
-STJ pacifica que carência não pode ser aplicada em emergências. Decisões recentes confirmam essa proteção.`,
     tags: ['carência', 'plano-saúde', 'cobertura', 'emergência'],
     relatedArticles: ['negativa-procedimento-5-passos', 'reajuste-abusivo-plano-saude'],
     seoKeywords: ['carência plano saúde', 'emergência carência', 'plano saúde não cobre carência', 'direito carência'],
