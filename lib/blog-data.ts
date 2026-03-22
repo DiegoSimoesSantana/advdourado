@@ -131,13 +131,6 @@ export const PILAR3_ARTICLES: BlogArticle[] = [
     cta: 'Dúvidas sobre FGTS ou multa? Fale com a equipe ADVDourado para análise gratuita.',
   },
 ];
-- Preencha o formulário de reclamação
-- Anexe toda documentação
-- A ANS tem 30 dias para análise
-
-### Passo 4: Procure Assistência Jurídica
-Caso a ANS não resolva (o que ocorre em muitos casos):
-- Busque um advogado especialista em direito do consumidor
 - Uma ação judicial tem altíssimas chances de êxito
 - A jurisprudência é pacífica: plano que nega procedimento deve indenizar
 
