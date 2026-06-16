@@ -10,10 +10,9 @@ export function ProcessSection() {
       <div className="mx-auto max-w-6xl">
         <div className="mb-14 text-center">
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.22em] text-primary/75">Fluxo de atendimento</p>
-          <h2 className="mb-4 text-4xl text-foreground md:text-5xl">Uma jornada simples para quem chega com urgência e precisa de direção.</h2>
-          <p className="mx-auto max-w-3xl text-lg leading-8 text-foreground/72">
-            A estrutura unificada também organiza a entrada do cliente: menos dispersão entre sites e mais clareza sobre
-            a área, os documentos e o formato correto de contratação.
+          <h2 className="mb-4 text-4xl text-foreground md:text-5xl">Um caminho claro do primeiro contato até a reunião.</h2>
+          <p className="mx-auto max-w-3xl text-justify text-lg leading-8 text-slate-700">
+            Você escolhe a especialidade, entende as opções e decide como iniciar: WhatsApp, áudio, e-mail ou agendamento. O objetivo é reduzir dúvidas e acelerar o encaminhamento certo.
           </p>
         </div>
 
@@ -26,20 +25,19 @@ export function ProcessSection() {
                   <div className="rounded-2xl bg-primary/10 p-4 text-primary">
                     <Icon className="h-6 w-6" />
                   </div>
-                  <span className="text-sm font-semibold uppercase tracking-[0.18em] text-foreground/45">0{index + 1}</span>
+                  <span className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">0{index + 1}</span>
                 </div>
                 <h3 className="mb-3 text-3xl text-foreground">{step.title}</h3>
-                <p className="text-base leading-7 text-foreground/72">{step.description}</p>
+                <p className="text-justify text-base leading-7 text-slate-700">{step.description}</p>
               </Card>
             )
           })}
         </div>
 
         <div className="mt-10 rounded-[1.75rem] border border-primary/12 bg-foreground p-8 text-white">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.22em] text-white/55">Observação ética</p>
-          <p className="max-w-4xl text-base leading-8 text-white/76">
-            O contato inicial não substitui consulta formal e não representa promessa de resultado. A estratégia só pode
-            ser definida após análise concreta dos fatos e documentos apresentados.
+          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.22em] text-white/70">Observação ética</p>
+          <p className="max-w-4xl text-justify text-base leading-8 text-white/90">
+            O contato inicial é informativo e de triagem. Não há promessa de resultado e a estratégia jurídica depende da análise do caso concreto, documentos e consulta formal.
           </p>
         </div>
       </div>

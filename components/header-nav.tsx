@@ -11,11 +11,8 @@ export function HeaderNav() {
   const whatsappLink = createWhatsAppLink('Olá, vim pelo site e gostaria de iniciar o contato com o escritório.')
 
   const navItems = [
-    { href: '/areas', label: 'Áreas' },
-    { href: '/areas/trabalhista', label: 'Trabalhista' },
-    { href: '/areas/empresarial', label: 'Empresarial' },
-    { href: '/areas/planos-saude', label: 'Planos de Saúde' },
-    { href: '/areas/inss', label: 'INSS' },
+    { href: '/', label: 'Início' },
+    { href: '/areas', label: 'Áreas de Atuação' },
     { href: '/sobre', label: 'Sobre' },
     { href: '/blog', label: 'Blog' },
     { href: '/contato', label: 'Contato' },
@@ -30,13 +27,13 @@ export function HeaderNav() {
           </div>
           <div>
             <p className="text-base font-semibold text-foreground group-hover:text-primary">{siteConfig.brand.shortName}</p>
-            <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">{siteConfig.brand.oab}</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-slate-500">{siteConfig.brand.oab}</p>
           </div>
         </Link>
 
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-6">
           {navItems.map((item) => (
-            <Link key={item.href} href={item.href} className="text-foreground/70 hover:text-foreground transition-colors">
+            <Link key={item.href} href={item.href} className="text-slate-700 hover:text-slate-950 transition-colors">
               {item.label}
             </Link>
           ))}
@@ -65,7 +62,7 @@ export function HeaderNav() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="block text-foreground/70 hover:text-foreground transition-colors py-2"
+                  className="block py-2 text-slate-700 hover:text-slate-950 transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.label}

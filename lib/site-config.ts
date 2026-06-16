@@ -33,21 +33,19 @@ export const siteConfig = {
     linkedin: null,
   },
   seo: {
-    title: 'ADVDourado | Advocacia em Salvador - Trabalhista, Empresarial, Civil, Família, Consumidor, Saúde, Tributário e INSS',
+    title: 'ADVDourado | Advocacia em Salvador - Trabalhista, Educacional, Família, Consumidor, Imóveis e Saúde',
     description:
-      'ADVDourado oferece assessoria jurídica em Salvador/BA em Direito Trabalhista, Empresarial, Civil, Família, Tributário, Planos de Saúde, Consumidor, Educacional, Digital e INSS. Atendimento estratégico, humanizado e conforme as normas da OAB.',
+      'ADVDourado oferece assessoria jurídica em Salvador/BA em Direito Trabalhista (empresa e trabalhador), Educacional para instituições, Família e acordos, Consumidor com foco patrimonial, Imóveis e Inventário consensual e Planos de Saúde para beneficiários. Atendimento estratégico, humanizado e conforme as normas da OAB.',
     keywords: [
       'advogado em salvador',
       'advocacia em salvador ba',
       'advogado trabalhista salvador',
-      'direito empresarial contratos',
+      'consultoria trabalhista empresa e trabalhador',
       'advogado plano de saude salvador',
       'advogado consumidor salvador',
-      'advogado inss aposentadoria',
+      'advogado inventario consensual salvador',
+      'advogado educacional instituicoes salvador',
       'advogado direito de familia salvador',
-      'advogado tributario salvador',
-      'advogado educacional salvador',
-      'advogado direito digital salvador',
       'advogado divórcio e herança',
       'ADVDourado',
     ],
@@ -141,32 +139,32 @@ export const siteConfig = {
       relatedArticleSlugs: ['juros-abusivos-como-identificar', 'fraude-bancaria-recuperar-dinheiro'],
     },
     {
-      id: 'civil',
-      title: 'Direito Civil',
-      summary: 'Atuação em conflitos cíveis, obrigações, responsabilidade civil e disputas patrimoniais.',
+      id: 'imoveis-inventario',
+      title: 'Imóveis e Inventário Consensual',
+      summary: 'Atuação em contratos imobiliários e inventários extrajudiciais, com foco em acordos consensuais.',
       highlights: [
-        'Negociações e litígios cíveis',
-        'Responsabilidade civil e reparação de danos',
-        'Conflitos patrimoniais entre pessoas físicas',
+        'Inventário consensual em cartório',
+        'Partilha amigável e organização documental',
+        'Contratos imobiliários com segurança jurídica',
       ],
-      audience: 'Pessoas e famílias em conflitos civis e patrimoniais.',
-      seoTitle: 'Direito Civil em Salvador | ADVDourado',
-      seoDescription: 'Atendimento em Direito Civil em Salvador/BA para conflitos patrimoniais, responsabilidade civil e obrigações.',
+      audience: 'Famílias e proprietários que buscam resolução consensual e extrajudicial.',
+      seoTitle: 'Imóveis e Inventário Consensual em Salvador | ADVDourado',
+      seoDescription: 'Atendimento em Salvador/BA para inventário consensual, partilha amigável e contratos imobiliários com condução técnica.',
       faq: [
         {
-          question: 'Quando um conflito civil pode ser resolvido sem ação judicial?',
-          answer: 'Depende da postura das partes e da documentação. Em muitos casos, a negociação técnica bem conduzida evita litígio.',
+          question: 'Inventário pode ser feito em cartório?',
+          answer: 'Sim, quando os requisitos legais para via extrajudicial são atendidos e há consenso entre os envolvidos.',
         },
         {
-          question: 'Posso cobrar prejuízo por descumprimento de acordo?',
-          answer: 'Sim, desde que haja base contratual ou legal e provas dos danos sofridos no caso concreto.',
+          question: 'Quando a partilha amigável é recomendada?',
+          answer: 'Quando as partes concordam com os termos e desejam solução mais célere, segura e com menor desgaste.',
         },
         {
-          question: 'Direito Civil também envolve responsabilidade por danos?',
-          answer: 'Sim. Situações de dano material e moral podem ser analisadas para eventual responsabilização.',
+          question: 'É possível revisar contratos de compra e venda de imóvel?',
+          answer: 'Sim. A revisão preventiva ajuda a reduzir risco de litígio e proteger o patrimônio.',
         },
       ],
-      relatedArticleSlugs: ['nome-negativado-injustamente', 'juros-abusivos-como-identificar'],
+      relatedArticleSlugs: ['produto-nao-entregue-solucao', 'nome-negativado-injustamente'],
     },
     {
       id: 'familia',
@@ -315,30 +313,80 @@ export const siteConfig = {
     {
       id: 'educacional',
       title: 'Direito Educacional',
-      summary: 'Atendimento para instituições, responsáveis e estudantes em questões acadêmicas e contratuais.',
+      summary:
+        'Consultoria para instituições de ensino com foco em governança acadêmica, adequação regulatória e prevenção de riscos de compliance e LGPD.',
       highlights: [
-        'Mensalidades e contratos educacionais',
-        'Conflitos entre escola, aluno e família',
-        'Orientação regulatória para instituições de ensino',
+        'Atualização normativa e implementação da RN-1',
+        'Revisão de contratos, regimentos e fluxos disciplinares',
+        'Compliance educacional, proteção de dados e prevenção de passivo',
       ],
-      audience: 'Escolas, gestores educacionais, responsáveis e estudantes.',
+      audience:
+        'Mantenedoras, diretorias, coordenações pedagógicas e administrativas, além de instituições privadas e filantrópicas de ensino.',
       seoTitle: 'Direito Educacional em Salvador | ADVDourado',
-      seoDescription: 'Assessoria em Direito Educacional em Salvador/BA para contratos escolares, mensalidades e conflitos acadêmicos.',
+      seoDescription:
+        'Assessoria em Direito Educacional para instituições de ensino em Salvador/BA, com foco em RN-1, compliance, LGPD e atualização de procedimentos jurídicos.',
       faq: [
         {
-          question: 'Conflitos sobre mensalidade escolar podem ser negociados?',
-          answer: 'Sim. A análise contratual e regulatória orienta os caminhos mais adequados para cada caso.',
+          question: 'O que muda com a RN-1 para instituições de ensino?',
+          answer:
+            'A RN-1 ampliou deveres de governança, rastreabilidade e formalização de procedimentos, exigindo revisão de políticas internas, fluxos de resposta e capacitação contínua das equipes.',
         },
         {
-          question: 'Escolas podem revisar contratos e regulamentos internos?',
-          answer: 'Sim. A revisão técnica reduz risco jurídico e melhora previsibilidade nas relações institucionais.',
+          question: 'A adequação à LGPD no ambiente escolar vai além do aviso de privacidade?',
+          answer:
+            'Sim. A conformidade envolve base legal para tratamento de dados, gestão de consentimento quando aplicável, controle de acesso, retenção documental e protocolos de incidentes.',
         },
         {
-          question: 'Famílias podem buscar orientação em conflitos com instituições?',
-          answer: 'Sim. O atendimento contempla avaliação jurídica de situações envolvendo alunos e responsáveis.',
+          question: 'É necessário treinar a equipe para as novas exigências regulatórias?',
+          answer:
+            'Sim. Treinamentos periódicos reduzem falhas operacionais, padronizam condutas e demonstram diligência institucional em auditorias e fiscalizações.',
+        },
+        {
+          question: 'Quais documentos merecem revisão prioritária após a RN-1?',
+          answer:
+            'Regimento interno, contratos de prestação de serviços educacionais, políticas de privacidade, termos de uso de imagem, protocolos disciplinares e fluxos de atendimento a titulares de dados.',
         },
       ],
-      relatedArticleSlugs: ['arrependimento-compra-direito-voltar', 'produto-nao-entregue-solucao'],
+      relatedArticleSlugs: ['fraude-bancaria-recuperar-dinheiro', 'juros-abusivos-como-identificar'],
+    },
+    {
+      id: 'servicos-publicos',
+      title: 'Direito Aplicado a Serviços Públicos',
+      summary:
+        'Atuação consultiva e educativa com órgãos e equipes públicas para atualização legal, revisão de procedimentos e mitigação de riscos de compliance e LGPD.',
+      highlights: [
+        'Capacitação jurídica para servidores municipais, estaduais e federais',
+        'Implementação de rotinas alinhadas à RN-1 e normas setoriais',
+        'Prevenção de responsabilização administrativa, cível e por dados pessoais',
+      ],
+      audience:
+        'Secretarias, autarquias, fundações, gabinetes de gestão e servidores que executam rotinas administrativas com impacto regulatório.',
+      seoTitle: 'Direito Aplicado a Serviços Públicos em Salvador | ADVDourado',
+      seoDescription:
+        'Assessoria jurídica para serviços públicos com foco em capacitação de servidores, atualização da RN-1, compliance, LGPD e segurança procedimental.',
+      faq: [
+        {
+          question: 'Como a RN-1 aumentou as responsabilidades na gestão pública?',
+          answer:
+            'A norma elevou o padrão de governança e controle, exigindo documentação de decisões, protocolos mais claros e respostas tempestivas para reduzir riscos de responsabilização.',
+        },
+        {
+          question: 'A capacitação de servidores ajuda a evitar passivos de compliance?',
+          answer:
+            'Sim. Treinamento jurídico aplicado à rotina fortalece decisões, reduz inconformidades e melhora a conformidade com legislação, normas internas e órgãos de controle.',
+        },
+        {
+          question: 'Órgãos públicos também precisam adequar processos à LGPD?',
+          answer:
+            'Sim. Entes públicos tratam grande volume de dados pessoais e devem manter bases legais, minimização de dados, segurança da informação e atendimento aos direitos dos titulares.',
+        },
+        {
+          question: 'Quais áreas internas costumam demandar atualização imediata?',
+          answer:
+            'Compras e contratos, recursos humanos, atendimento ao cidadão, processos disciplinares e fluxos de compartilhamento de dados entre setores e sistemas.',
+        },
+      ],
+      relatedArticleSlugs: ['fraude-bancaria-recuperar-dinheiro', 'nome-negativado-injustamente'],
     },
     {
       id: 'digital',
@@ -369,17 +417,18 @@ export const siteConfig = {
       relatedArticleSlugs: ['fraude-bancaria-recuperar-dinheiro', 'juros-abusivos-como-identificar'],
     },
     {
-      id: 'inss',
-      title: 'INSS e Aposentadoria',
-      summary: 'Planejamento previdenciário, concessão e revisão de benefícios com apoio em cálculos.',
+      id: 'previdenciario',
+      title: 'Direito Previdenciário',
+      summary: 'Planejamento, concessão, revisão e defesa de benefícios do INSS e regimes próprios.',
       highlights: [
-        'Cálculo de aposentadoria e tempo de contribuição',
-        'Análise de benefícios previdenciários',
-        'Recursos e estratégia em indeferimentos',
+        'Aposentadoria por tempo de contribuição',
+        'Aposentadoria especial e por invalidez',
+        'Revisão de benefícios',
+        'INSS e outros regimes',
       ],
-      audience: 'Segurados que buscam segurança em aposentadoria e benefícios do INSS.',
-      seoTitle: 'INSS e Aposentadoria em Salvador | ADVDourado',
-      seoDescription: 'Atendimento previdenciário em Salvador/BA para INSS, aposentadoria, cálculos e revisão de benefícios.',
+      audience: 'Segurados, aposentados e pensionistas que buscam segurança em benefícios previdenciários.',
+      seoTitle: 'Direito Previdenciário em Salvador | ADVDourado',
+      seoDescription: 'Atendimento previdenciário em Salvador/BA para INSS, aposentadoria, revisão e defesa de benefícios.',
       faq: [
         {
           question: 'Vale a pena calcular a aposentadoria antes do pedido?',

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { blogArticles } from '@/lib/blog-data'
 import { Button } from '@/components/ui/button'
 import { ArrowRight } from 'lucide-react'
@@ -14,7 +15,7 @@ export function FeaturedArticlesSection() {
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">
             Base informativa para fortalecer a tomada de decisão
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
+          <p className="mx-auto mb-6 max-w-2xl text-justify text-lg text-slate-700">
             O acervo do blog continua disponível dentro da nova estrutura para apoiar a compreensão inicial de temas
             jurídicos recorrentes.
           </p>
@@ -33,15 +34,18 @@ export function FeaturedArticlesSection() {
         <div className="grid md:grid-cols-3 gap-6">
           {featured.map((article) => (
             <Link
-              key={article.id}
+              key={article.slug}
               href={`/blog/${article.slug}`}
-              className="group flex flex-col bg-card rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow border border-border hover:border-primary/50"
+              className="group relative flex flex-col overflow-hidden rounded-lg border border-border bg-card shadow-sm transition-shadow hover:border-primary/50 hover:shadow-lg"
             >
-              <div className="h-40 overflow-hidden bg-muted">
-                <img
+              <div className="relative h-40 overflow-hidden bg-muted">
+                <Image
                   src={article.image || "/placeholder.svg"}
                   alt={article.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 320px"
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
                 />
               </div>
 
@@ -52,10 +56,10 @@ export function FeaturedArticlesSection() {
                 <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors mb-2 line-clamp-2">
                   {article.title}
                 </h3>
-                <p className="text-sm text-muted-foreground flex-grow line-clamp-2 mb-4">
+                <p className="mb-4 flex-grow line-clamp-2 text-justify text-sm text-slate-600">
                   {article.excerpt}
                 </p>
-                <div className="flex items-center justify-between text-xs text-muted-foreground border-t border-border pt-3">
+                <div className="flex items-center justify-between border-t border-border pt-3 text-xs text-slate-500">
                   <time>{new Date(article.date).toLocaleDateString('pt-BR')}</time>
                   <span>{article.readTime} min</span>
                 </div>

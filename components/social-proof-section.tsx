@@ -11,9 +11,12 @@ export function SocialProofSection() {
         <div className="mb-14 text-center">
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.22em] text-primary/75">Direcionadores do escritório</p>
           <h2 className="mb-4 text-4xl text-foreground md:text-5xl">Credibilidade construída por postura, método e clareza.</h2>
-          <p className="mx-auto max-w-3xl text-lg leading-8 text-foreground/72">
+          <p className="mx-auto max-w-3xl text-justify text-lg leading-8 text-slate-700">
             A nova presença digital evita excessos de marketing e reforça o que realmente importa para o contato
             profissional: escuta, organização do atendimento, sigilo e informação qualificada.
+          </p>
+          <p className="mx-auto mt-4 max-w-3xl text-sm leading-7 text-slate-600">
+            Primeiro contato com triagem inicial conduzida pela Dra. Bruna Dourado, com encaminhamento técnico conforme a especialidade do caso.
           </p>
         </div>
 
@@ -27,7 +30,7 @@ export function SocialProofSection() {
                   <Icon className="h-6 w-6" />
                 </div>
                 <h3 className="mb-3 text-3xl text-foreground">{item.title}</h3>
-                <p className="text-base leading-7 text-foreground/72">{item.description}</p>
+                <p className="text-justify text-base leading-7 text-slate-700">{item.description}</p>
               </Card>
             )
           })}

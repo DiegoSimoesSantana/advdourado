@@ -17,9 +17,9 @@ export function FAQSection() {
         <div className="text-center mb-16">
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.22em] text-primary/75">Perguntas frequentes</p>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Dúvidas sobre a nova estrutura e sobre o atendimento
+            Dúvidas sobre especialidades e atendimento
           </h2>
-          <p className="text-lg text-foreground/70">
+          <p className="text-justify text-lg text-slate-700">
             Questões comuns de quem chega ao escritório pela primeira vez.
           </p>
         </div>
@@ -46,7 +46,7 @@ export function FAQSection() {
 
               {openIndex === index && (
                 <div className="px-6 py-4 border-t border-border bg-gradient-to-br from-amber-50/30 to-white">
-                  <p className="text-foreground/80 leading-relaxed">
+                  <p className="text-justify leading-relaxed text-slate-700">
                     {faq.answer}
                   </p>
                 </div>
@@ -59,14 +59,14 @@ export function FAQSection() {
           <h3 className="text-xl font-semibold text-foreground mb-2">
             Sua dúvida não está aqui?
           </h3>
-          <p className="text-foreground/70 mb-6">
-            Use o WhatsApp para triagem inicial e encaminhamento para a área correta.
+          <p className="mb-6 text-justify text-slate-700">
+            Envie sua situação no WhatsApp para triagem inicial com a Dra. Bruna e direcionamento para a especialidade correta.
           </p>
           <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
             <Button 
               className="bg-primary hover:bg-primary/90 text-white px-8 rounded-full font-semibold"
             >
-              Enviar minha dúvida
+              Iniciar conversa no WhatsApp
             </Button>
           </a>
         </div>

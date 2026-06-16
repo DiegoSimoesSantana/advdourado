@@ -1,4 +1,4 @@
-import { Card } from '@/components/ui/card'
+import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { createWhatsAppLink, siteConfig } from '@/lib/site-config'
 
@@ -8,62 +8,50 @@ export function AboutSection() {
   )
 
   return (
-    <section id="sobre" className="bg-foreground px-4 py-20 text-white sm:px-6 md:px-8">
-      <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
-        <div>
-          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.22em] text-primary-foreground/70">Estrutura institucional</p>
-          <h2 className="mb-6 text-4xl text-white md:text-5xl">Um escritório, uma narrativa mais clara, a mesma atuação responsável.</h2>
-          <div className="space-y-5 text-lg leading-8 text-white/76">
-            <p>{siteConfig.positioning.description}</p>
+    <section id="sobre" className="bg-[#f5f1e8] px-4 py-24 sm:px-6 md:px-8">
+      <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16 lg:items-center">
+        <div className="order-2 lg:order-1">
+          <div className="relative overflow-hidden rounded-sm border border-black/10 bg-white shadow-sm">
+            <div className="relative h-[420px] w-full sm:h-[520px]">
+              <Image
+                src="/images/foto-perfil.jpg"
+                alt="Dra. Bruna Dourado em retrato institucional"
+                fill
+                sizes="(max-width: 1024px) 100vw, 520px"
+                className="object-cover sepia-[0.18] grayscale contrast-95"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/20 via-transparent to-transparent" />
+            </div>
+          </div>
+        </div>
+
+        <div className="order-1 lg:order-2 text-left">
+          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.22em] text-[#8a6a3d]">Sobre a Advogada</p>
+          <h2 className="mb-6 font-serif text-4xl leading-tight text-slate-900 md:text-5xl">
+            Bruna Dourado da Silva, OAB/BA 71507
+          </h2>
+          <div className="space-y-5 text-justify text-lg leading-8 text-slate-800">
             <p>
-              A proposta da nova estrutura é reduzir ruído para quem chega ao site: em vez de três páginas isoladas,
-              há um fluxo único para contato, triagem, produção de conteúdo e encaminhamento da área adequada.
+              Atuação jurídica nas áreas Trabalhista, Família, Direito Educacional e Consumidor, com condução estratégica e linguagem acessível para pessoas, famílias e instituições.
             </p>
             <p>
-              Na frente educacional, o escritório incorpora a vivência de 18 anos no ambiente escolar e o olhar para
-              temas regulatórios, digitais e de proteção institucional. Nas frentes consumerista e trabalhista, mantém
-              atendimento estratégico para demandas recorrentes do cotidiano de pessoas e famílias.
+              Trajetória também como docente de Filosofia e Sociologia em instituições de ensino de Salvador, unindo técnica jurídica e formação humana no atendimento.
+            </p>
+            <p>
+              Além da atuação jurídica, também oferece serviço de compliance e treinamentos para equipes e servidores públicos, com ações já realizadas em Catu/BA e Porto Seguro/BA.
+            </p>
+            <p>
+              O primeiro atendimento é direto, com triagem clara e encaminhamento objetivo para o melhor formato de solução.
             </p>
           </div>
 
-          <Button asChild size="lg" className="mt-8 rounded-full bg-primary px-8 text-primary-foreground hover:bg-primary/90">
+          <Button asChild size="lg" className="mt-8 rounded-full bg-[#25D366] px-8 text-white hover:bg-[#1ebe57]">
             <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-              Falar com o escritório
+              WhatsApp
             </a>
           </Button>
-        </div>
 
-        <div className="grid gap-4 sm:grid-cols-2">
-          <Card className="rounded-[1.5rem] border-white/10 bg-white/5 p-6 text-white shadow-none sm:col-span-2">
-            <p className="mb-2 text-xs uppercase tracking-[0.22em] text-white/55">Identificação profissional</p>
-            <h3 className="mb-2 text-3xl">{siteConfig.brand.name}</h3>
-            <p className="text-white/72">{siteConfig.brand.title}</p>
-            <p className="mt-4 text-sm text-white/72">{siteConfig.brand.oab}</p>
-          </Card>
-
-          <Card className="rounded-[1.5rem] border-white/10 bg-white/5 p-6 text-white shadow-none">
-            <p className="mb-2 text-xs uppercase tracking-[0.22em] text-white/55">Atendimento</p>
-            <p className="text-2xl">Online em todo o Brasil</p>
-            <p className="mt-3 text-sm leading-6 text-white/72">Atendimento presencial sob agendamento em Salvador/BA.</p>
-          </Card>
-
-          <Card className="rounded-[1.5rem] border-white/10 bg-white/5 p-6 text-white shadow-none">
-            <p className="mb-2 text-xs uppercase tracking-[0.22em] text-white/55">Contato</p>
-            <p className="text-2xl">{siteConfig.contact.phoneDisplay}</p>
-            <p className="mt-3 text-sm leading-6 text-white/72">{siteConfig.contact.email}</p>
-          </Card>
-
-          <Card className="rounded-[1.5rem] border-white/10 bg-white/5 p-6 text-white shadow-none sm:col-span-2">
-            <p className="mb-4 text-xs uppercase tracking-[0.22em] text-white/55">Compromissos de atuação</p>
-            <div className="grid gap-3 md:grid-cols-2">
-              {siteConfig.differentiators.map((item) => (
-                <div key={item.title} className="rounded-2xl border border-white/10 bg-black/10 p-4">
-                  <p className="mb-2 text-lg">{item.title}</p>
-                  <p className="text-sm leading-6 text-white/72">{item.description}</p>
-                </div>
-              ))}
-            </div>
-          </Card>
+          <p className="mt-8 text-sm uppercase tracking-[0.22em] text-slate-500">{siteConfig.brand.oab}</p>
         </div>
       </div>
     </section>

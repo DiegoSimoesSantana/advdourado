@@ -14,7 +14,7 @@ export async function POST(request: Request) {
       message: String(body?.message ?? '').trim(),
     }
 
-    if (!payload.name || !payload.email || !payload.message) {
+    if (!payload.name || !payload.message) {
       return NextResponse.json({ ok: false, error: 'Campos obrigatórios ausentes.' }, { status: 400 })
     }
 

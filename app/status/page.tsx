@@ -37,43 +37,7 @@ export default function StatusPage() {
           <h1 className="text-4xl font-serif text-foreground md:text-5xl font-bold mb-4 animate-slideup">
             Status do Sistema
           </h1>
-          <p className="text-lg text-foreground/80 animate-fadein delay-100">
-            Monitoramento em tempo real do site Bruna Dourado Advocacia &amp; Consultoria.
-          </p>
         </div>
-
-        {/* Status Geral */}
-        <Card className="p-6 sm:p-8 mb-8 border-0 animate-fadein delay-200" style={{ backgroundColor: 'white' }}>
-          <div className="flex items-center gap-4 mb-4">
-            <CheckCircle className="w-8 h-8" style={{ color: '#044B39' }} />
-            <h2 className="text-2xl font-bold text-foreground">Status Geral: Operacional</h2>
-          </div>
-          <p className="text-foreground/70">
-            Último check: {new Date().toLocaleString('pt-BR')}
-          </p>
-        </Card>
-
-        {/* Serviços */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 animate-fadein delay-300">
-          {[
-            { name: 'Website', status: 'online', latency: '120ms' },
-            { name: 'Blog', status: 'online', latency: '95ms' },
-            { name: 'Google Analytics', status: 'online', latency: '150ms' },
-            { name: 'WhatsApp API', status: 'online', latency: '200ms' },
-          ].map((service) => (
-            <Card key={service.name} className="p-4 sm:p-6 border-2 bg-white border-[#ECE5DC]">
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="font-bold text-foreground">{service.name}</h3>
-                <CheckCircle className="w-5 h-5" style={{ color: '#044B39' }} />
-              </div>
-              <div className="text-sm text-foreground/70">
-                <p>Status: <span className="text-primary font-bold">Online</span></p>
-                <p>Latência: {service.latency}</p>
-              </div>
-            </Card>
-          ))}
-        </div>
-
         {/* Performance */}
         <Card className="p-6 sm:p-8 mt-8 border-0 animate-fadein delay-400" style={{ backgroundColor: 'white' }}>
           <h2 className="text-2xl font-bold mb-6 text-foreground">Performance Metrics</h2>
@@ -155,14 +119,4 @@ export default function StatusPage() {
       </div>
     </main>
   );
-}
-                  <p className="text-sm" style={{ color: '#999' }}>{update.date}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </Card>
-      </div>
-    </main>
-  )
 }
