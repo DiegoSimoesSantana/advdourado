@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { siteConfig } from '@/lib/site-config'
 
 export const metadata: Metadata = {
@@ -27,6 +28,27 @@ export default function SobrePage() {
             <li>Respeito, tradição, história e visão de futuro</li>
             <li>Comunicação clara, ética e orientada ao cliente</li>
           </ul>
+        </section>
+
+        <section className="mt-8 rounded-2xl border border-border bg-secondary/25 p-6">
+          <h2 className="text-2xl text-foreground">Continue sua navegação</h2>
+          <p className="mt-3 text-sm leading-7 text-foreground/75">
+            A página institucional conecta você com as áreas de atuação, conteúdos explicativos e o canal direto de contato.
+          </p>
+          <div className="mt-4 flex flex-wrap gap-3 text-sm">
+            <Link href="/" className="font-semibold text-primary underline decoration-primary/40 underline-offset-4 transition hover:text-primary/80">
+              Voltar para início
+            </Link>
+            <Link href="/areas" className="font-semibold text-primary underline decoration-primary/40 underline-offset-4 transition hover:text-primary/80">
+              Ir para áreas de atuação
+            </Link>
+            <Link href="/blog" className="font-semibold text-primary underline decoration-primary/40 underline-offset-4 transition hover:text-primary/80">
+              Ler artigos do blog
+            </Link>
+            <Link href="/contato" className="font-semibold text-primary underline decoration-primary/40 underline-offset-4 transition hover:text-primary/80">
+              Abrir página de contato
+            </Link>
+          </div>
         </section>
       </div>
     </main>

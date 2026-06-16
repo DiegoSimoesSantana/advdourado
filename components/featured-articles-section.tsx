@@ -16,8 +16,8 @@ export function FeaturedArticlesSection() {
             Base informativa para fortalecer a tomada de decisão
           </h2>
           <p className="mx-auto mb-6 max-w-2xl text-justify text-lg text-slate-700">
-            O acervo do blog continua disponível dentro da nova estrutura para apoiar a compreensão inicial de temas
-            jurídicos recorrentes.
+            O acervo do blog apoia a compreensão inicial de temas jurídicos e direciona você para a área certa de
+            atendimento, com caminho direto para contato quando necessário.
           </p>
           <Button
             asChild
@@ -36,7 +36,7 @@ export function FeaturedArticlesSection() {
             <Link
               key={article.slug}
               href={`/blog/${article.slug}`}
-              className="group relative flex flex-col overflow-hidden rounded-lg border border-border bg-card shadow-sm transition-shadow hover:border-primary/50 hover:shadow-lg"
+              className="group relative flex cursor-pointer flex-col overflow-hidden rounded-lg border border-border bg-card shadow-sm transition-shadow hover:border-primary/50 hover:shadow-lg"
             >
               <div className="relative h-40 overflow-hidden bg-muted">
                 <Image
@@ -66,6 +66,15 @@ export function FeaturedArticlesSection() {
               </div>
             </Link>
           ))}
+        </div>
+
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-sm text-slate-700">
+          <Link href="/areas" className="cursor-pointer font-semibold underline decoration-primary/40 underline-offset-4 transition hover:text-primary">
+            Ver áreas de atuação
+          </Link>
+          <Link href="/contato" className="cursor-pointer font-semibold underline decoration-primary/40 underline-offset-4 transition hover:text-primary">
+            Falar com especialista no WhatsApp
+          </Link>
         </div>
       </div>
     </section>

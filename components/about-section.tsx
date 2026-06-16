@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 import { createWhatsAppLink, siteConfig } from '@/lib/site-config'
 
 export function AboutSection() {
@@ -38,10 +39,30 @@ export function AboutSection() {
               Trajetória também como docente de Filosofia e Sociologia em instituições de ensino de Salvador, unindo técnica jurídica e formação humana no atendimento.
             </p>
             <p>
-              Além da atuação jurídica, também oferece serviço de compliance e treinamentos para equipes e servidores públicos, com ações já realizadas em Catu/BA e Porto Seguro/BA.
+              Além da atuação jurídica, atua como educadora em projetos de formação para equipes, parcerias institucionais e treinamento preventivo para profissionais que precisam compreender riscos, processos e boas práticas antes de conflitos jurídicos.
+            </p>
+            <p>
+              Na frente educacional, também desenvolve conteúdo aplicado em Direito Digital e LGPD, preparando instituições e profissionais para decisões mais seguras.
             </p>
             <p>
               O primeiro atendimento é direto, com triagem clara e encaminhamento objetivo para o melhor formato de solução.
+            </p>
+          </div>
+
+          <div className="mt-6 space-y-2 text-sm text-slate-700">
+            <p>
+              <Link href="/sobre" className="cursor-pointer font-semibold text-slate-900 underline decoration-[#b89052]/60 underline-offset-4 transition hover:text-[#8a6a3d]">
+                Saiba mais sobre a formação e trajetória institucional.
+              </Link>
+            </p>
+            <p>
+              <Link href="/areas/educacional" className="cursor-pointer font-semibold text-slate-900 underline decoration-[#b89052]/60 underline-offset-4 transition hover:text-[#8a6a3d]">
+                Ver atuação em Direito Educacional
+              </Link>
+              {' '}e{' '}
+              <Link href="/areas/digital" className="cursor-pointer font-semibold text-slate-900 underline decoration-[#b89052]/60 underline-offset-4 transition hover:text-[#8a6a3d]">
+                Direito Digital (LGPD).
+              </Link>
             </p>
           </div>
 
@@ -50,6 +71,13 @@ export function AboutSection() {
               WhatsApp
             </a>
           </Button>
+
+          <p className="mt-4 text-sm text-slate-700">
+            Prefere outro canal?
+            <Link href="/contato" className="ml-1 cursor-pointer font-semibold text-slate-900 underline decoration-[#b89052]/60 underline-offset-4 transition hover:text-[#8a6a3d]">
+              Ir para contato.
+            </Link>
+          </p>
 
           <p className="mt-8 text-sm uppercase tracking-[0.22em] text-slate-500">{siteConfig.brand.oab}</p>
         </div>

@@ -21,9 +21,9 @@ const areaGuidance: Record<string, string> = {
   trabalhista:
     'Nesta etapa você recebe uma leitura inicial do cenário, com foco em direitos, deveres, prazos e documentos essenciais para avançar com segurança.',
   educacional:
-    'A triagem mapeia riscos institucionais, define prioridades de adequação à RN-1 e estrutura um plano de atualização documental, operacional e de governança com foco em compliance e LGPD.',
-  'servicos-publicos':
-    'O atendimento é estruturado em formato educativo e aplicado: diagnóstico de rotina, atualização da equipe sobre mudanças legais da RN-1 e implantação de procedimentos para reduzir risco de responsabilização.',
+    'A triagem mapeia riscos institucionais, define prioridades de adequação à RN-1 e estrutura um plano de atualização documental, operacional e de governança com foco em compliance, formação de equipes, Direito Digital e LGPD.',
+  digital:
+    'A triagem identifica riscos digitais, fluxos de dados sensíveis e pontos de vulnerabilidade para construir um plano de adequação em LGPD com protocolos práticos e treinamento de equipe.',
   familia:
     'A orientação prioriza soluções consensuais, preservação de vínculos e organização jurídica de acordos familiares com clareza.',
   consumidor:
@@ -51,7 +51,7 @@ const areaRightsAndDuties: Record<string, RightsDuties> = {
     rights: [
       'Plano técnico para adequação institucional às exigências da RN-1.',
       'Revisão estratégica de contratos, regimentos e fluxos acadêmico-administrativos.',
-      'Direcionamento para conformidade com LGPD e prevenção de passivo regulatório.',
+      'Direcionamento para conformidade com LGPD, Direito Digital e prevenção de passivo regulatório.',
     ],
     duties: [
       'Disponibilizar políticas internas, contratos e procedimentos atualmente vigentes.',
@@ -59,16 +59,16 @@ const areaRightsAndDuties: Record<string, RightsDuties> = {
       'Implementar registros e rotinas de evidência para auditoria e controle.',
     ],
   },
-  'servicos-publicos': {
+  digital: {
     rights: [
-      'Capacitação jurídica aplicada para servidores municipais, estaduais e federais.',
-      'Mapeamento de riscos operacionais com recomendações de adequação à RN-1.',
-      'Suporte técnico para estruturar governança, compliance e proteção de dados na rotina pública.',
+      'Diagnóstico jurídico de proteção de dados com plano de adequação em LGPD.',
+      'Protocolos para resposta a incidentes e atendimento de titulares de dados.',
+      'Apoio técnico para organizar governança digital e reduzir risco regulatório.',
     ],
     duties: [
-      'Apresentar fluxos internos, normas setoriais e pontos críticos de execução.',
-      'Designar responsáveis por implementação e acompanhamento das medidas recomendadas.',
-      'Manter trilhas de decisão e documentação de conformidade atualizadas.',
+      'Mapear fluxos de dados e disponibilizar documentos internos que impactam tratamento de dados.',
+      'Designar responsáveis por implementação, revisão de rotinas e treinamento contínuo.',
+      'Manter registros de conformidade, evidências de segurança e histórico de resposta a incidentes.',
     ],
   },
   familia: {
@@ -132,10 +132,10 @@ const areaCommonCases: Record<string, string[]> = {
     'Revisão de contratos educacionais, regimentos e políticas internas.',
     'Treinamento de equipes para reduzir riscos de compliance e LGPD.',
   ],
-  'servicos-publicos': [
-    'Formação jurídica continuada para servidores e gestores públicos.',
-    'Atualização de procedimentos administrativos conforme RN-1 e controles internos.',
-    'Mitigação de riscos em tratamento de dados pessoais e conformidade regulatória.',
+  digital: [
+    'Adequação de processos internos ao ciclo de vida de dados pessoais (LGPD).',
+    'Resposta a incidentes digitais e comunicação com titulares em cenários críticos.',
+    'Treinamento de equipes para governança digital e conduta segura em ambiente online.',
   ],
   familia: [
     'Divórcio consensual com organização patrimonial.',
@@ -285,7 +285,7 @@ export default async function AreaPage({ params }: Props) {
           <Accordion type="single" collapsible className="w-full mb-8">
             {areaData.highlights.map((highlight, idx) => (
               <AccordionItem key={highlight} value={String(idx)}>
-                <AccordionTrigger className="text-base font-semibold text-foreground bg-secondary/40 rounded-2xl px-4 py-3">
+                <AccordionTrigger className="cursor-pointer text-base font-semibold text-foreground bg-secondary/40 rounded-2xl px-4 py-3">
                   {highlight}
                 </AccordionTrigger>
                 <AccordionContent className="text-sm text-foreground/80 px-4 pb-4">
@@ -384,7 +384,7 @@ export default async function AreaPage({ params }: Props) {
                   <p className="text-xs uppercase tracking-[0.2em] text-primary/75">{article.categoryName}</p>
                   <h3 className="mt-2 text-lg text-foreground">{article.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-foreground/75 line-clamp-3">{article.excerpt}</p>
-                  <Link href={`/blog/${article.slug}`} className="mt-4 inline-block text-sm font-semibold text-primary hover:underline">
+                  <Link href={`/blog/${article.slug}`} className="mt-4 inline-block cursor-pointer text-sm font-semibold text-primary hover:underline">
                     Ler artigo
                   </Link>
                 </article>
@@ -400,6 +400,21 @@ export default async function AreaPage({ params }: Props) {
           <Button asChild variant="outline" className="mt-6 rounded-full border-primary/20">
             <Link href="/blog">Ver todos os artigos</Link>
           </Button>
+
+          <div className="mt-8 rounded-2xl border border-border/70 bg-secondary/40 p-5 text-sm leading-7 text-foreground/80">
+            <p>
+              Quer entender melhor a trajetória da Dra. Bruna como advogada e educadora?
+              <Link href="/sobre" className="ml-1 cursor-pointer font-semibold text-primary hover:underline">
+                Saiba mais sobre formação e atuação institucional.
+              </Link>
+            </p>
+            <p className="mt-3">
+              Se sua situação já exige encaminhamento prático, fale direto no contato.
+              <Link href="/contato" className="ml-1 cursor-pointer font-semibold text-primary hover:underline">
+                Abrir canal de atendimento.
+              </Link>
+            </p>
+          </div>
         </section>
       </div>
     </main>

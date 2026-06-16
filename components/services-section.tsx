@@ -8,7 +8,7 @@ import {
   ShieldCheck,
   Home,
   Stethoscope,
-  Landmark,
+  ShieldEllipsis,
 } from 'lucide-react'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 
@@ -31,13 +31,26 @@ const featuredAreas = [
     title: 'Educacional (Instituições de Ensino)',
     eyebrow: 'Escolas, cursos e faculdades',
     problem:
-      'Atendimento voltado a instituições de ensino para contratos, prevenção de conflitos, políticas internas e conformidade educacional.',
+      'Atendimento voltado a instituições de ensino para contratos, prevenção de conflitos, políticas internas, formação de equipes e conformidade educacional.',
     highlights: [
       'Revisão de contratos educacionais',
       'Apoio em conflitos com responsáveis e rotinas institucionais',
-      'Mitigação de riscos para gestão escolar',
+      'Integração com Direito Digital e LGPD na rotina escolar',
     ],
     icon: Building2,
+  },
+  {
+    id: 'digital',
+    title: 'Direito Digital e LGPD',
+    eyebrow: 'Proteção de dados e governança',
+    problem:
+      'Estruturação de protocolos para tratamento de dados, prevenção de incidentes digitais e adequação prática à LGPD com foco em operação real.',
+    highlights: [
+      'Mapeamento de riscos e plano de adequação em LGPD',
+      'Resposta a incidentes e comunicação com titulares',
+      'Treinamento de equipes para cultura de proteção de dados',
+    ],
+    icon: ShieldEllipsis,
   },
   {
     id: 'familia',
@@ -104,8 +117,19 @@ export function ServicesSection() {
             Escolha a especialidade e avance para o atendimento com a Dra. Bruna.
           </h2>
           <p className="max-w-xl text-justify text-lg leading-8 text-slate-800">
-            Esta página institucional organiza seu caminho por área. Em cada especialidade, você entende direitos, deveres e opções reais de solução antes do contato final por WhatsApp, e-mail ou reunião.
+            Esta página institucional organiza seu caminho por área. Em cada especialidade, você entende direitos,
+            deveres e opções reais de solução antes do contato final por WhatsApp, e-mail ou reunião.
           </p>
+          <div className="mt-5 flex flex-wrap gap-3 text-sm">
+            <Link href="/sobre" className="inline-flex cursor-pointer items-center gap-2 font-semibold text-slate-800 underline decoration-[#b89052]/60 underline-offset-4 transition hover:text-[#8a6a3d]">
+              Saiba mais sobre formação da Dra. Bruna
+              <ArrowUpRight className="h-4 w-4" />
+            </Link>
+            <Link href="/contato" className="inline-flex cursor-pointer items-center gap-2 font-semibold text-slate-800 underline decoration-[#b89052]/60 underline-offset-4 transition hover:text-[#8a6a3d]">
+              Ir para contato
+              <ArrowUpRight className="h-4 w-4" />
+            </Link>
+          </div>
 
           <div className="mt-8 overflow-hidden rounded-sm border border-black/10 bg-white shadow-sm">
             <div className="relative h-[320px] w-full">
@@ -138,7 +162,7 @@ export function ServicesSection() {
 
               return (
                 <AccordionItem key={area.id} value={area.id} className="border-black/10 py-1">
-                  <AccordionTrigger className="py-6 hover:no-underline">
+                  <AccordionTrigger className="cursor-pointer py-6 hover:no-underline">
                     <div className="flex items-start gap-4 text-left">
                       <div className="mt-1 rounded-sm border border-[#b89052]/25 bg-[#b89052]/10 p-3 text-[#8a6a3d]">
                         <Icon className="h-5 w-5" />
@@ -160,9 +184,9 @@ export function ServicesSection() {
                     </div>
                     <Link
                       href={area.href ?? `/areas/${area.id}`}
-                      className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-slate-900 transition hover:text-[#8a6a3d]"
+                      className="mt-6 inline-flex cursor-pointer items-center gap-2 text-sm font-semibold text-slate-900 transition hover:text-[#8a6a3d]"
                     >
-                      Conhecer esta frente
+                      Saiba mais desta frente
                       <ArrowUpRight className="h-4 w-4" />
                     </Link>
                   </AccordionContent>
@@ -174,10 +198,16 @@ export function ServicesSection() {
           <div className="mt-8 border-t border-black/10 pt-6 text-justify text-sm text-slate-700">
             Cada área possui um caminho interno de funil: explicação objetiva, direcionamento do caso e CTA de contato direto para início do atendimento.
             <div className="mt-3">
-              <Link href="/areas" className="inline-flex items-center gap-2 font-medium text-slate-800 underline decoration-[#b89052]/60 underline-offset-4 transition hover:text-[#8a6a3d]">
+              <Link href="/areas" className="inline-flex cursor-pointer items-center gap-2 font-medium text-slate-800 underline decoration-[#b89052]/60 underline-offset-4 transition hover:text-[#8a6a3d]">
                 Ver todas as especialidades
                 <ArrowUpRight className="h-4 w-4" />
               </Link>
+              <p className="mt-3 text-sm text-slate-700">
+                Quer explorar conteúdos antes de decidir?
+                <Link href="/blog" className="ml-1 cursor-pointer font-semibold text-slate-900 underline decoration-[#b89052]/60 underline-offset-4 transition hover:text-[#8a6a3d]">
+                  Entrar no blog jurídico.
+                </Link>
+              </p>
             </div>
           </div>
         </div>

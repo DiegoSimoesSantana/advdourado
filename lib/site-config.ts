@@ -314,17 +314,17 @@ export const siteConfig = {
       id: 'educacional',
       title: 'Direito Educacional',
       summary:
-        'Consultoria para instituições de ensino com foco em governança acadêmica, adequação regulatória e prevenção de riscos de compliance e LGPD.',
+        'Assessoria para instituições de ensino com foco em governança acadêmica, formação de equipes, adequação regulatória e integração com LGPD e Direito Digital.',
       highlights: [
-        'Atualização normativa e implementação da RN-1',
-        'Revisão de contratos, regimentos e fluxos disciplinares',
-        'Compliance educacional, proteção de dados e prevenção de passivo',
+        'Atualização normativa e implementação da RN-1 com plano aplicado por setores',
+        'Revisão de contratos, regimentos e fluxos acadêmico-administrativos',
+        'Formação de equipes e trilhas de compliance educacional com proteção de dados',
       ],
       audience:
-        'Mantenedoras, diretorias, coordenações pedagógicas e administrativas, além de instituições privadas e filantrópicas de ensino.',
+        'Mantenedoras, diretorias, coordenações pedagógicas e administrativas, além de instituições privadas e filantrópicas de ensino que precisam treinar equipes e reduzir riscos.',
       seoTitle: 'Direito Educacional em Salvador | ADVDourado',
       seoDescription:
-        'Assessoria em Direito Educacional para instituições de ensino em Salvador/BA, com foco em RN-1, compliance, LGPD e atualização de procedimentos jurídicos.',
+        'Assessoria em Direito Educacional para instituições de ensino em Salvador/BA com foco em RN-1, formação de equipes, compliance, LGPD e atualização de procedimentos jurídicos.',
       faq: [
         {
           question: 'O que muda com a RN-1 para instituições de ensino?',
@@ -346,44 +346,10 @@ export const siteConfig = {
           answer:
             'Regimento interno, contratos de prestação de serviços educacionais, políticas de privacidade, termos de uso de imagem, protocolos disciplinares e fluxos de atendimento a titulares de dados.',
         },
-      ],
-      relatedArticleSlugs: ['fraude-bancaria-recuperar-dinheiro', 'juros-abusivos-como-identificar'],
-    },
-    {
-      id: 'servicos-publicos',
-      title: 'Direito Aplicado a Serviços Públicos',
-      summary:
-        'Atuação consultiva e educativa com órgãos e equipes públicas para atualização legal, revisão de procedimentos e mitigação de riscos de compliance e LGPD.',
-      highlights: [
-        'Capacitação jurídica para servidores municipais, estaduais e federais',
-        'Implementação de rotinas alinhadas à RN-1 e normas setoriais',
-        'Prevenção de responsabilização administrativa, cível e por dados pessoais',
-      ],
-      audience:
-        'Secretarias, autarquias, fundações, gabinetes de gestão e servidores que executam rotinas administrativas com impacto regulatório.',
-      seoTitle: 'Direito Aplicado a Serviços Públicos em Salvador | ADVDourado',
-      seoDescription:
-        'Assessoria jurídica para serviços públicos com foco em capacitação de servidores, atualização da RN-1, compliance, LGPD e segurança procedimental.',
-      faq: [
         {
-          question: 'Como a RN-1 aumentou as responsabilidades na gestão pública?',
+          question: 'Direito Digital e LGPD podem ser trabalhados dentro da rotina educacional?',
           answer:
-            'A norma elevou o padrão de governança e controle, exigindo documentação de decisões, protocolos mais claros e respostas tempestivas para reduzir riscos de responsabilização.',
-        },
-        {
-          question: 'A capacitação de servidores ajuda a evitar passivos de compliance?',
-          answer:
-            'Sim. Treinamento jurídico aplicado à rotina fortalece decisões, reduz inconformidades e melhora a conformidade com legislação, normas internas e órgãos de controle.',
-        },
-        {
-          question: 'Órgãos públicos também precisam adequar processos à LGPD?',
-          answer:
-            'Sim. Entes públicos tratam grande volume de dados pessoais e devem manter bases legais, minimização de dados, segurança da informação e atendimento aos direitos dos titulares.',
-        },
-        {
-          question: 'Quais áreas internas costumam demandar atualização imediata?',
-          answer:
-            'Compras e contratos, recursos humanos, atendimento ao cidadão, processos disciplinares e fluxos de compartilhamento de dados entre setores e sistemas.',
+            'Sim. A integração de Direito Digital com Direito Educacional permite criar protocolos de tratamento de dados, conduta em ambientes virtuais e respostas a incidentes, com treinamento contínuo para equipes.',
         },
       ],
       relatedArticleSlugs: ['fraude-bancaria-recuperar-dinheiro', 'nome-negativado-injustamente'],
@@ -391,15 +357,17 @@ export const siteConfig = {
     {
       id: 'digital',
       title: 'Direito Digital',
-      summary: 'Suporte em proteção de dados, LGPD, incidentes digitais e contratos em ambiente online.',
+      summary: 'Suporte em proteção de dados, LGPD, incidentes digitais e contratos em ambiente online, com aplicação prática para empresas e instituições de ensino.',
       highlights: [
-        'Adequação e governança em LGPD',
-        'Incidentes digitais e proteção de dados',
-        'Contratos e responsabilidades no ambiente digital',
+        'Diagnóstico e plano de adequação em LGPD com trilha de implementação',
+        'Protocolos para incidentes digitais, segurança da informação e resposta a titulares',
+        'Formação de equipes para cultura de proteção de dados e governança digital',
       ],
-      audience: 'Empresas e pessoas com demandas ligadas ao ambiente digital e dados pessoais.',
+      audience:
+        'Empresas, instituições de ensino e profissionais com demandas ligadas ao ambiente digital, proteção de dados e compliance operativo.',
       seoTitle: 'Direito Digital e LGPD em Salvador | ADVDourado',
-      seoDescription: 'Consultoria em Direito Digital e LGPD em Salvador/BA para proteção de dados, incidentes e contratos eletrônicos.',
+      seoDescription:
+        'Consultoria em Direito Digital e LGPD em Salvador/BA para proteção de dados, incidentes, contratos eletrônicos e formação prática de equipes.',
       faq: [
         {
           question: 'LGPD se aplica a empresas de pequeno porte?',
@@ -412,6 +380,11 @@ export const siteConfig = {
         {
           question: 'Contratos digitais têm validade jurídica?',
           answer: 'Sim, desde que respeitados requisitos legais de forma e prova da manifestação de vontade.',
+        },
+        {
+          question: 'É possível capacitar equipes para prevenir incidentes de dados?',
+          answer:
+            'Sim. A formação contínua de equipes reduz falhas operacionais, melhora governança e fortalece a documentação de conformidade para auditorias e fiscalizações.',
         },
       ],
       relatedArticleSlugs: ['fraude-bancaria-recuperar-dinheiro', 'juros-abusivos-como-identificar'],

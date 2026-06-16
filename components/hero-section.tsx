@@ -34,7 +34,7 @@ export function HeroSection() {
           Atendimento jurídico direto em Salvador
         </h1>
         <p className="mb-8 max-w-2xl mx-auto font-sans text-lg text-slate-100/92 sm:text-xl">
-          Página institucional com acesso rápido às áreas e contato imediato.
+          Página institucional com acesso rápido às áreas, conteúdo orientativo e contato imediato.
         </p>
         <div className="flex w-full flex-col items-center justify-center gap-3 sm:flex-row">
           <Button asChild size="lg" className="rounded-full border border-white/15 bg-[#25D366] px-8 py-4 text-lg font-bold text-white shadow-[0_10px_30px_rgba(15,23,42,0.35)] hover:bg-[#1ebe57]">
@@ -46,6 +46,18 @@ export function HeroSection() {
           <Button asChild variant="outline" size="lg" className="rounded-full border-white/30 bg-white/10 px-8 py-4 text-lg font-semibold text-white hover:bg-white/20">
             <Link href="/areas">Especialidades</Link>
           </Button>
+        </div>
+
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-sm text-slate-100">
+          <Link href="/sobre" className="cursor-pointer underline decoration-white/40 underline-offset-4 transition hover:text-white">
+            Saiba mais sobre a formação
+          </Link>
+          <Link href="/blog" className="cursor-pointer underline decoration-white/40 underline-offset-4 transition hover:text-white">
+            Ler conteúdos do blog
+          </Link>
+          <Link href="/contato" className="cursor-pointer underline decoration-white/40 underline-offset-4 transition hover:text-white">
+            Ir para contato
+          </Link>
         </div>
       </div>
     </section>

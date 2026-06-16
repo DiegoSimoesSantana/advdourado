@@ -205,6 +205,7 @@ Mensagem breve: ${formData.message}`
               <h4 className="font-semibold mb-4">Navegação</h4>
               <ul className="space-y-2 text-sm text-white/82">
                 <li><a href="/" className="hover:text-white transition-colors">Início</a></li>
+                <li><a href="/areas" className="hover:text-white transition-colors">Áreas de Atuação</a></li>
                 <li><a href="/sobre" className="hover:text-white transition-colors">Sobre</a></li>
                 <li><a href="/contato" className="hover:text-white transition-colors">Contato</a></li>
                 <li><a href="/blog" className="hover:text-white transition-colors">Blog</a></li>

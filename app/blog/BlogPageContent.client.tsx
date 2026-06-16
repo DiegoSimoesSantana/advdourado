@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { blogArticles, BLOG_CATEGORIES } from "@/lib/blog-data";
@@ -32,7 +32,13 @@ export default function BlogPageContent() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
 
-  // Server Component: não usar useEffect. Sincronize estado via props/SSR se necessário.
+  useEffect(() => {
+    setSelectedCategory(categoryFromUrl);
+  }, [categoryFromUrl]);
+
+  useEffect(() => {
+    setSearchQuery(queryFromUrl ?? "");
+  }, [queryFromUrl]);
 
   const updateUrlParams = (nextCategory: string | null, nextQuery: string) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -142,7 +148,7 @@ export default function BlogPageContent() {
             <ul className="space-y-6">
               {filteredArticles.map(article => (
                 <li key={article.slug} className="rounded-xl border border-border bg-white p-6 shadow-sm hover:shadow-lg transition-all">
-                  <Link href={`/blog/${article.slug}`} className="block">
+                  <Link href={`/blog/${article.slug}`} className="block cursor-pointer">
                     <h2 className="text-2xl font-serif text-primary mb-2">{article.title}</h2>
                     <p className="text-base text-foreground/80 mb-2">{article.excerpt}</p>
                     <div className="flex flex-wrap gap-2 text-xs text-foreground/60">
@@ -161,12 +167,22 @@ export default function BlogPageContent() {
 
         {/* CTA */}
         <section className="mt-16 flex flex-col items-center gap-4 animate-fadein delay-400">
-          <span className="text-base text-foreground/80">Quer receber novidades e artigos exclusivos?</span>
+          <span className="text-base text-center text-foreground/80">
+            Você já viveu alguma situação assim? Conte seu caso. Talvez exista uma solução sob medida para você.
+          </span>
           <Link href="/contato">
             <Button size="lg" className="bg-primary text-white font-bold shadow-lg hover:bg-primary/90 transition-all duration-200">
-              Fale com o escritório
+              Marcar reunião via WhatsApp com especialista
             </Button>
           </Link>
+          <div className="flex flex-wrap items-center justify-center gap-3 text-sm text-foreground/75">
+            <Link href="/areas" className="cursor-pointer font-semibold underline decoration-primary/50 underline-offset-4 transition hover:text-primary">
+              Ver áreas de atuação
+            </Link>
+            <Link href="/sobre" className="cursor-pointer font-semibold underline decoration-primary/50 underline-offset-4 transition hover:text-primary">
+              Conhecer a trajetória da Dra. Bruna
+            </Link>
+          </div>
         </section>
 
         {/* Footer / Compliance OAB */}

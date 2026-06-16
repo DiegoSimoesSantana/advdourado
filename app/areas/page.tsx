@@ -19,7 +19,7 @@ export default function AreasPage() {
   const priorityAreas = [
     'trabalhista',
     'educacional',
-    'servicos-publicos',
+    'digital',
     'familia',
     'consumidor',
     'imoveis-inventario',
@@ -67,7 +67,7 @@ export default function AreasPage() {
               <p className="mt-3 text-xs font-medium uppercase tracking-[0.16em] text-primary/75">
                 Ver direitos, deveres e próximos passos
               </p>
-              <Link href={`/areas/${area.id}`} className="mt-5 inline-block">
+              <Link href={`/areas/${area.id}`} className="mt-5 inline-block cursor-pointer">
                 <Button variant="outline" className="font-semibold text-primary border-primary hover:bg-primary/10 transition-colors duration-200">
                   Conhecer especialidade
                 </Button>
@@ -78,7 +78,7 @@ export default function AreasPage() {
 
         <div className="mt-16 flex flex-col items-center gap-4 animate-fadein delay-200">
           <span className="text-base text-foreground/80">Não encontrou sua demanda?</span>
-          <Link href="/contato">
+          <Link href="/contato" className="cursor-pointer">
             <Button size="lg" className="bg-primary text-white font-bold shadow-lg hover:bg-primary/90 transition-all duration-200">
               Falar com a Doutora
             </Button>
