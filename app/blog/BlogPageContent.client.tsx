@@ -8,6 +8,15 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
+import { areaStoryScenarios } from "@/lib/area-story-scenarios";
+
+const categoryToArea: Record<string, string> = {
+  trabalhista: "trabalhista",
+  saude: "planos-saude",
+  compras: "consumidor",
+  bancos: "consumidor",
+  voos: "consumidor",
+};
 
 const blogSchema = {
   "@context": "https://schema.org",
@@ -159,6 +168,15 @@ export default function BlogPageContent() {
                       <span>{new Date(article.date).toLocaleDateString('pt-BR')}</span>
                     </div>
                   </Link>
+                  <div className="mt-3 flex flex-wrap gap-3 text-xs text-foreground/70">
+                    <Link
+                      href={`/areas/${categoryToArea[article.category] ?? "educacional"}`}
+                      className="cursor-pointer font-semibold underline decoration-primary/40 underline-offset-4 transition hover:text-primary"
+                    >
+                      Ver área relacionada
+                    </Link>
+                    <span>Seu caso pode ser parecido ou diferente</span>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -172,7 +190,7 @@ export default function BlogPageContent() {
           </span>
           <Link href="/contato">
             <Button size="lg" className="bg-primary text-white font-bold shadow-lg hover:bg-primary/90 transition-all duration-200">
-              Marcar reunião via WhatsApp com especialista
+              Falar no WhatsApp com especialista
             </Button>
           </Link>
           <div className="flex flex-wrap items-center justify-center gap-3 text-sm text-foreground/75">
@@ -182,6 +200,38 @@ export default function BlogPageContent() {
             <Link href="/sobre" className="cursor-pointer font-semibold underline decoration-primary/50 underline-offset-4 transition hover:text-primary">
               Conhecer a trajetória da Dra. Bruna
             </Link>
+          </div>
+        </section>
+
+        <section className="mt-14 rounded-2xl border border-border bg-secondary/20 p-6">
+          <h2 className="text-2xl font-serif text-foreground">Histórias por área de atuação</h2>
+          <p className="mt-3 text-sm leading-7 text-foreground/75">
+            Estes exemplos ajudam a identificar caminhos possíveis. Seu caso pode ser parecido ou diferente, e o próximo passo sempre pode ser iniciado no WhatsApp com a especialista.
+          </p>
+          <div className="mt-5 grid gap-4 md:grid-cols-2">
+            {siteConfig.areas
+              .filter((area) => ["trabalhista", "educacional", "digital", "familia", "consumidor", "imoveis-inventario", "planos-saude"].includes(area.id))
+              .map((area) => (
+                <article key={area.id} className="rounded-xl border border-border bg-white p-4">
+                  <h3 className="text-lg font-semibold text-foreground">{area.title}</h3>
+                  <ul className="mt-3 space-y-1 text-xs leading-6 text-foreground/75">
+                    {(areaStoryScenarios[area.id] ?? []).slice(0, 10).map((story) => (
+                      <li key={story} className="flex items-start gap-2">
+                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-primary" />
+                        <span>{story}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-3 flex flex-wrap items-center gap-3 text-xs">
+                    <Link href={`/areas/${area.id}`} className="cursor-pointer font-semibold underline decoration-primary/40 underline-offset-4 transition hover:text-primary">
+                      Ver esta área
+                    </Link>
+                    <Link href="/contato" className="cursor-pointer font-semibold underline decoration-primary/40 underline-offset-4 transition hover:text-primary">
+                      Falar com especialista no WhatsApp
+                    </Link>
+                  </div>
+                </article>
+              ))}
           </div>
         </section>
 

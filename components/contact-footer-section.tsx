@@ -14,6 +14,9 @@ export function ContactFooterSection() {
   const audioWhatsAppLink = createWhatsAppLink(
     'Olá, prefiro explicar meu caso por áudio. Gostaria de iniciar a triagem com a Dra. Bruna Dourado.',
   )
+  const alternativeCaseWhatsAppLink = createWhatsAppLink(
+    'Olá, acredito que meu caso pode ser diferente. Gostaria de saber se existe solução parecida ou personalizada para minha situação.',
+  )
 
   const [formData, setFormData] = useState({
     name: '',
@@ -64,7 +67,7 @@ Mensagem breve: ${formData.message}`
                 Atendimento reservado, com acesso simples e objetivo.
               </h2>
               <p className="mb-8 max-w-xl text-justify text-lg leading-8 text-white/88">
-                Escolha o canal mais conveniente para iniciar o contato. O atendimento presencial em Salvador ocorre sob agendamento prévio.
+                Escolha o canal mais conveniente para iniciar o contato. O fluxo principal começa no WhatsApp da Dra. Bruna.
               </p>
 
               <div className="space-y-6">
@@ -99,7 +102,7 @@ Mensagem breve: ${formData.message}`
                   <div>
                     <p className="mb-1 text-sm uppercase tracking-[0.18em] text-white/65">Escritório em Salvador</p>
                     <p className="text-lg text-white/92">{siteConfig.contact.address}</p>
-                    <p className="mt-2 text-justify text-sm leading-6 text-white/72">Atendimento presencial exclusivamente sob agendamento.</p>
+                    <p className="mt-2 text-justify text-sm leading-6 text-white/72">Atendimento presencial mediante triagem prévia no WhatsApp.</p>
                   </div>
                 </div>
 
@@ -114,7 +117,7 @@ Mensagem breve: ${formData.message}`
               <Card className="border-white/10 bg-white px-6 py-7 text-slate-900 shadow-sm sm:px-8 sm:py-8">
                 <div className="mb-6">
                   <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#7b5e35]">Mensagem inicial</p>
-                  <h3 className="mt-3 font-serif text-2xl text-slate-900">Descreva seu caso e receba retorno para agendamento.</h3>
+                  <h3 className="mt-3 font-serif text-2xl text-slate-900">Descreva seu caso e receba retorno direto no WhatsApp.</h3>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-5">
@@ -171,14 +174,37 @@ Mensagem breve: ${formData.message}`
                     Prefiro enviar áudio no WhatsApp
                   </a>
 
-                  <a
-                    href={siteConfig.contact.calendarUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full rounded-sm border border-slate-300 px-4 py-3 text-center text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
-                  >
-                    Solicitar reunião
-                  </a>
+                  <details className="group rounded-sm border border-slate-300 px-4 py-3">
+                    <summary className="list-none text-center text-sm font-semibold text-slate-700">
+                      Menu rápido no WhatsApp da Doutora
+                    </summary>
+                    <div className="mt-3 space-y-2 text-sm">
+                      <a
+                        href={directWhatsAppLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block rounded-sm border border-slate-200 px-3 py-2 text-center text-slate-700 transition hover:bg-slate-50"
+                      >
+                        Quero iniciar por texto
+                      </a>
+                      <a
+                        href={audioWhatsAppLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block rounded-sm border border-slate-200 px-3 py-2 text-center text-slate-700 transition hover:bg-slate-50"
+                      >
+                        Quero explicar meu caso por áudio
+                      </a>
+                      <a
+                        href={alternativeCaseWhatsAppLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block rounded-sm border border-slate-200 px-3 py-2 text-center text-slate-700 transition hover:bg-slate-50"
+                      >
+                        Meu caso pode ser diferente
+                      </a>
+                    </div>
+                  </details>
 
                   <p className="text-justify text-xs leading-6 text-slate-600">
                     O envio deste formulário organiza o contato inicial e não configura contratação automática nem

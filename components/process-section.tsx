@@ -1,8 +1,8 @@
 import { Card } from '@/components/ui/card'
-import { ClipboardList, FolderSearch, CalendarCheck2, Scale } from 'lucide-react'
+import { ClipboardList, FolderSearch, MessageCircleMore, Scale } from 'lucide-react'
 import { siteConfig } from '@/lib/site-config'
 
-const icons = [ClipboardList, FolderSearch, CalendarCheck2, Scale]
+const icons = [ClipboardList, FolderSearch, MessageCircleMore, Scale]
 
 export function ProcessSection() {
   return (
@@ -10,9 +10,9 @@ export function ProcessSection() {
       <div className="mx-auto max-w-6xl">
         <div className="mb-14 text-center">
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.22em] text-primary/75">Fluxo de atendimento</p>
-          <h2 className="mb-4 text-4xl text-foreground md:text-5xl">Um caminho claro do primeiro contato até a reunião.</h2>
+          <h2 className="mb-4 text-4xl text-foreground md:text-5xl">Um caminho claro do primeiro contato até o WhatsApp da Doutora.</h2>
           <p className="mx-auto max-w-3xl text-justify text-lg leading-8 text-slate-700">
-            Você escolhe a especialidade, entende as opções e decide como iniciar: WhatsApp, áudio, e-mail ou agendamento. O objetivo é reduzir dúvidas e acelerar o encaminhamento certo.
+            Você escolhe a especialidade, entende as opções e inicia por texto ou áudio no WhatsApp. O objetivo é reduzir dúvidas e acelerar o encaminhamento certo.
           </p>
         </div>
 

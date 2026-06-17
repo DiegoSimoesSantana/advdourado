@@ -6,6 +6,7 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/
 import { AreaSectionTracker } from '@/components/area-section-tracker'
 import { createWhatsAppLink, getAreaById, siteConfig } from '@/lib/site-config'
 import { getArticleBySlug } from '@/lib/blog-data'
+import { areaStoryScenarios } from '@/lib/area-story-scenarios'
 import { AreaCtaButtons } from '@/components/area-cta-buttons'
 
 type Props = {
@@ -300,7 +301,6 @@ export default async function AreaPage({ params }: Props) {
             areaTitle={areaData.title}
             whatsappLink={whatsappLink}
             audioWhatsAppLink={audioWhatsAppLink}
-            calendarUrl={siteConfig.contact.calendarUrl}
             emailLink={emailLink}
           />
 
@@ -356,6 +356,27 @@ export default async function AreaPage({ params }: Props) {
               </li>
             ))}
           </ul>
+
+          <div className="mt-8 rounded-2xl border border-primary/15 bg-primary/5 p-5">
+            <h3 className="text-xl text-foreground">10 histórias que podem parecer com o seu caso</h3>
+            <p className="mt-2 text-sm leading-7 text-foreground/75">
+              Nem todo cenário é igual. Se você se identificar parcialmente com alguma história abaixo, a triagem no WhatsApp ajuda a definir se a solução é parecida ou totalmente diferente.
+            </p>
+            <ul className="mt-4 grid gap-2 text-sm leading-7 text-foreground/85 md:grid-cols-2">
+              {(areaStoryScenarios[areaData.id] ?? []).map((story) => (
+                <li key={story} className="flex items-start gap-2 rounded-lg bg-white/80 px-3 py-2">
+                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-primary" />
+                  <span>{story}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-4 text-sm text-foreground/75">
+              Seu caso é diferente de tudo isso?
+              <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="ml-1 font-semibold text-primary hover:underline">
+                Fale direto com a Doutora no WhatsApp.
+              </a>
+            </p>
+          </div>
         </section>
 
         <section id="area-faq" className="mt-8 rounded-3xl border border-border bg-white p-8 shadow-sm md:p-10">
@@ -387,6 +408,9 @@ export default async function AreaPage({ params }: Props) {
                   <Link href={`/blog/${article.slug}`} className="mt-4 inline-block cursor-pointer text-sm font-semibold text-primary hover:underline">
                     Ler artigo
                   </Link>
+                  <p className="mt-3 text-xs leading-6 text-foreground/70">
+                    Caso parecido ou diferente? Cada artigo leva para atendimento no WhatsApp com análise inicial.
+                  </p>
                 </article>
               ))}
             </div>

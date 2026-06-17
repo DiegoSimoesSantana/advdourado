@@ -68,7 +68,7 @@ export default function BlogArticlePage({ params }: Props) {
 							Ir para área de atuação relacionada
 						</Link>
 						<Link href="/contato" className="inline-flex cursor-pointer items-center rounded-full border border-border px-5 py-2 text-sm font-semibold text-foreground transition hover:bg-secondary">
-							Marcar reunião via WhatsApp
+							Falar agora no WhatsApp da Doutora
 						</Link>
 						<Link href="/sobre" className="inline-flex cursor-pointer items-center rounded-full border border-border px-5 py-2 text-sm font-semibold text-foreground transition hover:bg-secondary">
 							Saiba mais sobre a especialista

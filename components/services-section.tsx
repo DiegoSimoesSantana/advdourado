@@ -118,7 +118,7 @@ export function ServicesSection() {
           </h2>
           <p className="max-w-xl text-justify text-lg leading-8 text-slate-800">
             Esta página institucional organiza seu caminho por área. Em cada especialidade, você entende direitos,
-            deveres e opções reais de solução antes do contato final por WhatsApp, e-mail ou reunião.
+            deveres e opções reais de solução antes do contato final por WhatsApp ou e-mail.
           </p>
           <div className="mt-5 flex flex-wrap gap-3 text-sm">
             <Link href="/sobre" className="inline-flex cursor-pointer items-center gap-2 font-semibold text-slate-800 underline decoration-[#b89052]/60 underline-offset-4 transition hover:text-[#8a6a3d]">

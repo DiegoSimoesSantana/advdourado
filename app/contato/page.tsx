@@ -4,7 +4,7 @@ import { siteConfig } from '@/lib/site-config'
 
 export const metadata: Metadata = {
   title: `Contato | ${siteConfig.brand.name}`,
-  description: 'Entre em contato com a ADVDourado para triagem inicial e agendamento de consulta jurídica.',
+  description: 'Entre em contato com a ADVDourado para triagem inicial e atendimento direto no WhatsApp.',
 }
 
 export default function ContatoPage() {

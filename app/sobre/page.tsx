@@ -30,6 +30,47 @@ export default function SobrePage() {
           </ul>
         </section>
 
+        <section className="mt-8 rounded-2xl border border-border bg-white p-6">
+          <h2 className="text-2xl text-foreground">Formação e projetos educacionais</h2>
+          <p className="mt-3 text-sm leading-7 text-foreground/75">
+            A atuação formativa inclui projetos aplicados de treinamento institucional, com foco em orientação prática,
+            prevenção de risco e melhoria de tomada de decisão por equipes.
+          </p>
+          <div className="mt-4 grid gap-4 md:grid-cols-2">
+            <article className="rounded-xl border border-border bg-secondary/30 p-4">
+              <p className="text-xs uppercase tracking-[0.2em] text-primary/75">Projeto 01</p>
+              <h3 className="mt-2 text-lg text-foreground">Treinamento institucional em Catu/BA</h3>
+              <p className="mt-2 text-sm leading-7 text-foreground/75">
+                Formação voltada para alinhamento de equipe, fluxo de conduta e compreensão prévia de processos.
+              </p>
+            </article>
+            <article className="rounded-xl border border-border bg-secondary/30 p-4">
+              <p className="text-xs uppercase tracking-[0.2em] text-primary/75">Projeto 02</p>
+              <h3 className="mt-2 text-lg text-foreground">Treinamento institucional em Porto Seguro/BA</h3>
+              <p className="mt-2 text-sm leading-7 text-foreground/75">
+                Capacitação com foco em rotina de equipe, comunicação orientada e condução preventiva de cenários complexos.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section className="mt-8 rounded-2xl border border-border bg-secondary/25 p-6">
+          <h2 className="text-2xl text-foreground">Biblioteca de vídeos da formação</h2>
+          <p className="mt-3 text-sm leading-7 text-foreground/75">
+            Neste deploy, os espaços de vídeo já estão prontos. No próximo ajuste, ao subir os arquivos, os players serão ativados automaticamente.
+          </p>
+          <div className="mt-4 grid gap-4 md:grid-cols-2">
+            <div className="rounded-xl border border-dashed border-border bg-white p-4">
+              <p className="text-sm font-semibold text-foreground">Vídeo 1 (Evento Catu/BA)</p>
+              <p className="mt-2 text-xs text-foreground/70">Arquivo esperado: public/videos/formacao/evento-catu-ba.mp4</p>
+            </div>
+            <div className="rounded-xl border border-dashed border-border bg-white p-4">
+              <p className="text-sm font-semibold text-foreground">Vídeo 2 (Evento Porto Seguro/BA)</p>
+              <p className="mt-2 text-xs text-foreground/70">Arquivo esperado: public/videos/formacao/evento-porto-seguro-ba.mp4</p>
+            </div>
+          </div>
+        </section>
+
         <section className="mt-8 rounded-2xl border border-border bg-secondary/25 p-6">
           <h2 className="text-2xl text-foreground">Continue sua navegação</h2>
           <p className="mt-3 text-sm leading-7 text-foreground/75">
