@@ -28,7 +28,8 @@ export const siteConfig = {
     calendarUrl: 'https://calendar.app.google/UtDZPPL7XNTS4qGZA',
   },
   social: {
-    instagram: 'https://www.instagram.com/brunadouradoadv/',
+    // Por enquanto apenas perfil individual.
+    instagram: null,
     linkedin: null,
   },
   seo: {
