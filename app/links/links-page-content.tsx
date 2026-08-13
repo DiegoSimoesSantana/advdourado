@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { MessageCircle, Calendar, Globe, BookOpen, Scale, Mail, MapPin, ArrowRight } from 'lucide-react'
+import { MessageCircle, Calendar, Globe, BookOpen, Scale, Mail, MapPin, ArrowRight, Linkedin } from 'lucide-react'
 import { createWhatsAppLink, siteConfig } from '@/lib/site-config'
 import { trackEvent } from '@/lib/analytics'
 
@@ -33,6 +33,14 @@ export default function LinksPageContent() {
       icon: Calendar,
       isPrimary: false,
       id: 'calendar'
+    },
+    {
+      title: 'Perfil no LinkedIn',
+      description: 'Conexões profissionais e artigos jurídicos',
+      url: siteConfig.social.linkedin || 'https://www.linkedin.com/in/bruna-dourado-3638901b5/',
+      icon: Linkedin,
+      isPrimary: false,
+      id: 'linkedin'
     },
     {
       title: 'Visitar Nosso Site Oficial',

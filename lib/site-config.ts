@@ -29,7 +29,7 @@ export const siteConfig = {
   },
   social: {
     instagram: 'https://www.instagram.com/brunadouradoadv/',
-    linkedin: null,
+    linkedin: 'https://www.linkedin.com/in/bruna-dourado-3638901b5/',
   },
   seo: {
     title: 'ADVDourado | Advocacia em Salvador - Trabalhista, Educacional, Família, Consumidor, Imóveis e Saúde',
