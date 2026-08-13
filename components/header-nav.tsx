@@ -5,9 +5,14 @@ import { Button } from '@/components/ui/button'
 import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import { createWhatsAppLink, siteConfig } from '@/lib/site-config'
+import { usePathname } from 'next/navigation'
 
 export function HeaderNav() {
+  const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
+  
+  if (pathname === '/links' || pathname.startsWith('/links/')) return null
+
   const whatsappLink = createWhatsAppLink('Olá, vim pelo site e gostaria de iniciar o contato com o escritório.')
 
   const navItems = [
