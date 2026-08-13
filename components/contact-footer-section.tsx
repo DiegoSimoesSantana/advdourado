@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
-import { Mail, Phone, MapPin } from 'lucide-react'
+import { Mail, Phone, MapPin, Instagram, Linkedin } from 'lucide-react'
 import { createWhatsAppLink, siteConfig } from '@/lib/site-config'
 
 export function ContactFooterSection() {
@@ -222,9 +222,33 @@ Mensagem breve: ${formData.message}`
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div>
               <h3 className="font-bold text-lg mb-4">{siteConfig.brand.name}</h3>
-              <p className="text-white/82 text-sm">
+              <p className="text-white/82 text-sm mb-4">
                 {siteConfig.brand.title}
               </p>
+              <div className="flex items-center gap-3">
+                {siteConfig.social.instagram && (
+                  <a
+                    href={siteConfig.social.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 rounded-full bg-white/5 hover:bg-white/10 text-white/80 hover:text-white transition-colors"
+                    aria-label="Instagram da Dra. Bruna Dourado"
+                  >
+                    <Instagram className="w-4 h-4" />
+                  </a>
+                )}
+                {siteConfig.social.linkedin && (
+                  <a
+                    href={siteConfig.social.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 rounded-full bg-white/5 hover:bg-white/10 text-white/80 hover:text-white transition-colors"
+                    aria-label="LinkedIn da Dra. Bruna Dourado"
+                  >
+                    <Linkedin className="w-4 h-4" />
+                  </a>
+                )}
+              </div>
             </div>
 
             <div>

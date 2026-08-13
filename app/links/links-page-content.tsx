@@ -1,11 +1,14 @@
 'use client'
 
 import Image from 'next/image'
-import { MessageCircle, Calendar, Globe, BookOpen, Scale, Mail, MapPin, ArrowRight, Linkedin } from 'lucide-react'
+import { useState } from 'react'
+import { MessageCircle, Calendar, Globe, BookOpen, Scale, Mail, MapPin, ArrowRight, Linkedin, UserPlus, Share2 } from 'lucide-react'
 import { createWhatsAppLink, siteConfig } from '@/lib/site-config'
 import { trackEvent } from '@/lib/analytics'
 
 export default function LinksPageContent() {
+  const [copied, setCopied] = useState(false)
+  
   const instagramWhatsAppLink = createWhatsAppLink(
     'Olá Dra. Bruna, vim pelo seu Instagram e gostaria de tirar uma dúvida sobre atendimento jurídico.'
   )
@@ -15,6 +18,26 @@ export default function LinksPageContent() {
       destination,
       timestamp: new Date().toISOString(),
     })
+  }
+
+  const handleShare = async () => {
+    if (typeof navigator !== 'undefined' && navigator.share) {
+      try {
+        await navigator.share({
+          title: 'Dra. Bruna Dourado - Canais de Atendimento',
+          text: 'Canais de atendimento oficial da Dra. Bruna Dourado. Fale no WhatsApp, agende uma consulta ou acesse nosso site.',
+          url: window.location.href,
+        })
+        trackEvent('instagram_links_click', { destination: 'share_native' })
+      } catch {
+        // User cancelled share panel
+      }
+    } else if (typeof navigator !== 'undefined' && navigator.clipboard) {
+      navigator.clipboard.writeText(window.location.href)
+      setCopied(true)
+      trackEvent('instagram_links_click', { destination: 'share_copy' })
+      setTimeout(() => setCopied(false), 2000)
+    }
   }
 
   const links = [
@@ -140,6 +163,26 @@ export default function LinksPageContent() {
               </a>
             )
           })}
+        </div>
+
+        {/* Ações Rápidas */}
+        <div className="grid grid-cols-2 gap-3 mb-6">
+          <a
+            href="/bruna-dourado.vcf"
+            download="Dra_Bruna_Dourado.vcf"
+            onClick={() => handleLinkClick('vcard_download')}
+            className="flex items-center justify-center gap-2 p-3.5 rounded-xl border border-slate-200/80 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-xs transition-all duration-300 shadow-sm hover:shadow hover:-translate-y-0.5"
+          >
+            <UserPlus className="w-4 h-4 text-[#b89052]" />
+            Salvar Agenda
+          </a>
+          <button
+            onClick={handleShare}
+            className="flex items-center justify-center gap-2 p-3.5 rounded-xl border border-slate-200/80 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-xs transition-all duration-300 shadow-sm hover:shadow hover:-translate-y-0.5"
+          >
+            <Share2 className="w-4 h-4 text-[#b89052]" />
+            {copied ? 'Copiado!' : 'Compartilhar'}
+          </button>
         </div>
 
         {/* Card de Contato Rápido */}
