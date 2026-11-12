@@ -50,7 +50,7 @@ export const blogArticles: BlogArticle[] = [
     author: AUTHOR_OFFICIAL,
     date: '2025-04-10',
     readTime: 8,
-    image: '/images/foto-perfil.jpg',
+    image: '/icon.svg',
     excerpt:
       'A maioria das condenações trabalhistas decorre de falhas documentais evitáveis no controle de jornada, gestão de banco de horas e aplicação de penalidades sem critério técnico.',
     content: `
@@ -82,7 +82,7 @@ export const blogArticles: BlogArticle[] = [
     author: AUTHOR_OFFICIAL,
     date: '2025-03-22',
     readTime: 8,
-    image: '/images/foto-perfil2.jpg',
+    image: '/icon.svg',
     excerpt:
       'Entenda como a legislação trabalhista regula as horas extraordinárias, a supressão de intervalo para refeição e os prazos prescricionais de 2 anos após o desligamento e 5 anos retroativos.',
     content: `
@@ -109,7 +109,7 @@ export const blogArticles: BlogArticle[] = [
     author: AUTHOR_OFFICIAL,
     date: '2025-03-22',
     readTime: 9,
-    image: '/images/foto-perfil.jpg',
+    image: '/icon.svg',
     excerpt:
       'Saiba quais são as verbas devidas em cada modalidade de desligamento, o prazo legal de 10 dias corridos para quitação e quando cabe a rescisão indireta.',
     content: `
@@ -139,7 +139,7 @@ export const blogArticles: BlogArticle[] = [
     author: AUTHOR_OFFICIAL,
     date: '2025-03-20',
     readTime: 7,
-    image: '/images/foto-perfil2.jpg',
+    image: '/icon.svg',
     excerpt:
       'A conferência periódica do extrato analítico do FGTS permite identificar atrasos ou omissões patronais que impactam o patrimônio do trabalhador.',
     content: `
@@ -167,7 +167,7 @@ export const blogArticles: BlogArticle[] = [
     author: AUTHOR_OFFICIAL,
     date: '2025-04-12',
     readTime: 8,
-    image: '/images/foto-perfil.jpg',
+    image: '/icon.svg',
     excerpt:
       'Saiba como estruturar o Contrato de Prestação de Serviços Educacionais e os protocolos de cobrança respeitando a Lei da Mensalidade Escolar sem expor a instituição a passivos.',
     content: `
@@ -197,7 +197,7 @@ export const blogArticles: BlogArticle[] = [
     author: AUTHOR_OFFICIAL,
     date: '2025-04-08',
     readTime: 9,
-    image: '/images/foto-perfil2.jpg',
+    image: '/icon.svg',
     excerpt:
       'Entenda os deveres das instituições privadas de ensino perante o Estatuto da Pessoa com Deficiência (LBI) e como estruturar atas, Planos de Desenvolvimento Individual e diálogo com equipes médicas.',
     content: `
@@ -228,7 +228,7 @@ export const blogArticles: BlogArticle[] = [
     author: AUTHOR_OFFICIAL,
     date: '2025-04-02',
     readTime: 8,
-    image: '/images/foto-perfil.jpg',
+    image: '/icon.svg',
     excerpt:
       'Com o endurecimento legal contra o bullying e o cyberbullying e as exigências do Art. 14 da LGPD, escolas precisam de protocolos formais de apuração, registro em ata e treinamento docente.',
     content: `
@@ -258,7 +258,7 @@ export const blogArticles: BlogArticle[] = [
     author: AUTHOR_OFFICIAL,
     date: '2025-04-05',
     readTime: 7,
-    image: '/images/foto-perfil2.jpg',
+    image: '/icon.svg',
     excerpt:
       'Quando há consenso entre o casal, o divórcio extrajudicial em cartório oferece discrição, previsibilidade de custos e rápida finalização da partilha de bens.',
     content: `
@@ -288,7 +288,7 @@ export const blogArticles: BlogArticle[] = [
     author: AUTHOR_OFFICIAL,
     date: '2025-03-30',
     readTime: 8,
-    image: '/images/foto-perfil.jpg',
+    image: '/icon.svg',
     excerpt:
       'Para empresários, profissionais liberais e famílias com patrimônio prévio, o pacto antenupcial e o contrato de convivência evitam que eventuais dissoluções futuras afetem a operação societária.',
     content: `
@@ -318,7 +318,7 @@ export const blogArticles: BlogArticle[] = [
     author: AUTHOR_OFFICIAL,
     date: '2025-03-25',
     readTime: 7,
-    image: '/images/foto-perfil2.jpg',
+    image: '/icon.svg',
     excerpt:
       'Acordos genéricos costumam gerar dúvidas no dia a dia. Veja como estruturar um termo consensual completo que proteja o melhor interesse da criança e dê tranquilidade aos pais.',
     content: `
@@ -346,7 +346,7 @@ export const blogArticles: BlogArticle[] = [
     author: AUTHOR_OFFICIAL,
     date: '2025-04-06',
     readTime: 7,
-    image: '/images/foto-perfil.jpg',
+    image: '/icon.svg',
     excerpt:
       'Cláusulas contratuais mal redigidas, ausência de termo de entrega/recebimento e respostas intempestivas ao Procon geram condenações evitáveis para empresas fornecedoras.',
     content: `
@@ -376,7 +376,7 @@ export const blogArticles: BlogArticle[] = [
     author: AUTHOR_OFFICIAL,
     date: '2024-11-07',
     readTime: 7,
-    image: '/images/foto-perfil2.jpg',
+    image: '/icon.svg',
     excerpt:
       'Tanto pessoas físicas quanto contas jurídicas de empresas têm sofrido fraudes eletrônicas sofisticadas. Saiba como documentar a falha de segurança bancária.',
     content: `
@@ -407,7 +407,7 @@ export const blogArticles: BlogArticle[] = [
     author: AUTHOR_OFFICIAL,
     date: '2024-11-08',
     readTime: 7,
-    image: '/images/foto-perfil.jpg',
+    image: '/icon.svg',
     excerpt:
       'Apontamentos restritivos por dívida já paga ou não reconhecida afetam o crédito de famílias e travam linhas de financiamento e licitações de empresas.',
     content: `
@@ -431,7 +431,7 @@ export const blogArticles: BlogArticle[] = [
     author: AUTHOR_OFFICIAL,
     date: '2024-11-06',
     readTime: 7,
-    image: '/images/foto-perfil2.jpg',
+    image: '/icon.svg',
     excerpt:
       'Contratos de financiamento, empréstimo pessoal, consignado e cédulas de crédito empresarial exigem auditoria do Custo Efetivo Total (CET) e das tarifas embutidas.',
     content: `
@@ -459,7 +459,7 @@ export const blogArticles: BlogArticle[] = [
     author: AUTHOR_OFFICIAL,
     date: '2025-04-09',
     readTime: 8,
-    image: '/images/foto-perfil.jpg',
+    image: '/icon.svg',
     excerpt:
       'Havendo consenso entre os herdeiros, o inventário em cartório permite destravar imóveis e contas bancárias do espólio sem a lentidão do processo judicial.',
     content: `
@@ -485,7 +485,7 @@ export const blogArticles: BlogArticle[] = [
     author: AUTHOR_OFFICIAL,
     date: '2025-04-01',
     readTime: 8,
-    image: '/images/foto-perfil2.jpg',
+    image: '/icon.svg',
     excerpt:
       'Antes de pagar o sinal (arras) ou assinar promessa de compra e venda, a auditoria jurídica dos vendedores e do imóvel protege seu patrimônio contra penhoras ocultas.',
     content: `
@@ -511,7 +511,7 @@ export const blogArticles: BlogArticle[] = [
     author: AUTHOR_OFFICIAL,
     date: '2025-03-27',
     readTime: 7,
-    image: '/images/foto-perfil.jpg',
+    image: '/icon.svg',
     excerpt:
       'Garantias locatícias (Lei 8.245/91), direito à renovatória comercial, benfeitorias, cláusula penal e vistoria detalhada exigem redação técnica personalizada.',
     content: `

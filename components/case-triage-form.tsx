@@ -103,37 +103,37 @@ export function CaseTriageForm({
   }
 
   return (
-    <div className="rounded-2xl border border-border bg-card p-6 text-card-foreground shadow-sm sm:p-8">
-      <div className="mb-6 border-b border-border pb-5">
+    <div className="rounded-2xl border border-border bg-card p-7 text-card-foreground shadow-sm sm:p-8">
+      <div className="mb-8 border-b border-border pb-6">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary/35 bg-primary/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
-            <ShieldCheck className="h-3.5 w-3.5" />
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/35 bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary">
+            <ShieldCheck className="h-4 w-4" />
             Atendimento Direto com a Dra. Bruna Dourado (Sem Robôs)
           </div>
-          <span className="text-xs font-medium text-muted-foreground">
+          <span className="text-sm font-medium text-muted-foreground">
             Atendimento PF e PJ • {siteConfig.brand.oab}
           </span>
         </div>
-        <h3 className="mt-3 font-serif text-2xl font-bold text-foreground sm:text-3xl">
+        <h3 className="mt-4 font-serif text-2xl font-bold text-foreground sm:text-3xl">
           Relatório Rápido para Triagem no WhatsApp
         </h3>
-        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-          Selecione seu perfil (PF ou PJ) e preencha os campos abaixo para abrir o WhatsApp oficial ({siteConfig.contact.phoneDisplay}) com seu relato formatado, ou utilize o botão de mensagem de áudio ao lado.
+        <p className="mt-2 text-lg leading-relaxed text-muted-foreground">
+          Preencha os campos abaixo para abrir o WhatsApp oficial ({siteConfig.contact.phoneDisplay}) com seu relato pronto, ou envie uma mensagem de áudio ao lado.
         </p>
       </div>
 
       <div className={compact ? 'space-y-6' : 'grid gap-8 lg:grid-cols-[1.25fr_0.75fr] lg:items-start'}>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-5">
           {/* Seletor de Perfil PF vs PJ */}
           <div>
-            <span className="mb-1.5 block text-sm font-medium text-foreground">
+            <span className="mb-2 block text-base font-semibold text-foreground">
               Perfil de Atendimento *
             </span>
-            <div className="grid grid-cols-2 gap-2.5">
+            <div className="grid grid-cols-2 gap-3">
               <button
                 type="button"
                 onClick={() => setProfile('PF')}
-                className={`flex items-center justify-center gap-2 rounded-lg border px-3 py-2.5 text-xs font-semibold transition-all sm:text-sm ${
+                className={`flex items-center justify-center gap-2 rounded-xl border px-4 py-3 text-base font-semibold transition-all ${
                   profile === 'PF'
                     ? 'border-primary bg-primary text-primary-foreground shadow-xs'
                     : 'border-border bg-input text-foreground hover:border-primary/50'
@@ -145,7 +145,7 @@ export function CaseTriageForm({
               <button
                 type="button"
                 onClick={() => setProfile('PJ')}
-                className={`flex items-center justify-center gap-2 rounded-lg border px-3 py-2.5 text-xs font-semibold transition-all sm:text-sm ${
+                className={`flex items-center justify-center gap-2 rounded-xl border px-4 py-3 text-base font-semibold transition-all ${
                   profile === 'PJ'
                     ? 'border-primary bg-primary text-primary-foreground shadow-xs'
                     : 'border-border bg-input text-foreground hover:border-primary/50'
@@ -158,7 +158,7 @@ export function CaseTriageForm({
           </div>
 
           <div>
-            <label htmlFor={`triage-name-${areaId}`} className="mb-1.5 block text-sm font-medium text-foreground">
+            <label htmlFor={`triage-name-${areaId}`} className="mb-2 block text-base font-semibold text-foreground">
               1. {profile === 'PJ' ? 'Seu Nome e Nome da Empresa / Instituição *' : 'Seu Nome Completo *'}
             </label>
             <input
@@ -172,20 +172,20 @@ export function CaseTriageForm({
                   ? 'Ex.: Carlos Mendes — Diretor do Colégio / Empresa X'
                   : 'Ex.: Maria Silva'
               }
-              className="w-full rounded-lg border border-border bg-input px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+              className="w-full rounded-xl border border-border bg-input px-4 py-3.5 text-base text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
             />
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <span className="mb-1.5 block text-sm font-medium text-foreground">
+              <span className="mb-2 block text-base font-semibold text-foreground">
                 2. Preferência de Retorno *
               </span>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-2 gap-2.5">
                 <button
                   type="button"
                   onClick={() => setReturnPreference('WhatsApp')}
-                  className={`flex items-center justify-center gap-2 rounded-lg border px-3 py-2.5 text-sm font-semibold transition-colors ${
+                  className={`flex items-center justify-center gap-2 rounded-xl border px-4 py-3 text-base font-semibold transition-colors ${
                     returnPreference === 'WhatsApp'
                       ? 'border-primary bg-primary text-primary-foreground'
                       : 'border-border bg-input text-foreground hover:border-primary/50'
@@ -197,7 +197,7 @@ export function CaseTriageForm({
                 <button
                   type="button"
                   onClick={() => setReturnPreference('Ligação')}
-                  className={`flex items-center justify-center gap-2 rounded-lg border px-3 py-2.5 text-sm font-semibold transition-colors ${
+                  className={`flex items-center justify-center gap-2 rounded-xl border px-4 py-3 text-base font-semibold transition-colors ${
                     returnPreference === 'Ligação'
                       ? 'border-primary bg-primary text-primary-foreground'
                       : 'border-border bg-input text-foreground hover:border-primary/50'
@@ -210,7 +210,7 @@ export function CaseTriageForm({
             </div>
 
             <div>
-              <label htmlFor={`triage-phone-${areaId}`} className="mb-1.5 block text-sm font-medium text-foreground">
+              <label htmlFor={`triage-phone-${areaId}`} className="mb-2 block text-base font-semibold text-foreground">
                 Telefone / WhatsApp (opcional)
               </label>
               <input
@@ -219,13 +219,13 @@ export function CaseTriageForm({
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="(71) 99999-9999"
-                className="w-full rounded-lg border border-border bg-input px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+                className="w-full rounded-xl border border-border bg-input px-4 py-3 text-base text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
               />
             </div>
           </div>
 
           <div>
-            <label htmlFor={`triage-summary-${areaId}`} className="mb-1.5 block text-sm font-medium text-foreground">
+            <label htmlFor={`triage-summary-${areaId}`} className="mb-2 block text-base font-semibold text-foreground">
               3. Resumo do Caso *
             </label>
             <textarea
@@ -239,14 +239,14 @@ export function CaseTriageForm({
                   ? `Descreva a demanda preventiva, contratual ou contenciosa da sua empresa/instituição em ${areaTitle}...`
                   : `Descreva brevemente o contexto da sua situação em ${areaTitle} (datas principais, documentos ou dúvida)...`
               }
-              className="w-full resize-none rounded-lg border border-border bg-input px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+              className="w-full resize-none rounded-xl border border-border bg-input px-4 py-3.5 text-base text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
             />
           </div>
 
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="w-full rounded-lg bg-primary py-6 text-base font-semibold text-primary-foreground shadow-sm transition hover:bg-primary/90"
+            className="w-full rounded-xl bg-primary py-6 text-base font-bold text-primary-foreground shadow-sm transition hover:bg-primary/90"
           >
             <MessageCircle className="mr-2 h-5 w-5" />
             {isSubmitting ? 'Formatando Relatório...' : 'Compilar Relatório e Abrir WhatsApp da Doutora'}
@@ -254,16 +254,16 @@ export function CaseTriageForm({
         </form>
 
         {/* Coluna Lateral: Opção de Áudio + Avisos OAB e LGPD */}
-        <div className="flex flex-col justify-between space-y-4 rounded-xl border border-primary/30 bg-secondary/60 p-5">
+        <div className="flex flex-col justify-between space-y-5 rounded-2xl border border-primary/30 bg-secondary/60 p-7">
           <div>
-            <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/15 text-primary">
-              <Mic className="h-5 w-5" />
+            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/15 text-primary">
+              <Mic className="h-6 w-6" />
             </div>
-            <h4 className="font-serif text-xl font-bold text-foreground">
+            <h4 className="font-serif text-2xl font-bold text-foreground">
               Prefere explicar por áudio?
             </h4>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Muitas situações jurídicas — pessoais ou empresariais — são mais fáceis de explicar falando do que digitando. Clique abaixo para abrir o WhatsApp da Dra. Bruna Dourado e enviar seu áudio.
+            <p className="mt-3 text-base leading-relaxed text-muted-foreground">
+              Clique abaixo para abrir o WhatsApp da Dra. Bruna Dourado e explicar sua demanda enviando uma mensagem de áudio com total sigilo.
             </p>
             <a
               href={audioWhatsAppLink}
@@ -277,20 +277,19 @@ export function CaseTriageForm({
                   page_path: originPath,
                 })
               }
-              className="mt-4 inline-flex w-full items-center justify-center gap-2.5 rounded-lg border-2 border-primary bg-background px-4 py-3.5 text-center text-sm font-bold text-foreground shadow-xs transition hover:bg-primary hover:text-primary-foreground"
+              className="mt-5 inline-flex w-full items-center justify-center gap-2.5 rounded-xl border-2 border-primary bg-background px-5 py-4 text-center text-base font-bold text-foreground shadow-xs transition hover:bg-primary hover:text-primary-foreground"
             >
-              <Mic className="h-4 w-4 shrink-0 text-primary" />
-              <span>Prefiro enviar mensagem de áudio no WhatsApp</span>
+              <Mic className="h-5 w-5 shrink-0 text-primary" />
+              <span>Enviar Mensagem de Áudio no WhatsApp</span>
             </a>
           </div>
 
-          <div className="border-t border-border pt-4 text-xs leading-relaxed text-muted-foreground space-y-2">
-            <p className="flex items-start gap-2 font-medium text-foreground/90">
-              <Lock className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
-              <span>Sigilo Profissional (Art. 34 do Estatuto da OAB) e Proteção LGPD</span>
+          <div className="border-t border-border pt-5 text-sm leading-relaxed text-muted-foreground space-y-2">
+            <p className="flex items-start gap-2 font-semibold text-foreground">
+              <Lock className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+              <span>Sigilo Profissional (Art. 34 do Estatuto da OAB) e LGPD</span>
             </p>
             <p>{siteConfig.compliance.contractDisclaimer}</p>
-            <p>{siteConfig.compliance.informational}</p>
           </div>
         </div>
       </div>
