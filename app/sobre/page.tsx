@@ -1,97 +1,165 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { GraduationCap, Scale, BookOpen, Users, ShieldCheck, ArrowRight } from 'lucide-react'
 import { siteConfig } from '@/lib/site-config'
+import { SafePortraitImage } from '@/components/safe-portrait-image'
+import { CaseTriageForm } from '@/components/case-triage-form'
+import { ContactFooterSection } from '@/components/contact-footer-section'
 
 export const metadata: Metadata = {
-  title: `Sobre | ${siteConfig.brand.name}`,
+  title: 'Sobre a Dra. Bruna Dourado e a Banca Associada',
   description:
-    'Conheça a ADVDourado, sua proposta de atuação estratégica e a gestão conduzida por Bruna Dourado em Salvador/BA.',
+    'Conheça a trajetória da Dra. Bruna Dourado (OAB/BA 71507), graduada pela UNEB, pós-graduada em Direito e Processo do Trabalho e docente de Filosofia e Sociologia em Salvador/BA.',
+  alternates: {
+    canonical: `${siteConfig.contact.siteUrl}/sobre`,
+  },
+  openGraph: {
+    title: 'Sobre a Dra. Bruna Dourado (OAB/BA 71507) — Banca Boutique em Salvador/BA',
+    description:
+      'Formação pela UNEB, Pós-Graduação em Direito e Processo do Trabalho, diferencial humanístico e coordenação de Banca Associada Especializada em Salvador.',
+    url: `${siteConfig.contact.siteUrl}/sobre`,
+    type: 'profile',
+  },
 }
 
 export default function SobrePage() {
   return (
-    <main className="min-h-screen bg-background px-4 py-14 sm:px-6 md:px-8">
-      <div className="mx-auto max-w-5xl rounded-3xl border border-border bg-white p-8 shadow-sm md:p-10">
-        <p className="text-xs uppercase tracking-[0.22em] text-primary/75">Institucional</p>
-        <h1 className="mt-3 text-4xl text-foreground md:text-5xl">{siteConfig.about.title}</h1>
+    <main className="min-h-screen bg-background">
+      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 md:px-8">
+        <nav className="mb-8 text-sm text-muted-foreground">
+          <Link href="/" className="hover:text-primary hover:underline">
+            Início
+          </Link>
+          <span className="mx-2">/</span>
+          <span className="font-medium text-foreground">Sobre Nós e a Banca Associada</span>
+        </nav>
 
-        <div className="mt-8 space-y-5 text-lg leading-8 text-foreground/80">
-          {siteConfig.about.text.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </div>
-
-        <section className="mt-10 rounded-2xl bg-secondary/50 p-6">
-          <h2 className="text-2xl text-foreground">Valores institucionais</h2>
-          <ul className="mt-4 list-disc space-y-2 pl-5 text-foreground/75">
-            <li>Justiça com empatia e responsabilidade técnica</li>
-            <li>Respeito, tradição, história e visão de futuro</li>
-            <li>Comunicação clara, ética e orientada ao cliente</li>
-          </ul>
-        </section>
-
-        <section className="mt-8 rounded-2xl border border-border bg-white p-6">
-          <h2 className="text-2xl text-foreground">Formação e projetos educacionais</h2>
-          <p className="mt-3 text-sm leading-7 text-foreground/75">
-            A atuação formativa inclui projetos aplicados de treinamento institucional, com foco em orientação prática,
-            prevenção de risco e melhoria de tomada de decisão por equipes.
-          </p>
-          <div className="mt-4 grid gap-4 md:grid-cols-2">
-            <article className="rounded-xl border border-border bg-secondary/30 p-4">
-              <p className="text-xs uppercase tracking-[0.2em] text-primary/75">Projeto 01</p>
-              <h3 className="mt-2 text-lg text-foreground">Treinamento institucional em Catu/BA</h3>
-              <p className="mt-2 text-sm leading-7 text-foreground/75">
-                Formação voltada para alinhamento de equipe, fluxo de conduta e compreensão prévia de processos.
-              </p>
-            </article>
-            <article className="rounded-xl border border-border bg-secondary/30 p-4">
-              <p className="text-xs uppercase tracking-[0.2em] text-primary/75">Projeto 02</p>
-              <h3 className="mt-2 text-lg text-foreground">Treinamento institucional em Porto Seguro/BA</h3>
-              <p className="mt-2 text-sm leading-7 text-foreground/75">
-                Capacitação com foco em rotina de equipe, comunicação orientada e condução preventiva de cenários complexos.
-              </p>
-            </article>
-          </div>
-        </section>
-
-        <section className="mt-8 rounded-2xl border border-border bg-secondary/25 p-6">
-          <h2 className="text-2xl text-foreground">Biblioteca de vídeos da formação</h2>
-          <p className="mt-3 text-sm leading-7 text-foreground/75">
-            Neste deploy, os espaços de vídeo já estão prontos. No próximo ajuste, ao subir os arquivos, os players serão ativados automaticamente.
-          </p>
-          <div className="mt-4 grid gap-4 md:grid-cols-2">
-            <div className="rounded-xl border border-dashed border-border bg-white p-4">
-              <p className="text-sm font-semibold text-foreground">Vídeo 1 (Evento Catu/BA)</p>
-              <p className="mt-2 text-xs text-foreground/70">Arquivo esperado: public/videos/formacao/evento-catu-ba.mp4</p>
+        <section className="grid gap-10 rounded-2xl border border-border bg-card p-6 shadow-sm sm:p-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+          <div className="overflow-hidden rounded-xl border border-border bg-secondary">
+            <div className="relative h-[420px] w-full sm:h-[480px]">
+              <SafePortraitImage
+                src="/images/foto-perfil.jpg"
+                alt="Dra. Bruna Dourado — OAB/BA 71507"
+                fill
+                sizes="(max-width: 1024px) 100vw, 460px"
+                className="object-cover object-top"
+                priority
+              />
             </div>
-            <div className="rounded-xl border border-dashed border-border bg-white p-4">
-              <p className="text-sm font-semibold text-foreground">Vídeo 2 (Evento Porto Seguro/BA)</p>
-              <p className="mt-2 text-xs text-foreground/70">Arquivo esperado: public/videos/formacao/evento-porto-seguro-ba.mp4</p>
+            <div className="border-t border-border bg-[#121212] p-5 text-[#faf9f6]">
+              <p className="font-serif text-xl font-bold text-[#c5a880]">
+                Dra. Bruna Dourado da Silva
+              </p>
+              <p className="mt-1 text-xs uppercase tracking-[0.2em] text-[#faf9f6]/80">
+                Advogada Titular • {siteConfig.brand.oab}
+              </p>
             </div>
           </div>
+
+          <div>
+            <span className="inline-flex items-center gap-2 rounded-full border border-primary/35 bg-primary/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+              <ShieldCheck className="h-3.5 w-3.5" />
+              {siteConfig.about.subtitle}
+            </span>
+            <h1 className="mt-4 font-serif text-3xl font-bold text-foreground sm:text-4xl md:text-5xl">
+              {siteConfig.about.title}
+            </h1>
+
+            <div className="mt-6 space-y-4 text-base leading-relaxed text-foreground/85">
+              {siteConfig.about.text.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              <div className="rounded-xl border border-border bg-secondary/40 p-4">
+                <GraduationCap className="h-5 w-5 text-primary" />
+                <h2 className="mt-2 font-serif text-base font-bold text-foreground">
+                  Universidade do Estado da Bahia (UNEB)
+                </h2>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                  Formação jurídica pública pautada pelo rigor constitucional, pesquisa acadêmica e responsabilidade social.
+                </p>
+              </div>
+
+              <div className="rounded-xl border border-border bg-secondary/40 p-4">
+                <Scale className="h-5 w-5 text-primary" />
+                <h2 className="mt-2 font-serif text-base font-bold text-foreground">
+                  Pós-Graduação em Direito e Processo do Trabalho
+                </h2>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                  Especialização técnica voltada tanto ao compliance preventivo empresarial quanto à tutela de direitos laborais.
+                </p>
+              </div>
+
+              <div className="rounded-xl border border-border bg-secondary/40 p-4">
+                <BookOpen className="h-5 w-5 text-primary" />
+                <h2 className="mt-2 font-serif text-base font-bold text-foreground">
+                  Docência em Filosofia e Sociologia
+                </h2>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                  Experiência em instituições tradicionais de ensino de Salvador, trazendo didática, escuta ativa e mediação humanizada.
+                </p>
+              </div>
+
+              <div className="rounded-xl border border-border bg-secondary/40 p-4">
+                <Users className="h-5 w-5 text-primary" />
+                <h2 className="mt-2 font-serif text-base font-bold text-foreground">
+                  Coordenação de Banca Associada
+                </h2>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                  Triagem pessoal pela Dra. Bruna aliada a especialistas associados em Família, Imobiliário, Consumidor e Saúde.
+                </p>
+              </div>
+            </div>
+          </div>
         </section>
 
-        <section className="mt-8 rounded-2xl border border-border bg-secondary/25 p-6">
-          <h2 className="text-2xl text-foreground">Continue sua navegação</h2>
-          <p className="mt-3 text-sm leading-7 text-foreground/75">
-            A página institucional conecta você com as áreas de atuação, conteúdos explicativos e o canal direto de contato.
+        {/* Explicação detalhada da Banca Associada e dos 6 Eixos */}
+        <section className="mt-12 rounded-2xl border border-primary/30 bg-card p-6 shadow-sm sm:p-10">
+          <h2 className="font-serif text-2xl font-bold text-foreground sm:text-3xl">
+            Por que o modelo de Banca Boutique Associada?
+          </h2>
+          <p className="mt-3 text-base leading-relaxed text-foreground/85">
+            {siteConfig.about.bancaExplanation}
           </p>
-          <div className="mt-4 flex flex-wrap gap-3 text-sm">
-            <Link href="/" className="font-semibold text-primary underline decoration-primary/40 underline-offset-4 transition hover:text-primary/80">
-              Voltar para início
-            </Link>
-            <Link href="/areas" className="font-semibold text-primary underline decoration-primary/40 underline-offset-4 transition hover:text-primary/80">
-              Ir para áreas de atuação
-            </Link>
-            <Link href="/blog" className="font-semibold text-primary underline decoration-primary/40 underline-offset-4 transition hover:text-primary/80">
-              Ler artigos do blog
-            </Link>
-            <Link href="/contato" className="font-semibold text-primary underline decoration-primary/40 underline-offset-4 transition hover:text-primary/80">
-              Abrir página de contato
-            </Link>
+
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {siteConfig.areas.map((area) => (
+              <Link
+                key={area.id}
+                href={area.route}
+                className="group flex flex-col justify-between rounded-xl border border-border bg-secondary/35 p-5 transition hover:border-primary"
+              >
+                <div>
+                  <p className="text-[11px] font-semibold uppercase tracking-wider text-primary">
+                    {area.eyebrow}
+                  </p>
+                  <h3 className="mt-1 font-serif text-lg font-bold text-foreground group-hover:text-primary">
+                    {area.title}
+                  </h3>
+                  <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                    {area.summary}
+                  </p>
+                </div>
+                <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-primary">
+                  Conhecer Eixo <ArrowRight className="h-3.5 w-3.5" />
+                </span>
+              </Link>
+            ))}
           </div>
+        </section>
+
+        <section className="mt-12">
+          <CaseTriageForm
+            areaId="institucional"
+            areaTitle="Atendimento Institucional"
+            originPath="/sobre"
+          />
         </section>
       </div>
+
+      <ContactFooterSection />
     </main>
   )
 }

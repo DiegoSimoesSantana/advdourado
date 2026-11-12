@@ -1,85 +1,141 @@
-import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+import { GraduationCap, Scale, BookOpen, Users, MessageCircle, Mic } from 'lucide-react'
 import { createWhatsAppLink, siteConfig } from '@/lib/site-config'
+import { SafePortraitImage } from '@/components/safe-portrait-image'
 
 export function AboutSection() {
   const whatsappLink = createWhatsAppLink(
-    'Olá, gostaria de conversar sobre uma demanda jurídica e entender como funciona o atendimento do escritório.',
+    'Olá, Dra. Bruna Dourado. Gostaria de conversar sobre uma demanda jurídica e entender como funciona o atendimento da banca.',
+  )
+  const audioWhatsAppLink = createWhatsAppLink(
+    'Olá, Dra. Bruna Dourado. Prefiro enviar uma mensagem de áudio para explicar minha situação jurídica.',
   )
 
   return (
-    <section id="sobre" className="bg-[#f5f1e8] px-4 py-24 sm:px-6 md:px-8">
-      <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16 lg:items-center">
-        <div className="order-2 lg:order-1">
-          <div className="relative overflow-hidden rounded-sm border border-black/10 bg-white shadow-sm">
-            <div className="relative h-[420px] w-full sm:h-[520px]">
-              <Image
+    <section id="sobre" className="border-b border-border bg-secondary/45 px-4 py-20 sm:px-6 md:px-8">
+      <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
+        <div>
+          <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-md">
+            <div className="relative h-[440px] w-full sm:h-[520px]">
+              <SafePortraitImage
                 src="/images/foto-perfil.jpg"
-                alt="Dra. Bruna Dourado em retrato institucional"
+                alt="Dra. Bruna Dourado — Advogada Titular (OAB/BA 71507)"
                 fill
                 sizes="(max-width: 1024px) 100vw, 520px"
-                className="object-cover sepia-[0.18] grayscale contrast-95"
+                className="object-cover object-top"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/20 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/80 via-transparent to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5 text-[#faf9f6]">
+                <span className="inline-block rounded-full border border-[#c5a880]/50 bg-[#0a0a0a]/80 px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[#c5a880]">
+                  Banca Boutique Especializada
+                </span>
+                <p className="mt-2 font-serif text-2xl font-bold">
+                  Dra. Bruna Dourado da Silva
+                </p>
+                <p className="text-xs uppercase tracking-[0.18em] text-[#faf9f6]/80">
+                  {siteConfig.brand.oab} • Salvador e Região Metropolitana
+                </p>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="order-1 lg:order-2 text-left">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.22em] text-[#8a6a3d]">Sobre a Advogada</p>
-          <h2 className="mb-6 font-serif text-4xl leading-tight text-slate-900 md:text-5xl">
-            Bruna Dourado da Silva, OAB/BA 71507
-          </h2>
-          <div className="space-y-5 text-justify text-lg leading-8 text-slate-800">
-            <p>
-              Atuação jurídica nas áreas Trabalhista, Família, Direito Educacional e Consumidor, com condução estratégica e linguagem acessível para pessoas, famílias e instituições.
-            </p>
-            <p>
-              Trajetória também como docente de Filosofia e Sociologia em instituições de ensino de Salvador, unindo técnica jurídica e formação humana no atendimento.
-            </p>
-            <p>
-              Além da atuação jurídica, atua como educadora em projetos de formação para equipes, parcerias institucionais e treinamento preventivo para profissionais que precisam compreender riscos, processos e boas práticas antes de conflitos jurídicos.
-            </p>
-            <p>
-              Na frente educacional, também desenvolve conteúdo aplicado em Direito Digital e LGPD, preparando instituições e profissionais para decisões mais seguras.
-            </p>
-            <p>
-              O primeiro atendimento é direto, com triagem clara e encaminhamento objetivo para o melhor formato de solução.
-            </p>
-          </div>
-
-          <div className="mt-6 space-y-2 text-sm text-slate-700">
-            <p>
-              <Link href="/sobre" className="cursor-pointer font-semibold text-slate-900 underline decoration-[#b89052]/60 underline-offset-4 transition hover:text-[#8a6a3d]">
-                Saiba mais sobre a formação e trajetória institucional.
-              </Link>
-            </p>
-            <p>
-              <Link href="/areas/educacional" className="cursor-pointer font-semibold text-slate-900 underline decoration-[#b89052]/60 underline-offset-4 transition hover:text-[#8a6a3d]">
-                Ver atuação em Direito Educacional
-              </Link>
-              {' '}e{' '}
-              <Link href="/areas/digital" className="cursor-pointer font-semibold text-slate-900 underline decoration-[#b89052]/60 underline-offset-4 transition hover:text-[#8a6a3d]">
-                Direito Digital (LGPD).
-              </Link>
-            </p>
-          </div>
-
-          <Button asChild size="lg" className="mt-8 rounded-full bg-[#25D366] px-8 text-white hover:bg-[#1ebe57]">
-            <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-              WhatsApp
-            </a>
-          </Button>
-
-          <p className="mt-4 text-sm text-slate-700">
-            Prefere outro canal?
-            <Link href="/contato" className="ml-1 cursor-pointer font-semibold text-slate-900 underline decoration-[#b89052]/60 underline-offset-4 transition hover:text-[#8a6a3d]">
-              Ir para contato.
-            </Link>
+        <div className="text-left">
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-primary">
+            Sobre Nós • Credenciais e Banca Associada
           </p>
+          <h2 className="mt-3 font-serif text-3xl font-bold leading-tight text-foreground sm:text-4xl md:text-5xl">
+            Rigor Técnico, Didática e Coordenação Pessoal da Dra. Bruna Dourado
+          </h2>
 
-          <p className="mt-8 text-sm uppercase tracking-[0.22em] text-slate-500">{siteConfig.brand.oab}</p>
+          <div className="mt-6 space-y-4 text-base leading-relaxed text-foreground/85">
+            {siteConfig.about.text.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
+
+          {/* Grid de Credenciais Reais */}
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            <div className="rounded-xl border border-border bg-card p-4">
+              <div className="flex items-center gap-2.5 text-primary">
+                <GraduationCap className="h-5 w-5 shrink-0" />
+                <span className="text-xs font-bold uppercase tracking-wider">Graduação Pública</span>
+              </div>
+              <p className="mt-2 text-sm font-medium text-foreground">
+                Bacharela em Direito pela Universidade do Estado da Bahia (UNEB)
+              </p>
+            </div>
+
+            <div className="rounded-xl border border-border bg-card p-4">
+              <div className="flex items-center gap-2.5 text-primary">
+                <Scale className="h-5 w-5 shrink-0" />
+                <span className="text-xs font-bold uppercase tracking-wider">Pós-Graduação</span>
+              </div>
+              <p className="mt-2 text-sm font-medium text-foreground">
+                Especialista em Direito e Processo do Trabalho
+              </p>
+            </div>
+
+            <div className="rounded-xl border border-border bg-card p-4">
+              <div className="flex items-center gap-2.5 text-primary">
+                <BookOpen className="h-5 w-5 shrink-0" />
+                <span className="text-xs font-bold uppercase tracking-wider">Diferencial Humanístico</span>
+              </div>
+              <p className="mt-2 text-sm font-medium text-foreground">
+                Vivência como docente de Filosofia e Sociologia em instituições tradicionais de Salvador
+              </p>
+            </div>
+
+            <div className="rounded-xl border border-border bg-card p-4">
+              <div className="flex items-center gap-2.5 text-primary">
+                <Users className="h-5 w-5 shrink-0" />
+                <span className="text-xs font-bold uppercase tracking-wider">Banca Associada</span>
+              </div>
+              <p className="mt-2 text-sm font-medium text-foreground">
+                Atendimento inicial pela Dra. Bruna com atuação integrada de especialistas associados
+              </p>
+            </div>
+          </div>
+
+          {/* Box Explicativo da Banca Associada */}
+          <div className="mt-6 rounded-xl border border-primary/30 bg-primary/10 p-5">
+            <h3 className="font-serif text-lg font-bold text-foreground">
+              Como funciona nossa Banca Associada
+            </h3>
+            <p className="mt-1.5 text-sm leading-relaxed text-foreground/85">
+              {siteConfig.about.bancaExplanation}
+            </p>
+          </div>
+
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <Button
+              asChild
+              size="lg"
+              className="rounded-lg bg-primary px-7 text-primary-foreground hover:bg-primary/90"
+            >
+              <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="mr-2 h-4 w-4" />
+                Falar com a Dra. Bruna
+              </a>
+            </Button>
+
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="rounded-lg border-primary/50 text-foreground hover:bg-primary/10"
+            >
+              <a href={audioWhatsAppLink} target="_blank" rel="noopener noreferrer">
+                <Mic className="mr-2 h-4 w-4 text-primary" />
+                Prefiro enviar mensagem de áudio
+              </a>
+            </Button>
+
+            <Button asChild variant="ghost" size="lg" className="text-primary hover:text-primary/80">
+              <Link href="/sobre">Conhecer detalhes institucionais →</Link>
+            </Button>
+          </div>
         </div>
       </div>
     </section>

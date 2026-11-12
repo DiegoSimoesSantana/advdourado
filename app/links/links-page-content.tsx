@@ -1,16 +1,31 @@
 'use client'
 
-import Image from 'next/image'
 import { useState } from 'react'
-import { MessageCircle, Calendar, Globe, BookOpen, Scale, Mail, MapPin, ArrowRight, Linkedin, UserPlus, Share2 } from 'lucide-react'
+import {
+  MessageCircle,
+  Mic,
+  Globe,
+  BookOpen,
+  Scale,
+  Mail,
+  MapPin,
+  ArrowRight,
+  Linkedin,
+  UserPlus,
+  Share2,
+} from 'lucide-react'
 import { createWhatsAppLink, siteConfig } from '@/lib/site-config'
 import { trackEvent } from '@/lib/analytics'
+import { SafePortraitImage } from '@/components/safe-portrait-image'
 
 export default function LinksPageContent() {
   const [copied, setCopied] = useState(false)
-  
+
   const instagramWhatsAppLink = createWhatsAppLink(
-    'Olá Dra. Bruna, vim pelo seu Instagram e gostaria de tirar uma dúvida sobre atendimento jurídico.'
+    'Olá, Dra. Bruna Dourado. Vim pelos canais oficiais e gostaria de iniciar meu atendimento jurídico.',
+  )
+  const audioWhatsAppLink = createWhatsAppLink(
+    'Olá, Dra. Bruna Dourado. Vim pelos canais oficiais e prefiro explicar meu caso enviando uma mensagem de áudio.',
   )
 
   const handleLinkClick = (destination: string) => {
@@ -24,13 +39,13 @@ export default function LinksPageContent() {
     if (typeof navigator !== 'undefined' && navigator.share) {
       try {
         await navigator.share({
-          title: 'Dra. Bruna Dourado - Canais de Atendimento',
-          text: 'Canais de atendimento oficial da Dra. Bruna Dourado. Fale no WhatsApp, agende uma consulta ou acesse nosso site.',
+          title: 'Dra. Bruna Dourado — Advocacia e Assessoria Jurídica (OAB/BA 71507)',
+          text: 'Canais oficiais de atendimento da Dra. Bruna Dourado em Salvador/BA.',
           url: window.location.href,
         })
         trackEvent('instagram_links_click', { destination: 'share_native' })
       } catch {
-        // User cancelled share panel
+        // User cancelled share
       }
     } else if (typeof navigator !== 'undefined' && navigator.clipboard) {
       navigator.clipboard.writeText(window.location.href)
@@ -42,89 +57,87 @@ export default function LinksPageContent() {
 
   const links = [
     {
-      title: 'Falar no WhatsApp',
-      description: 'Iniciar atendimento e tirar dúvidas',
+      title: 'Atendimento Direto no WhatsApp',
+      description: `Falar com a Dra. Bruna • ${siteConfig.contact.phoneShort}`,
       url: instagramWhatsAppLink,
       icon: MessageCircle,
       isPrimary: true,
-      id: 'whatsapp'
+      id: 'whatsapp_direct',
     },
     {
-      title: 'Agendar Consulta Jurídica',
-      description: 'Escolha o melhor dia e horário',
-      url: siteConfig.contact.calendarUrl,
-      icon: Calendar,
+      title: 'Prefiro Enviar Mensagem de Áudio',
+      description: 'Explique seu caso falando diretamente no WhatsApp',
+      url: audioWhatsAppLink,
+      icon: Mic,
       isPrimary: false,
-      id: 'calendar'
+      id: 'whatsapp_audio',
     },
     {
-      title: 'Perfil no LinkedIn',
-      description: 'Conexões profissionais e artigos jurídicos',
-      url: siteConfig.social.linkedin || 'https://www.linkedin.com/in/bruna-dourado-3638901b5/',
-      icon: Linkedin,
+      title: 'Conhecer os 6 Eixos de Atuação',
+      description: 'Trabalhista, Educacional B2B, Família, Consumidor, Imóveis e Saúde',
+      url: '/#eixos',
+      icon: Scale,
       isPrimary: false,
-      id: 'linkedin'
+      id: 'eixos',
     },
     {
-      title: 'Visitar Nosso Site Oficial',
-      description: 'Conheça nossa estrutura e atuação',
+      title: 'Visitar Site Institucional Completo',
+      description: 'advdourado.com.br',
       url: '/',
       icon: Globe,
       isPrimary: false,
-      id: 'website'
+      id: 'website',
     },
     {
-      title: 'Blog & Dicas Jurídicas',
-      description: 'Artigos explicativos sobre seus direitos',
+      title: 'Artigos Jurídicos Informativos',
+      description: 'Orientações sobre direitos, deveres e prazos',
       url: '/blog',
       icon: BookOpen,
       isPrimary: false,
-      id: 'blog'
+      id: 'blog',
     },
     {
-      title: 'Áreas de Atuação',
-      description: 'Conheça nossas especialidades',
-      url: '/areas',
-      icon: Scale,
+      title: 'Perfil Oficial no LinkedIn',
+      description: 'Trajetória acadêmica e institucional',
+      url: siteConfig.social.linkedin,
+      icon: Linkedin,
       isPrimary: false,
-      id: 'areas'
-    }
+      id: 'linkedin',
+    },
   ]
 
   return (
-    <div className="min-h-screen bg-[#f7f5f0] text-slate-800 flex flex-col justify-between py-12 px-4 sm:px-6">
-      {/* Container Principal */}
+    <div className="min-h-screen bg-background text-foreground flex flex-col justify-between py-12 px-4 sm:px-6">
       <div className="w-full max-w-md mx-auto">
-        
         {/* Header - Perfil */}
         <div className="text-center mb-8 flex flex-col items-center">
-          <div className="relative w-24 h-24 mb-4 rounded-full overflow-hidden border-2 border-[#b89052] shadow-md transition-transform hover:scale-105 duration-300">
-            <Image
+          <div className="relative w-24 h-24 mb-4 rounded-full overflow-hidden border-2 border-primary shadow-md">
+            <SafePortraitImage
               src="/images/foto-perfil.jpg"
-              alt="Dra. Bruna Dourado"
+              alt="Dra. Bruna Dourado (OAB/BA 71507)"
               fill
               sizes="96px"
-              className="object-cover"
+              className="object-cover object-top"
               priority
             />
           </div>
-          <h1 className="font-serif text-2xl font-bold text-slate-900 leading-tight">
+          <h1 className="font-serif text-2xl font-bold text-foreground leading-tight">
             Dra. Bruna Dourado
           </h1>
-          <p className="text-xs uppercase tracking-[0.18em] text-[#b89052] font-semibold mt-1">
-            Advogada • OAB/BA 71507
+          <p className="text-xs uppercase tracking-[0.18em] text-primary font-semibold mt-1">
+            Advogada • {siteConfig.brand.oab}
           </p>
-          <p className="text-sm text-slate-600 max-w-xs mt-3 leading-relaxed">
-            Atendimento jurídico estratégico e humanizado em Salvador/BA para proteger seus direitos.
+          <p className="text-sm text-muted-foreground max-w-xs mt-3 leading-relaxed">
+            Banca Boutique Especializada em Salvador/BA. Triagem conduzida pessoalmente pela Doutora, sem robôs.
           </p>
         </div>
 
         {/* Links */}
-        <div className="space-y-4 mb-10">
+        <div className="space-y-3.5 mb-8">
           {links.map((link) => {
             const Icon = link.icon
             const isExternal = link.url.startsWith('http')
-            
+
             return (
               <a
                 key={link.id}
@@ -132,34 +145,38 @@ export default function LinksPageContent() {
                 target={isExternal ? '_blank' : undefined}
                 rel={isExternal ? 'noopener noreferrer' : undefined}
                 onClick={() => handleLinkClick(link.id)}
-                className={`group flex items-center justify-between p-4 rounded-2xl border transition-all duration-300 ${
+                className={`group flex items-center justify-between p-4 rounded-xl border transition-all duration-200 ${
                   link.isPrimary
-                    ? 'bg-[#25D366] hover:bg-[#1ebe57] border-[#25D366] text-white shadow-md hover:shadow-lg hover:-translate-y-0.5'
-                    : 'bg-white hover:bg-slate-50 border-slate-200/80 text-slate-800 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-[#b89052]/40'
+                    ? 'bg-primary border-primary text-primary-foreground shadow-md hover:opacity-95'
+                    : 'bg-card hover:bg-secondary/60 border-border text-card-foreground shadow-xs hover:border-primary/50'
                 }`}
               >
-                <div className="flex items-center gap-4">
-                  <div className={`p-2.5 rounded-xl ${
-                    link.isPrimary 
-                      ? 'bg-white/15 text-white' 
-                      : 'bg-[#b89052]/10 text-[#b89052]'
-                  }`}>
+                <div className="flex items-center gap-3.5">
+                  <div
+                    className={`p-2.5 rounded-lg ${
+                      link.isPrimary
+                        ? 'bg-black/15 text-primary-foreground'
+                        : 'bg-primary/10 text-primary'
+                    }`}
+                  >
                     <Icon className="w-5 h-5" />
                   </div>
                   <div className="text-left">
-                    <h2 className="text-sm font-semibold leading-tight">
-                      {link.title}
-                    </h2>
-                    <p className={`text-xs mt-0.5 ${
-                      link.isPrimary ? 'text-white/80' : 'text-slate-500'
-                    }`}>
+                    <h2 className="text-sm font-bold leading-tight">{link.title}</h2>
+                    <p
+                      className={`text-xs mt-0.5 ${
+                        link.isPrimary ? 'text-primary-foreground/85' : 'text-muted-foreground'
+                      }`}
+                    >
                       {link.description}
                     </p>
                   </div>
                 </div>
-                <ArrowRight className={`w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 ${
-                  link.isPrimary ? 'text-white/80' : 'text-slate-400 group-hover:text-[#b89052]'
-                }`} />
+                <ArrowRight
+                  className={`w-4 h-4 shrink-0 transition-transform duration-200 group-hover:translate-x-1 ${
+                    link.isPrimary ? 'text-primary-foreground' : 'text-muted-foreground group-hover:text-primary'
+                  }`}
+                />
               </a>
             )
           })}
@@ -171,54 +188,54 @@ export default function LinksPageContent() {
             href="/bruna-dourado.vcf"
             download="Dra_Bruna_Dourado.vcf"
             onClick={() => handleLinkClick('vcard_download')}
-            className="flex items-center justify-center gap-2 p-3.5 rounded-xl border border-slate-200/80 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-xs transition-all duration-300 shadow-sm hover:shadow hover:-translate-y-0.5"
+            className="flex items-center justify-center gap-2 p-3.5 rounded-xl border border-border bg-card hover:bg-secondary text-foreground font-semibold text-xs transition-all shadow-xs"
           >
-            <UserPlus className="w-4 h-4 text-[#b89052]" />
-            Salvar Agenda
+            <UserPlus className="w-4 h-4 text-primary" />
+            Salvar Contato
           </a>
           <button
+            type="button"
             onClick={handleShare}
-            className="flex items-center justify-center gap-2 p-3.5 rounded-xl border border-slate-200/80 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-xs transition-all duration-300 shadow-sm hover:shadow hover:-translate-y-0.5"
+            className="flex items-center justify-center gap-2 p-3.5 rounded-xl border border-border bg-card hover:bg-secondary text-foreground font-semibold text-xs transition-all shadow-xs"
           >
-            <Share2 className="w-4 h-4 text-[#b89052]" />
+            <Share2 className="w-4 h-4 text-primary" />
             {copied ? 'Copiado!' : 'Compartilhar'}
           </button>
         </div>
 
         {/* Card de Contato Rápido */}
-        <div className="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-sm space-y-4 text-sm mb-6">
-          <h3 className="font-serif text-base font-bold text-slate-900 border-b border-slate-100 pb-2">
-            Contatos do Escritório
+        <div className="bg-card rounded-xl border border-border p-5 shadow-xs space-y-3 text-sm mb-6">
+          <h3 className="font-serif text-base font-bold text-foreground border-b border-border pb-2">
+            Contato Institucional
           </h3>
-          
+
           <div className="flex items-center gap-3">
-            <Mail className="w-4 h-4 text-[#b89052] flex-shrink-0" />
-            <a 
-              href={`mailto:${siteConfig.contact.email}`} 
+            <Mail className="w-4 h-4 text-primary shrink-0" />
+            <a
+              href={`mailto:${siteConfig.contact.email}`}
               onClick={() => handleLinkClick('email')}
-              className="text-slate-600 hover:text-[#b89052] transition-colors overflow-hidden text-ellipsis"
+              className="text-muted-foreground hover:text-primary transition-colors text-xs"
             >
               {siteConfig.contact.email}
             </a>
           </div>
 
           <div className="flex items-center gap-3">
-            <MapPin className="w-4 h-4 text-[#b89052] flex-shrink-0" />
-            <span className="text-slate-600 leading-relaxed text-xs">
-              {siteConfig.contact.address}
+            <MapPin className="w-4 h-4 text-primary shrink-0" />
+            <span className="text-muted-foreground leading-relaxed text-xs">
+              {siteConfig.contact.city}
             </span>
           </div>
         </div>
-
       </div>
 
-      {/* Footer */}
-      <div className="text-center mt-6">
-        <p className="text-xs text-slate-400">
-          © {new Date().getFullYear()} {siteConfig.brand.name}
+      {/* Footer Ético OAB */}
+      <div className="text-center mt-6 max-w-md mx-auto">
+        <p className="text-xs text-muted-foreground">
+          © {new Date().getFullYear()} {siteConfig.brand.legalName}
         </p>
-        <p className="text-[10px] text-slate-400/80 mt-1 uppercase tracking-wider">
-          OAB/BA 71507 • Advocacia Ética e Transparente
+        <p className="text-[11px] text-primary font-semibold mt-1 uppercase tracking-wider">
+          {siteConfig.brand.oab} • Provimento nº 205/2021 OAB
         </p>
       </div>
     </div>

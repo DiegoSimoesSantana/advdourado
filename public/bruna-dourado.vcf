@@ -1,11 +1,11 @@
 BEGIN:VCARD
 VERSION:3.0
 N:Dourado;Bruna;;Dra.;
-FN:Dra. Bruna Dourado
-ORG:Bruna Dourado Advocacia & Consultoria
-TITLE:Advogada
+FN:Dra. Bruna Dourado (OAB/BA 71507)
+ORG:Dra. Bruna Dourado — Advocacia e Assessoria Jurídica
+TITLE:Advogada • OAB/BA 71507
 TEL;TYPE=CELL;TYPE=VOICE;TYPE=pref:+5571992363943
-EMAIL;TYPE=PREF,INTERNET:bruna@advdourado.com.br
+EMAIL;TYPE=PREF,INTERNET:contato@advdourado.com.br
 URL:https://advdourado.com.br
 ADR;TYPE=WORK:;;Rua Mandiguaçun, nº 50, Piatã;Salvador;BA;41650-000;Brazil
 END:VCARD

@@ -2,35 +2,40 @@ import { Landmark, ShieldCheck, BookOpenText, MessagesSquare } from 'lucide-reac
 import { Card } from '@/components/ui/card'
 import { siteConfig } from '@/lib/site-config'
 
-const icons = [MessagesSquare, BookOpenText, ShieldCheck, Landmark]
+const icons = [MessagesSquare, Landmark, BookOpenText, ShieldCheck]
 
 export function SocialProofSection() {
   return (
-    <section className="bg-[linear-gradient(180deg,#f4eee1_0%,#ffffff_100%)] px-4 py-20 sm:px-6 md:px-8">
+    <section className="border-b border-border bg-background px-4 py-20 sm:px-6 md:px-8">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-14 text-center">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.22em] text-primary/75">Direcionadores do escritório</p>
-          <h2 className="mb-4 text-4xl text-foreground md:text-5xl">Credibilidade construída por postura, método e clareza.</h2>
-          <p className="mx-auto max-w-3xl text-justify text-lg leading-8 text-slate-700">
-            A nova presença digital evita excessos de marketing e reforça o que realmente importa para o contato
-            profissional: escuta, organização do atendimento, sigilo e informação qualificada.
+        <div className="mx-auto mb-14 max-w-3xl text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-primary">
+            Pilares da Banca Boutique
           </p>
-          <p className="mx-auto mt-4 max-w-3xl text-sm leading-7 text-slate-600">
-            Primeiro contato com triagem inicial conduzida pela Dra. Bruna Dourado, com encaminhamento técnico conforme a especialidade do caso.
+          <h2 className="mt-3 font-serif text-3xl font-bold text-foreground sm:text-4xl md:text-5xl">
+            Autoridade construída por método, escuta e transparência ética
+          </h2>
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
+            Atendimento artesanal em Salvador e Região Metropolitana: sem robôs de triagem, sem promessas mercantilistas e com coordenação direta da Dra. Bruna Dourado ({siteConfig.brand.oab}).
           </p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {siteConfig.differentiators.map((item, index) => {
-            const Icon = icons[index]
+            const Icon = icons[index] ?? ShieldCheck
 
             return (
-              <Card key={item.title} className="rounded-[1.75rem] border border-border/80 bg-white p-7 shadow-sm">
-                <div className="mb-5 rounded-2xl bg-primary/10 p-4 text-primary w-fit">
+              <Card
+                key={item.title}
+                className="rounded-2xl border border-border bg-card p-6 text-card-foreground shadow-sm transition-colors hover:border-primary/50"
+              >
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-primary/30 bg-primary/10 text-primary">
                   <Icon className="h-6 w-6" />
                 </div>
-                <h3 className="mb-3 text-3xl text-foreground">{item.title}</h3>
-                <p className="text-justify text-base leading-7 text-slate-700">{item.description}</p>
+                <h3 className="font-serif text-xl font-bold text-foreground">{item.title}</h3>
+                <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">
+                  {item.description}
+                </p>
               </Card>
             )
           })}

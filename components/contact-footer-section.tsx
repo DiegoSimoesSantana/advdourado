@@ -1,240 +1,131 @@
 'use client'
 
-import { useState } from 'react'
-import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
-import { Mail, Phone, MapPin, Instagram, Linkedin } from 'lucide-react'
+import Link from 'next/link'
+import { Mail, Phone, MapPin, Instagram, Linkedin, ShieldCheck, Lock } from 'lucide-react'
 import { createWhatsAppLink, siteConfig } from '@/lib/site-config'
+import { CaseTriageForm } from '@/components/case-triage-form'
 
 export function ContactFooterSection() {
-  const [isSubmitting, setIsSubmitting] = useState(false)
   const directWhatsAppLink = createWhatsAppLink(
-    'Olá, vim pelo site da ADVDourado e gostaria de solicitar atendimento jurídico sigiloso.',
+    'Olá, Dra. Bruna Dourado. Vim pelo site oficial e gostaria de solicitar atendimento jurídico.',
   )
-  const audioWhatsAppLink = createWhatsAppLink(
-    'Olá, prefiro explicar meu caso por áudio. Gostaria de iniciar a triagem com a Dra. Bruna Dourado.',
-  )
-  const alternativeCaseWhatsAppLink = createWhatsAppLink(
-    'Olá, acredito que meu caso pode ser diferente. Gostaria de saber se existe solução parecida ou personalizada para minha situação.',
-  )
-
-  const [formData, setFormData] = useState({
-    name: '',
-    whatsapp: '',
-    message: '',
-  })
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-
-    const whatsappMessage = `Olá, vim pelo site da ADVDourado.
-Meu nome é ${formData.name}
-WhatsApp: ${formData.whatsapp}
-Mensagem breve: ${formData.message}`
-
-    try {
-      await fetch('/api/contato', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: '',
-          phone: formData.whatsapp,
-          area: '',
-          subject: 'Solicitação de atendimento sigiloso',
-          message: formData.message,
-        }),
-      })
-    } catch {
-      // Mantemos o fluxo de captação por WhatsApp mesmo se o banco estiver indisponível.
-    } finally {
-      window.open(createWhatsAppLink(whatsappMessage), '_blank')
-      setIsSubmitting(false)
-    }
-  }
 
   return (
-    <section id="contato" className="bg-foreground text-white">
-      <div className="px-4 md:px-8 py-20">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16">
-            <div>
-              <p className="mb-3 text-sm font-semibold uppercase tracking-[0.22em] text-[#b89052]">Contato direto</p>
-              <h2 className="mb-6 font-serif text-3xl md:text-5xl">
-                Atendimento reservado, com acesso simples e objetivo.
-              </h2>
-              <p className="mb-8 max-w-xl text-justify text-lg leading-8 text-white/88">
-                Escolha o canal mais conveniente para iniciar o contato. O fluxo principal começa no WhatsApp da Dra. Bruna.
-              </p>
+    <section id="contato" className="bg-[#0a0a0a] text-[#faf9f6]">
+      <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 md:px-8">
+        <div className="mb-12">
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#c5a880]">
+            Atendimento Direto com a Doutora
+          </p>
+          <h2 className="mt-3 font-serif text-3xl font-bold text-[#faf9f6] sm:text-4xl md:text-5xl">
+            Inicie sua triagem com sigilo e coordenação pessoal
+          </h2>
+          <p className="mt-3 max-w-2xl text-base leading-relaxed text-[#faf9f6]/80">
+            Envie o resumo estruturado da sua necessidade ou opte por gravar uma mensagem de áudio diretamente no WhatsApp da Dra. Bruna Dourado ({siteConfig.brand.oab}).
+          </p>
+        </div>
 
-              <div className="space-y-6">
-                <div className="flex items-start gap-4 rounded-sm border border-white/14 bg-white/6 p-5">
-                  <div className="mt-1 flex-shrink-0 rounded-sm bg-[#b89052]/15 p-3">
-                    <Mail className="w-5 h-5 text-[#b89052]" />
-                  </div>
-                  <div>
-                    <p className="mb-1 text-sm uppercase tracking-[0.18em] text-white/65">E-mail</p>
-                    <a href={`mailto:${siteConfig.contact.email}`} className="text-lg text-white transition hover:text-[#d4b07a]">
-                      {siteConfig.contact.email}
-                    </a>
-                  </div>
-                </div>
+        {/* Formulário Compilador de Relatório + Botão de Áudio */}
+        <CaseTriageForm
+          areaId="contato"
+          areaTitle="Triagem Geral — Escritório Dra. Bruna Dourado"
+          originPath="/#contato"
+        />
 
-                <div className="flex items-start gap-4 rounded-sm border border-white/14 bg-white/6 p-5">
-                  <div className="mt-1 flex-shrink-0 rounded-sm bg-[#b89052]/15 p-3">
-                    <Phone className="w-5 h-5 text-[#b89052]" />
-                  </div>
-                  <div>
-                    <p className="mb-1 text-sm uppercase tracking-[0.18em] text-white/65">WhatsApp</p>
-                    <a href={directWhatsAppLink} target="_blank" rel="noopener noreferrer" className="text-lg text-white transition hover:text-[#d4b07a]">
-                      {siteConfig.contact.phoneDisplay}
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4 rounded-sm border border-white/14 bg-white/6 p-5">
-                  <div className="mt-1 flex-shrink-0 rounded-sm bg-[#b89052]/15 p-3">
-                    <MapPin className="w-5 h-5 text-[#b89052]" />
-                  </div>
-                  <div>
-                    <p className="mb-1 text-sm uppercase tracking-[0.18em] text-white/65">Escritório em Salvador</p>
-                    <p className="text-lg text-white/92">{siteConfig.contact.address}</p>
-                    <p className="mt-2 text-justify text-sm leading-6 text-white/72">Atendimento presencial mediante triagem prévia no WhatsApp.</p>
-                  </div>
-                </div>
-
-                <div className="rounded-sm border border-white/14 bg-white/6 p-5 text-justify text-sm leading-7 text-white/84">
-                  <p>{siteConfig.compliance.informational}</p>
-                  <p className="mt-3 text-white/74">{siteConfig.compliance.privacy}</p>
-                </div>
-              </div>
+        {/* Cartões de Contato Oficial */}
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          <div className="flex items-start gap-4 rounded-xl border border-white/12 bg-[#121212] p-5">
+            <div className="mt-0.5 rounded-lg border border-[#c5a880]/30 bg-[#c5a880]/10 p-3 text-[#c5a880]">
+              <Phone className="h-5 w-5" />
             </div>
-
             <div>
-              <Card className="border-white/10 bg-white px-6 py-7 text-slate-900 shadow-sm sm:px-8 sm:py-8">
-                <div className="mb-6">
-                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#7b5e35]">Mensagem inicial</p>
-                  <h3 className="mt-3 font-serif text-2xl text-slate-900">Descreva seu caso e receba retorno direto no WhatsApp.</h3>
-                </div>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#faf9f6]/65">
+                WhatsApp / Telefone Oficial
+              </p>
+              <a
+                href={directWhatsAppLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-1 block font-serif text-lg font-bold text-[#faf9f6] transition hover:text-[#c5a880]"
+              >
+                {siteConfig.contact.phoneDisplay}
+              </a>
+              <p className="mt-1 text-xs text-[#faf9f6]/70">
+                Atendimento direto (texto ou áudio)
+              </p>
+            </div>
+          </div>
 
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div>
-                    <label className="mb-2 block text-sm font-medium text-slate-700">Nome</label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.name}
-                      onChange={(e) => setFormData({...formData, name: e.target.value})}
-                      className="w-full rounded-sm border border-slate-300 bg-white px-4 py-3 text-slate-950 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#b89052]/40"
-                      placeholder="Seu nome completo"
-                    />
-                  </div>
+          <div className="flex items-start gap-4 rounded-xl border border-white/12 bg-[#121212] p-5">
+            <div className="mt-0.5 rounded-lg border border-[#c5a880]/30 bg-[#c5a880]/10 p-3 text-[#c5a880]">
+              <Mail className="h-5 w-5" />
+            </div>
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#faf9f6]/65">
+                E-mail Institucional
+              </p>
+              <a
+                href={`mailto:${siteConfig.contact.email}`}
+                className="mt-1 block font-serif text-lg font-bold text-[#faf9f6] transition hover:text-[#c5a880]"
+              >
+                {siteConfig.contact.email}
+              </a>
+              <p className="mt-1 text-xs text-[#faf9f6]/70">
+                Envio de documentos e solicitações B2B
+              </p>
+            </div>
+          </div>
 
-                  <div>
-                    <label className="mb-2 block text-sm font-medium text-slate-700">WhatsApp</label>
-                    <input
-                      type="tel"
-                      required
-                      value={formData.whatsapp}
-                      onChange={(e) => setFormData({...formData, whatsapp: e.target.value})}
-                      className="w-full rounded-sm border border-slate-300 bg-white px-4 py-3 text-slate-950 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#b89052]/40"
-                      placeholder="(71) 99999-9999"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="mb-2 block text-sm font-medium text-slate-700">Mensagem breve</label>
-                    <textarea
-                      required
-                      value={formData.message}
-                      onChange={(e) => setFormData({...formData, message: e.target.value})}
-                      rows={4}
-                      className="w-full resize-none rounded-sm border border-slate-300 bg-white px-4 py-3 text-slate-950 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#b89052]/40"
-                      placeholder="Descreva brevemente a demanda para orientar o primeiro contato."
-                    />
-                  </div>
-
-                  <Button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full rounded-sm bg-[#0f172a] py-3 text-white font-semibold hover:bg-[#0f172a]/92"
-                  >
-                    {isSubmitting ? 'Enviando...' : 'Enviar dados e abrir WhatsApp'}
-                  </Button>
-
-                  <a
-                    href={audioWhatsAppLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full rounded-sm border border-emerald-600 px-4 py-3 text-center text-sm font-semibold text-emerald-700 transition hover:bg-emerald-50"
-                  >
-                    Prefiro enviar áudio no WhatsApp
-                  </a>
-
-                  <details className="group rounded-sm border border-slate-300 px-4 py-3">
-                    <summary className="list-none text-center text-sm font-semibold text-slate-700">
-                      Menu rápido no WhatsApp da Doutora
-                    </summary>
-                    <div className="mt-3 space-y-2 text-sm">
-                      <a
-                        href={directWhatsAppLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block rounded-sm border border-slate-200 px-3 py-2 text-center text-slate-700 transition hover:bg-slate-50"
-                      >
-                        Quero iniciar por texto
-                      </a>
-                      <a
-                        href={audioWhatsAppLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block rounded-sm border border-slate-200 px-3 py-2 text-center text-slate-700 transition hover:bg-slate-50"
-                      >
-                        Quero explicar meu caso por áudio
-                      </a>
-                      <a
-                        href={alternativeCaseWhatsAppLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block rounded-sm border border-slate-200 px-3 py-2 text-center text-slate-700 transition hover:bg-slate-50"
-                      >
-                        Meu caso pode ser diferente
-                      </a>
-                    </div>
-                  </details>
-
-                  <p className="text-justify text-xs leading-6 text-slate-600">
-                    O envio deste formulário organiza o contato inicial e não configura contratação automática nem
-                    consultoria jurídica imediata.
-                  </p>
-                </form>
-              </Card>
+          <div className="flex items-start gap-4 rounded-xl border border-white/12 bg-[#121212] p-5">
+            <div className="mt-0.5 rounded-lg border border-[#c5a880]/30 bg-[#c5a880]/10 p-3 text-[#c5a880]">
+              <MapPin className="h-5 w-5" />
+            </div>
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#faf9f6]/65">
+                Localização e Abrangência
+              </p>
+              <p className="mt-1 font-serif text-base font-bold text-[#faf9f6]">
+                {siteConfig.contact.city}
+              </p>
+              <p className="mt-1 text-xs text-[#faf9f6]/70">
+                {siteConfig.contact.address} • Presencial e Digital
+              </p>
             </div>
           </div>
         </div>
       </div>
 
-      <footer className="border-t border-white/10 px-4 md:px-8 py-12 bg-foreground/50">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <h3 className="font-bold text-lg mb-4">{siteConfig.brand.name}</h3>
-              <p className="text-white/82 text-sm mb-4">
-                {siteConfig.brand.title}
-              </p>
+      {/* Rodapé Institucional e Avisos Legais Obrigatórios (OAB/BA e LGPD) */}
+      <footer className="border-t border-white/10 bg-[#070707] px-4 py-14 sm:px-6 md:px-8">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
+            <div className="md:col-span-1">
               <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-[#c5a880]/40 bg-[#121212] font-serif text-base font-bold text-[#c5a880]">
+                  BD
+                </div>
+                <div>
+                  <h3 className="font-serif text-base font-bold text-[#faf9f6]">
+                    {siteConfig.brand.shortName}
+                  </h3>
+                  <p className="text-xs uppercase tracking-[0.18em] text-[#c5a880]">
+                    {siteConfig.brand.oab}
+                  </p>
+                </div>
+              </div>
+              <p className="mt-4 text-xs leading-relaxed text-[#faf9f6]/75">
+                Escritório de advocacia boutique sediado em Salvador/BA, com atendimento presencial e digital. Triagem e coordenação feitas pessoalmente pela Dra. Bruna Dourado, com apoio de banca associada especializada.
+              </p>
+              <div className="mt-4 flex items-center gap-3">
                 {siteConfig.social.instagram && (
                   <a
                     href={siteConfig.social.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-full bg-white/5 hover:bg-white/10 text-white/80 hover:text-white transition-colors"
+                    className="rounded-full border border-white/15 bg-white/5 p-2 text-[#faf9f6]/80 transition hover:border-[#c5a880] hover:text-[#c5a880]"
                     aria-label="Instagram da Dra. Bruna Dourado"
                   >
-                    <Instagram className="w-4 h-4" />
+                    <Instagram className="h-4 w-4" />
                   </a>
                 )}
                 {siteConfig.social.linkedin && (
@@ -242,57 +133,86 @@ Mensagem breve: ${formData.message}`
                     href={siteConfig.social.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-full bg-white/5 hover:bg-white/10 text-white/80 hover:text-white transition-colors"
+                    className="rounded-full border border-white/15 bg-white/5 p-2 text-[#faf9f6]/80 transition hover:border-[#c5a880] hover:text-[#c5a880]"
                     aria-label="LinkedIn da Dra. Bruna Dourado"
                   >
-                    <Linkedin className="w-4 h-4" />
+                    <Linkedin className="h-4 w-4" />
                   </a>
                 )}
               </div>
             </div>
 
             <div>
-              <h4 className="font-semibold mb-4">Navegação</h4>
-              <ul className="space-y-2 text-sm text-white/82">
-                <li><a href="/" className="hover:text-white transition-colors">Início</a></li>
-                <li><a href="/areas" className="hover:text-white transition-colors">Áreas de Atuação</a></li>
-                <li><a href="/sobre" className="hover:text-white transition-colors">Sobre</a></li>
-                <li><a href="/contato" className="hover:text-white transition-colors">Contato</a></li>
-                <li><a href="/blog" className="hover:text-white transition-colors">Blog</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">Áreas</h4>
-              <ul className="space-y-2 text-sm text-white/82">
+              <h4 className="font-serif text-sm font-bold uppercase tracking-[0.18em] text-[#c5a880]">
+                6 Eixos de Atuação
+              </h4>
+              <ul className="mt-4 space-y-2.5 text-sm text-[#faf9f6]/80">
                 {siteConfig.areas.map((area) => (
-                  <li key={area.id}><a href={`/areas/${area.id}`} className="hover:text-white transition-colors">{area.title}</a></li>
+                  <li key={area.id}>
+                    <Link href={area.route} className="transition hover:text-[#c5a880]">
+                      {area.title}
+                    </Link>
+                  </li>
                 ))}
               </ul>
             </div>
 
             <div>
-              <h4 className="font-semibold mb-4">Legal</h4>
-              <ul className="space-y-2 text-sm text-white/82">
-                <li><span>{siteConfig.compliance.informational}</span></li>
-                <li><span>{siteConfig.compliance.ethics}</span></li>
+              <h4 className="font-serif text-sm font-bold uppercase tracking-[0.18em] text-[#c5a880]">
+                Institucional
+              </h4>
+              <ul className="mt-4 space-y-2.5 text-sm text-[#faf9f6]/80">
+                <li>
+                  <Link href="/" className="transition hover:text-[#c5a880]">
+                    Início
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/sobre" className="transition hover:text-[#c5a880]">
+                    Sobre a Dra. Bruna e a Banca
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/blog" className="transition hover:text-[#c5a880]">
+                    Artigos Informativos
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contato" className="transition hover:text-[#c5a880]">
+                    Contato e Triagem
+                  </Link>
+                </li>
+                <li>
+                  <a href="/llms.txt" className="transition hover:text-[#c5a880]">
+                    Índice Estruturado (llms.txt)
+                  </a>
+                </li>
               </ul>
+            </div>
+
+            <div>
+              <h4 className="flex items-center gap-1.5 font-serif text-sm font-bold uppercase tracking-[0.18em] text-[#c5a880]">
+                <ShieldCheck className="h-4 w-4" />
+                Conformidade Ética OAB/BA e LGPD
+              </h4>
+              <div className="mt-4 space-y-2.5 text-xs leading-relaxed text-[#faf9f6]/75">
+                <p>{siteConfig.compliance.informational}</p>
+                <p>{siteConfig.compliance.contractDisclaimer}</p>
+                <p className="flex items-start gap-1.5">
+                  <Lock className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#c5a880]" />
+                  <span>{siteConfig.compliance.privacy}</span>
+                </p>
+              </div>
             </div>
           </div>
 
-          <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="mb-4 text-sm text-white/76 md:mb-0">
-              © 2026 {siteConfig.brand.name}. Todos os direitos reservados.
+          <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-[#faf9f6]/65 md:flex-row">
+            <p>
+              © {new Date().getFullYear()} {siteConfig.brand.legalName} ({siteConfig.brand.oab}). Todos os direitos reservados.
             </p>
-            <div className="flex items-center gap-2 text-sm text-white/76">
-              <span>OAB/BA:</span>
-              <span className="font-semibold">71507</span>
-            </div>
-            <div className="flex items-center gap-2 text-sm text-white/76">
-              Desenvolvido por <a href="https://ssantana.com.br" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">ssantana.com.br</a>
-              <span className="mx-1">|</span>
-              <span>versão {new Date().getFullYear()}{(new Date().getMonth()+1).toString().padStart(2,'0')}{new Date().getDate().toString().padStart(2,'0')}{new Date().getHours().toString().padStart(2,'0')}{new Date().getMinutes().toString().padStart(2,'0')}</span>
-            </div>
+            <p>
+              Salvador e Região Metropolitana — Bahia, Brasil • WhatsApp: {siteConfig.contact.phoneDisplay}
+            </p>
           </div>
         </div>
       </footer>

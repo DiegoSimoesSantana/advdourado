@@ -1,215 +1,190 @@
+'use client'
+
+import { useState } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import {
-  ArrowUpRight,
+  ArrowRight,
   BriefcaseBusiness,
   Building2,
   HeartHandshake,
   ShieldCheck,
   Home,
   Stethoscope,
-  ShieldEllipsis,
+  Mic,
+  UserCheck,
 } from 'lucide-react'
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
+import { Button } from '@/components/ui/button'
+import { BrandEmblem } from '@/components/brand-emblem'
+import { createWhatsAppLink, siteConfig } from '@/lib/site-config'
 
-const featuredAreas = [
-  {
-    id: 'trabalhista',
-    title: 'Trabalhista (Empresa e Trabalhador)',
-    eyebrow: 'Trabalhista',
-    problem:
-      'Análise de direitos e deveres para empresa e trabalhador, com foco em prevenção de passivo, organização documental e estratégia processual quando necessária.',
-    highlights: [
-      'Consultoria para empresas e RH',
-      'Orientação a trabalhadores em verbas e jornada',
-      'Condução técnica com linguagem clara e prazo definido',
-    ],
-    icon: BriefcaseBusiness,
-  },
-  {
-    id: 'educacional',
-    title: 'Educacional (Instituições de Ensino)',
-    eyebrow: 'Escolas, cursos e faculdades',
-    problem:
-      'Atendimento voltado a instituições de ensino para contratos, prevenção de conflitos, políticas internas, formação de equipes e conformidade educacional.',
-    highlights: [
-      'Revisão de contratos educacionais',
-      'Apoio em conflitos com responsáveis e rotinas institucionais',
-      'Integração com Direito Digital e LGPD na rotina escolar',
-    ],
-    icon: Building2,
-  },
-  {
-    id: 'digital',
-    title: 'Direito Digital e LGPD',
-    eyebrow: 'Proteção de dados e governança',
-    problem:
-      'Estruturação de protocolos para tratamento de dados, prevenção de incidentes digitais e adequação prática à LGPD com foco em operação real.',
-    highlights: [
-      'Mapeamento de riscos e plano de adequação em LGPD',
-      'Resposta a incidentes e comunicação com titulares',
-      'Treinamento de equipes para cultura de proteção de dados',
-    ],
-    icon: ShieldEllipsis,
-  },
-  {
-    id: 'familia',
-    title: 'Família e Divórcio Consensual',
-    eyebrow: 'Acordos e reorganização familiar',
-    problem:
-      'Condução humanizada para acordos familiares, com foco em soluções consensuais, previsibilidade e preservação dos vínculos.',
-    highlights: [
-      'Divórcio consensual e acordos',
-      'Guarda e alimentos com orientação prática',
-      'Estrutura jurídica segura para formalização',
-    ],
-    icon: HeartHandshake,
-  },
-  {
-    id: 'consumidor',
-    title: 'Consumidor (com foco patrimonial)',
-    eyebrow: 'Proteção do patrimônio pessoal',
-    problem:
-      'Atuação em cobranças indevidas, contratos abusivos e situações que afetam diretamente o patrimônio financeiro do cliente.',
-    highlights: [
-      'Fraudes e cobranças indevidas',
-      'Revisão contratual em relações de consumo',
-      'Medidas para reduzir perdas e recuperar valores',
-    ],
-    icon: ShieldCheck,
-  },
-  {
-    id: 'imoveis-inventario',
-    title: 'Imóveis e Inventário Consensual',
-    eyebrow: 'Apenas demandas consensuais',
-    problem:
-      'Suporte para contratos imobiliários e inventário extrajudicial quando há consenso entre as partes e necessidade de condução técnica segura.',
-    highlights: [
-      'Inventário consensual em cartório',
-      'Acordos para partilha amigável',
-      'Revisão de documentos imobiliários essenciais',
-    ],
-    icon: Home,
-    href: '/areas/imoveis-inventario',
-  },
-  {
-    id: 'planos-saude',
-    title: 'Planos de Saúde (Beneficiário)',
-    eyebrow: 'Defesa exclusiva do paciente',
-    problem:
-      'Atuação para beneficiários em negativas de cobertura, reajustes e urgências médicas, com triagem célere e encaminhamento estratégico.',
-    highlights: [
-      'Negativa de procedimento e exame',
-      'Revisão de reajustes abusivos',
-      'Apoio em situações urgentes',
-    ],
-    icon: Stethoscope,
-  },
-] as const
+const areaIcons: Record<string, typeof BriefcaseBusiness> = {
+  trabalhista: BriefcaseBusiness,
+  educacional: Building2,
+  familia: HeartHandshake,
+  consumidor: ShieldCheck,
+  imobiliario: Home,
+  saude: Stethoscope,
+}
+
+type AudienceFilter = 'ALL' | 'PF' | 'PJ'
 
 export function ServicesSection() {
-  return (
-    <section id="areas" className="bg-gradient-to-br from-[#f7f3eb] via-[#efe8dc] to-[#e7dece] px-4 py-24 sm:px-6 md:px-8">
-      <div className="mx-auto grid w-full max-w-6xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-        <div className="lg:sticky lg:top-24">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-[#8a6a3d]">Áreas de Atuação</p>
-          <h2 className="mb-5 text-4xl font-serif leading-tight text-slate-900 md:text-5xl">
-            Escolha a especialidade e avance para o atendimento com a Dra. Bruna.
-          </h2>
-          <p className="max-w-xl text-justify text-lg leading-8 text-slate-800">
-            Esta página institucional organiza seu caminho por área. Em cada especialidade, você entende direitos,
-            deveres e opções reais de solução antes do contato final por WhatsApp ou e-mail.
-          </p>
-          <div className="mt-5 flex flex-wrap gap-3 text-sm">
-            <Link href="/sobre" className="inline-flex cursor-pointer items-center gap-2 font-semibold text-slate-800 underline decoration-[#b89052]/60 underline-offset-4 transition hover:text-[#8a6a3d]">
-              Saiba mais sobre formação da Dra. Bruna
-              <ArrowUpRight className="h-4 w-4" />
-            </Link>
-            <Link href="/contato" className="inline-flex cursor-pointer items-center gap-2 font-semibold text-slate-800 underline decoration-[#b89052]/60 underline-offset-4 transition hover:text-[#8a6a3d]">
-              Ir para contato
-              <ArrowUpRight className="h-4 w-4" />
-            </Link>
-          </div>
+  const [audienceFilter, setAudienceFilter] = useState<AudienceFilter>('ALL')
 
-          <div className="mt-8 overflow-hidden rounded-sm border border-black/10 bg-white shadow-sm">
-            <div className="relative h-[320px] w-full">
-              <Image
-                src="/images/foto-perfil.jpg"
-                alt="Advogada Bruna Dourado"
-                fill
-                sizes="(max-width: 1024px) 100vw, 420px"
-                className="object-cover"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/20 to-transparent" />
-              <span className="absolute bottom-4 right-4 rounded-full border border-white/20 bg-slate-950/70 px-4 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-white">
-                OAB/BA 71507
-              </span>
-            </div>
-            <div className="border-t border-black/10 px-5 py-4">
-              <p className="text-sm uppercase tracking-[0.22em] text-slate-600">Condução estratégica</p>
-              <p className="mt-2 text-justify text-base leading-7 text-slate-800">
-                Primeiro contato e triagem conduzidos pela Dra. Bruna Dourado. Conforme o caso, especialistas associados atuam sob coordenação estratégica.
-              </p>
-            </div>
+  const audioWhatsAppLink = createWhatsAppLink(
+    'Olá, Dra. Bruna Dourado. Estou na página inicial do site e prefiro enviar uma mensagem de áudio para explicar meu caso.',
+  )
+
+  const filteredAreas = siteConfig.areas.filter((area) => {
+    if (audienceFilter === 'ALL') return true
+    if (audienceFilter === 'PF') {
+      return area.interactiveScenarios.some((s) => s.profile === 'PF')
+    }
+    return area.interactiveScenarios.some((s) => s.profile === 'PJ')
+  })
+
+  return (
+    <section id="eixos" className="border-b border-border bg-background px-4 py-20 sm:px-6 md:px-8">
+      <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-3xl text-center">
+          <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-primary/35 bg-primary/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+            <BrandEmblem size="sm" className="h-5 w-5" />
+            <span>Eixos de Atuação Especializada</span>
+          </div>
+          <h2 className="mt-2 font-serif text-3xl font-bold leading-tight text-foreground sm:text-4xl md:text-5xl">
+            6 Eixos Jurídicos sob Coordenação da Dra. Bruna Dourado
+          </h2>
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
+            Selecione o seu perfil — <strong>Pessoa Física (PF)</strong> ou <strong>Empresa / Instituição de Ensino (PJ)</strong> — e acesse o eixo correspondente para ver escopo, prazos legais e atendimento direto.
+          </p>
+
+          {/* Filtro Rápido PF vs PJ */}
+          <div className="mt-7 inline-flex flex-wrap items-center justify-center gap-2 rounded-xl border border-border bg-secondary/60 p-1.5">
+            <button
+              type="button"
+              onClick={() => setAudienceFilter('ALL')}
+              className={`rounded-lg px-4 py-2 text-xs font-bold transition sm:text-sm ${
+                audienceFilter === 'ALL'
+                  ? 'bg-primary text-primary-foreground shadow-xs'
+                  : 'text-muted-foreground hover:text-foreground'
+              }`}
+            >
+              Todos os 6 Eixos
+            </button>
+            <button
+              type="button"
+              onClick={() => setAudienceFilter('PF')}
+              className={`inline-flex items-center gap-1.5 rounded-lg px-4 py-2 text-xs font-bold transition sm:text-sm ${
+                audienceFilter === 'PF'
+                  ? 'bg-primary text-primary-foreground shadow-xs'
+                  : 'text-muted-foreground hover:text-foreground'
+              }`}
+            >
+              <UserCheck className="h-3.5 w-3.5" />
+              Para Você e Família (PF)
+            </button>
+            <button
+              type="button"
+              onClick={() => setAudienceFilter('PJ')}
+              className={`inline-flex items-center gap-1.5 rounded-lg px-4 py-2 text-xs font-bold transition sm:text-sm ${
+                audienceFilter === 'PJ'
+                  ? 'bg-primary text-primary-foreground shadow-xs'
+                  : 'text-muted-foreground hover:text-foreground'
+              }`}
+            >
+              <Building2 className="h-3.5 w-3.5" />
+              Para Empresas e Escolas (PJ)
+            </button>
           </div>
         </div>
 
-        <div className="rounded-sm border border-black/10 bg-white/95 p-6 shadow-sm sm:p-8">
-          <Accordion type="single" collapsible defaultValue={featuredAreas[0].id} className="w-full">
-            {featuredAreas.map((area) => {
-              const Icon = area.icon
+        {/* Grid dos Cards de Especialidades com botão "Conhecer Eixo" */}
+        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {filteredAreas.map((area) => {
+            const Icon = areaIcons[area.id] ?? BriefcaseBusiness
 
-              return (
-                <AccordionItem key={area.id} value={area.id} className="border-black/10 py-1">
-                  <AccordionTrigger className="cursor-pointer py-6 hover:no-underline">
-                    <div className="flex items-start gap-4 text-left">
-                      <div className="mt-1 rounded-sm border border-[#b89052]/25 bg-[#b89052]/10 p-3 text-[#8a6a3d]">
-                        <Icon className="h-5 w-5" />
-                      </div>
-                      <div>
-                        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-600">{area.eyebrow}</p>
-                        <h3 className="mt-2 text-2xl font-serif text-slate-900">{area.title}</h3>
-                      </div>
+            return (
+              <article
+                key={area.id}
+                className="group flex flex-col justify-between rounded-2xl border border-border bg-card p-6 text-card-foreground shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-primary/60 hover:shadow-md sm:p-7"
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-primary/30 bg-primary/10 text-primary">
+                      <Icon className="h-6 w-6" />
                     </div>
-                  </AccordionTrigger>
-                  <AccordionContent className="pb-7 pl-[4.5rem] pr-10">
-                    <div className="space-y-3">
-                      {area.highlights.map((highlight) => (
-                        <div key={highlight} className="flex items-start gap-3 border-l border-[#b89052]/45 pl-4 text-justify text-sm leading-7 text-slate-700">
-                          <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#b89052]" />
-                          <span>{highlight}</span>
-                        </div>
-                      ))}
+                    <div className="flex flex-col items-end gap-1">
+                      <span className="rounded-full border border-primary/35 bg-primary/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-primary">
+                        {area.targetAudienceBadge}
+                      </span>
+                      <span className="text-[11px] font-medium text-muted-foreground">
+                        {area.eyebrow}
+                      </span>
                     </div>
-                    <Link
-                      href={area.href ?? `/areas/${area.id}`}
-                      className="mt-6 inline-flex cursor-pointer items-center gap-2 text-sm font-semibold text-slate-900 transition hover:text-[#8a6a3d]"
-                    >
-                      Saiba mais desta frente
-                      <ArrowUpRight className="h-4 w-4" />
+                  </div>
+
+                  <h3 className="mt-5 font-serif text-2xl font-bold text-foreground transition-colors group-hover:text-primary">
+                    {area.title}
+                  </h3>
+
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    {area.summary}
+                  </p>
+
+                  <ul className="mt-5 space-y-2 border-t border-border pt-4">
+                    {area.highlights.map((highlight) => (
+                      <li
+                        key={highlight}
+                        className="flex items-start gap-2.5 text-xs leading-relaxed text-foreground/85 sm:text-sm"
+                      >
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                        <span>{highlight}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="mt-7 pt-2">
+                  <Button
+                    asChild
+                    className="w-full rounded-lg bg-primary py-5 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90"
+                  >
+                    <Link href={area.route}>
+                      <span>Conhecer Eixo</span>
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Link>
-                  </AccordionContent>
-                </AccordionItem>
-              )
-            })}
-          </Accordion>
+                  </Button>
+                </div>
+              </article>
+            )
+          })}
+        </div>
 
-          <div className="mt-8 border-t border-black/10 pt-6 text-justify text-sm text-slate-700">
-            Cada área possui um caminho interno de funil: explicação objetiva, direcionamento do caso e CTA de contato direto para início do atendimento.
-            <div className="mt-3">
-              <Link href="/areas" className="inline-flex cursor-pointer items-center gap-2 font-medium text-slate-800 underline decoration-[#b89052]/60 underline-offset-4 transition hover:text-[#8a6a3d]">
-                Ver todas as especialidades
-                <ArrowUpRight className="h-4 w-4" />
-              </Link>
-              <p className="mt-3 text-sm text-slate-700">
-                Quer explorar conteúdos antes de decidir?
-                <Link href="/blog" className="ml-1 cursor-pointer font-semibold text-slate-900 underline decoration-[#b89052]/60 underline-offset-4 transition hover:text-[#8a6a3d]">
-                  Entrar no blog jurídico.
-                </Link>
-              </p>
-            </div>
+        {/* Faixa de Apoio Direto / Áudio */}
+        <div className="mt-12 flex flex-col items-center justify-between gap-6 rounded-2xl border border-primary/30 bg-secondary/70 p-6 sm:flex-row sm:p-8">
+          <div className="max-w-2xl text-center sm:text-left">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+              Dúvida sobre qual eixo escolher?
+            </p>
+            <h3 className="mt-1.5 font-serif text-2xl font-bold text-foreground">
+              Fale diretamente com a Dra. Bruna Dourado, sem triagem robótica.
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              Você pode enviar uma mensagem de áudio no WhatsApp explicando o contexto com suas próprias palavras (seja Pessoa Física ou Empresa/Escola). A Doutora avaliará pessoalmente o enquadramento.
+            </p>
           </div>
+
+          <Button
+            asChild
+            size="lg"
+            variant="outline"
+            className="shrink-0 rounded-lg border-2 border-primary bg-background px-6 py-6 text-sm font-bold text-foreground hover:bg-primary hover:text-primary-foreground"
+          >
+            <a href={audioWhatsAppLink} target="_blank" rel="noopener noreferrer">
+              <Mic className="mr-2 h-4 w-4 text-primary" />
+              Prefiro enviar mensagem de áudio no WhatsApp
+            </a>
+          </Button>
         </div>
       </div>
     </section>

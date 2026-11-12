@@ -18,19 +18,40 @@ export async function POST(request: Request) {
       return NextResponse.json({ ok: false, error: 'Campos obrigatórios ausentes.' }, { status: 400 })
     }
 
-    const lead = await saveLead(payload)
+    // Se a variável DATABASE_URL não estiver configurada na hospedagem, degradamos graciosamente (202)
+    // sem gerar erro 500, pois o fluxo principal de conversão abre o WhatsApp da Doutora imediatamente.
+    if (!process.env.DATABASE_URL) {
+      return NextResponse.json(
+        {
+          ok: true,
+          persisted: false,
+          channel: 'whatsapp_direct',
+        },
+        { status: 202 },
+      )
+    }
 
-    return NextResponse.json({ ok: true, lead })
+    try {
+      const lead = await saveLead(payload)
+      return NextResponse.json({ ok: true, persisted: true, lead })
+    } catch (dbError) {
+      console.warn('Aviso: falha ao persistir lead no banco, mantendo fluxo via WhatsApp:', dbError)
+      return NextResponse.json(
+        {
+          ok: true,
+          persisted: false,
+          channel: 'whatsapp_direct',
+        },
+        { status: 202 },
+      )
+    }
   } catch (error) {
     return NextResponse.json(
       {
         ok: false,
-        error:
-          error instanceof Error
-            ? error.message
-            : 'Falha ao processar o envio. Verifique as variáveis de ambiente.',
+        error: error instanceof Error ? error.message : 'Formato de requisição inválido.',
       },
-      { status: 500 },
+      { status: 400 },
     )
   }
 }

@@ -1,0 +1,268 @@
+{
+  "name": "ADVDourado - WhatsApp Assistant (Evolution API + Neon IA)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "advdourado-whatsapp",
+        "options": {}
+      },
+      "name": "Webhook Evolution API",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        180,
+        300
+      ],
+      "id": "node-webhook-evolution"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extração inteligente de dados da Evolution API v2\nconst body = $input.first().json.body || $input.first().json;\n\nconst eventType = body.event || body.type || 'messages.upsert';\nconst data = body.data || body;\nconst key = data.key || {};\nconst message = data.message || {};\n\nconst remoteJid = key.remoteJid || '';\nconst fromMe = Boolean(key.fromMe);\nconst isGroup = remoteJid.includes('@g.us');\n\n// Extrai texto da mensagem\nlet messageText = '';\nif (message.conversation) {\n  messageText = message.conversation;\n} else if (message.extendedTextMessage?.text) {\n  messageText = message.extendedTextMessage.text;\n} else if (message.imageMessage?.caption) {\n  messageText = message.imageMessage.caption;\n} else if (message.videoMessage?.caption) {\n  messageText = message.videoMessage.caption;\n} else if (message.buttonsResponseMessage?.selectedButtonId) {\n  messageText = message.buttonsResponseMessage.selectedButtonId;\n} else if (message.listResponseMessage?.singleSelectReply?.selectedRowId) {\n  messageText = message.listResponseMessage.singleSelectReply.selectedRowId;\n}\n\nconst cleanPhone = remoteJid.replace('@s.whatsapp.net', '').replace(/\\D/g, '');\nconst isDiego = cleanPhone.endsWith('88068222') || cleanPhone === '71988068222' || cleanPhone === '7188068222';\n\nlet action = 'process_bot';\nif (isGroup) {\n  action = 'ignore_group';\n} else if (fromMe) {\n  action = 'human_intervention';\n} else if (!messageText || messageText.trim().length === 0) {\n  action = 'ignore_empty';\n}\n\nreturn {\n  json: {\n    action,\n    remoteJid,\n    senderPhone: cleanPhone,\n    messageText: messageText.trim(),\n    isDiego,\n    pushName: data.pushName || 'Cliente',\n    fromMe,\n    eventType\n  }\n};"
+      },
+      "name": "Filtro e Extração",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        400,
+        300
+      ],
+      "id": "node-code-filter"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.action }}",
+              "value2": "process_bot"
+            }
+          ]
+        }
+      },
+      "name": "É Mensagem para o Bot?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        620,
+        300
+      ],
+      "id": "node-if-process"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://advdourado.com.br/api/bot/chat",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"senderPhone\": \"{{ $json.senderPhone }}\",\n  \"message\": \"{{ $json.messageText }}\",\n  \"forceTestMode\": {{ $json.isDiego }}\n}",
+        "options": {
+          "timeout": 15000
+        }
+      },
+      "name": "Consultar IA e Neon (ADVDourado)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        280
+      ],
+      "id": "node-http-advdourado"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.reply }}",
+              "operation": "isNotEmpty"
+            }
+          ],
+          "boolean": [
+            {
+              "value1": "={{ $json.ok }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "name": "Possui Resposta?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1080,
+        280
+      ],
+      "id": "node-if-has-reply"
+    },
+    {
+      "parameters": {
+        "amount": 3,
+        "unit": "seconds"
+      },
+      "name": "Delay Humanizado (3s)",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1300,
+        260
+      ],
+      "id": "node-wait-delay",
+      "webhookId": "delay-3s"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:8080/message/sendText/advdourado",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "ADVDourado_Secret_Key_2025_Diego"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"number\": \"{{ $('Filtro e Extração').item.json.senderPhone }}\",\n  \"text\": \"{{ $json.reply }}\",\n  \"delay\": 1200\n}",
+        "options": {}
+      },
+      "name": "Evolution API (Enviar Resposta)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1520,
+        260
+      ],
+      "id": "node-evolution-send"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.action }}",
+              "value2": "human_intervention"
+            }
+          ]
+        }
+      },
+      "name": "Bruna Interveio no Celular?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        860,
+        480
+      ],
+      "id": "node-if-human"
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "https://advdourado.com.br/api/bot/leads",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"phone\": \"{{ $json.senderPhone }}\",\n  \"status\": \"encaminhado_bruna\",\n  \"conversation_step\": \"pausado_humano\"\n}",
+        "options": {}
+      },
+      "name": "Pausar Bot no Neon",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1080,
+        480
+      ],
+      "id": "node-pause-neon"
+    }
+  ],
+  "connections": {
+    "Webhook Evolution API": {
+      "main": [
+        [
+          {
+            "node": "Filtro e Extração",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filtro e Extração": {
+      "main": [
+        [
+          {
+            "node": "É Mensagem para o Bot?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "É Mensagem para o Bot?": {
+      "main": [
+        [
+          {
+            "node": "Consultar IA e Neon (ADVDourado)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Bruna Interveio no Celular?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Consultar IA e Neon (ADVDourado)": {
+      "main": [
+        [
+          {
+            "node": "Possui Resposta?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Possui Resposta?": {
+      "main": [
+        [
+          {
+            "node": "Delay Humanizado (3s)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delay Humanizado (3s)": {
+      "main": [
+        [
+          {
+            "node": "Evolution API (Enviar Resposta)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Bruna Interveio no Celular?": {
+      "main": [
+        [
+          {
+            "node": "Pausar Bot no Neon",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

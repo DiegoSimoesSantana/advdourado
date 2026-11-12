@@ -36,7 +36,7 @@
 **[ ] Artigo 3: Overbooking - Seus Direitos Como Passageiro**
 - Tipo: Educational + Case Studies
 - Público: Passageiros removidos de voos
-- CTA: Consultoria gratuita
+- CTA: Triagem inicial direta com a Doutora
 - Links Internos: Voo cancelado + Cobrança indevida
 - Keywords: overbooking, bumping, direitos passageiro aéreo
 
@@ -112,7 +112,7 @@ Ao criar cada novo artigo, seguir:
 ### 5. Conversão
 - [ ] CTA adequado para estágio do funil
 - [ ] WhatsApp link personalizado
-- [ ] Oferta clara (análise grátis, consulta, etc)
+- [ ] Convite ético para triagem e consulta formal (Provimento 205/2021 OAB)
 
 ---
 

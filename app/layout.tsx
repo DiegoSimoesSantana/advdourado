@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Cormorant_Garamond, Manrope } from 'next/font/google'
+import { Inter, Playfair_Display } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import Script from 'next/script'
 import './globals.css'
@@ -7,15 +7,30 @@ import { HeaderNav } from '@/components/header-nav'
 import { ScrollDepthTracker } from '@/components/scroll-depth-tracker'
 import { siteConfig } from '@/lib/site-config'
 
-const manrope = Manrope({ subsets: ['latin'], variable: '--font-manrope' })
-const cormorant = Cormorant_Garamond({ subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-display' })
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-inter',
+})
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['500', '600', '700'],
+  variable: '--font-playfair',
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.contact.siteUrl),
-  title: siteConfig.seo.title,
+  title: {
+    default: siteConfig.seo.title,
+    template: `%s | ${siteConfig.brand.shortName} (${siteConfig.brand.oab})`,
+  },
   description: siteConfig.seo.description,
   keywords: siteConfig.seo.keywords,
-  generator: 'v0.app',
+  authors: [{ name: `${siteConfig.brand.shortName} — ${siteConfig.brand.oab}` }],
+  alternates: {
+    canonical: siteConfig.contact.siteUrl,
+  },
   openGraph: {
     title: siteConfig.seo.title,
     description: siteConfig.seo.description,
@@ -23,6 +38,11 @@ export const metadata: Metadata = {
     siteName: siteConfig.brand.legalName,
     locale: 'pt_BR',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteConfig.seo.title,
+    description: siteConfig.seo.description,
   },
   icons: {
     icon: [
@@ -43,14 +63,91 @@ export const metadata: Metadata = {
   },
 }
 
+const globalStructuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': ['LegalService', 'Attorney'],
+      '@id': `${siteConfig.contact.siteUrl}/#legalservice`,
+      name: siteConfig.brand.legalName,
+      alternateName: 'Dra. Bruna Dourado Advocacia Boutique',
+      description: siteConfig.seo.description,
+      url: siteConfig.contact.siteUrl,
+      telephone: '+55-71-99236-3943',
+      email: siteConfig.contact.email,
+      image: `${siteConfig.contact.siteUrl}/images/foto-perfil.jpg`,
+      priceRange: 'Sob consulta formal (Tabela OAB/BA)',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Rua Mandiguaçun, nº 50, Piatã',
+        addressLocality: 'Salvador',
+        addressRegion: 'BA',
+        postalCode: '41650-000',
+        addressCountry: 'BR',
+      },
+      areaServed: [
+        { '@type': 'City', name: 'Salvador' },
+        { '@type': 'City', name: 'Lauro de Freitas' },
+        { '@type': 'City', name: 'Camaçari' },
+        { '@type': 'AdministrativeArea', name: 'Região Metropolitana de Salvador' },
+        { '@type': 'State', name: 'Bahia' },
+      ],
+      founder: {
+        '@type': 'Person',
+        name: 'Dra. Bruna Dourado da Silva',
+        jobTitle: 'Advogada Titular (OAB/BA 71507)',
+        alumniOf: {
+          '@type': 'CollegeOrUniversity',
+          name: 'Universidade do Estado da Bahia (UNEB)',
+        },
+      },
+      knowsAbout: [
+        'Direito Trabalhista',
+        'Direito Educacional Institucional B2B',
+        'Direito de Família Consensual e Extrajudicial',
+        'Direito do Consumidor e Patrimonial',
+        'Direito Imobiliário e Inventário Extrajudicial',
+        'Direito à Saúde e Planos de Saúde',
+      ],
+      sameAs: [siteConfig.social.instagram, siteConfig.social.linkedin],
+    },
+  ],
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" suppressHydrationWarning>
       <head>
+        {/* Detecção Automática de Tema (Light/Dark Mode) com window.matchMedia e persistência em localStorage */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var storageKey = 'advdourado-theme';
+                  var saved = localStorage.getItem(storageKey);
+                  var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  var isDark = saved ? saved === 'dark' : prefersDark;
+                  if (isDark) {
+                    document.documentElement.classList.add('dark');
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+        {/* Schema.org LegalService / Attorney */}
+        <script
+          type="application/ld+json"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(globalStructuredData) }}
+        />
         {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{
@@ -63,7 +160,7 @@ export default function RootLayout({
             `,
           }}
         />
-        {/* Google Analytics (mantido) */}
+        {/* Google Analytics */}
         <Script
           strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-00L2F10Y9W"
@@ -82,20 +179,16 @@ export default function RootLayout({
             `,
           }}
         />
-        {/* Fontes premium */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
-        <style>{`
-          body, .font-sans { font-family: 'Inter', sans-serif; }
-          h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
-        `}</style>
       </head>
-      <body className={`${manrope.variable} ${cormorant.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-background text-foreground`}>
         {/* Google Tag Manager (noscript) */}
         <noscript>
-          <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5CDJ5RCS"
-                  height="0" width="0" style={{display:'none',visibility:'hidden'}}></iframe>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-5CDJ5RCS"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
         </noscript>
         <HeaderNav />
         <ScrollDepthTracker />

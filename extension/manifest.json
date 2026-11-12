@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "ADVDourado - WhatsApp Assistant & Triagem IA",
+  "version": "1.0.0",
+  "description": "Assistente inteligente da Dra. Bruna Dourado integrado ao WhatsApp Web com IA, triagem e Neon PostgreSQL.",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://web.whatsapp.com/*",
+    "https://*.advdourado.com.br/*",
+    "http://localhost:3000/*",
+    "http://127.0.0.1:3000/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "ADVDourado WhatsApp IA"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://web.whatsapp.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
