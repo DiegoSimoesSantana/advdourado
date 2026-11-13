@@ -1,23 +1,56 @@
 # Dra. Bruna Dourado — Advocacia e Assessoria Jurídica (OAB/BA 71507)
 > Escritório de advocacia boutique sediado em Salvador/BA, com atendimento presencial e digital. Triagem e coordenação feitas pessoalmente pela Dra. Bruna Dourado, com apoio de banca associada especializada.
 
-## Áreas de Atuação e Escopo
-- **Direito Trabalhista (`/trabalhista`):** Consultoria preventiva e Compliance para empresas/RH; defesa de direitos do trabalhador (rescisão, horas extras, assédio moral, desvio de função).
-- **Direito Educacional Institucional (`/educacional`):** Atuação exclusiva B2B para instituições de ensino (escolas, faculdades e cursos) — contratos educacionais, inclusão PcD (LBI) e políticas antibullying. Não atende alunos.
-- **Direito de Família (`/familia`):** Atuação exclusiva em divórcio consensual extrajudicial (cartório), pactos antenupciais e acordos amigáveis de guarda e pensão.
-- **Direito do Consumidor e Patrimonial (`/consumidor`):** Defesa contra fraudes bancárias/PIX, juros abusivos, negativações indevidas e proteção patrimonial.
-- **Imóveis e Inventário (`/imobiliario`):** Atuação exclusiva em inventários consensuais extrajudiciais (cartório), due diligence imobiliária e contratos.
-- **Planos de Saúde (`/saude`):** Defesa exclusiva de beneficiários/pacientes contra negativas de cobertura, cirurgias, medicamentos de alto custo e reajustes abusivos.
-
 ## Credenciais e Coordenação Institucional
 - **Titular:** Dra. Bruna Dourado da Silva — OAB/BA 71507
-- **Formação Acadêmica:** Graduada em Direito pela Universidade do Estado da Bahia (UNEB); Pós-graduada em Direito e Processo do Trabalho.
-- **Diferencial Humanístico:** Vivência como docente de Filosofia e Sociologia em instituições tradicionais de ensino de Salvador/BA, integrando didática, empatia e rigor técnico na prevenção e mediação de conflitos.
-- **Modelo de Atuação:** Banca Boutique Especializada — atendimento inicial e definição estratégica conduzidos pessoalmente pela Dra. Bruna Dourado, sem robôs de triagem, em atuação conjunta com advogados associados por especialidade.
+- **Qualificação:** Bacharela em Direito; Pós-Graduada em Direito e Processo do Trabalho.
+- **Diferencial Humanístico:** Vivência como docente de Filosofia e Sociologia em instituições tradicionais de ensino de Salvador/BA, integrando didática, escuta qualificada e rigor técnico na prevenção e resolução de conflitos.
+- **Modelo de Atuação:** Banca Boutique Especializada — o primeiro contato não passa por robôs de triagem; a análise inicial é conduzida pessoalmente pela Dra. Bruna Dourado em atuação coordenada com advogados associados por especialidade.
+
+## Áreas de Atuação, Escopo e Prazos Legais
+- **Direito Trabalhista (`https://advdourado.com.br/trabalhista`):**
+  - *Escopo:* Consultoria preventiva, auditoria de jornada e Compliance para empresas e RH; defesa técnica dos direitos do trabalhador (rescisão, rescisão indireta, horas extras, FGTS, assédio moral, desvio/acúmulo de função).
+  - *Prazos e Regras Principais:* Prazo bienal de até 2 anos após o desligamento para ajuizar ação; prescrição quinquenal dos últimos 5 anos contados da propositura (Art. 7º, XXIX da CF); prazo de 10 dias corridos para pagamento das verbas rescisórias (Art. 477, § 6º da CLT).
+- **Direito Educacional Institucional (`https://advdourado.com.br/educacional`):**
+  - *Escopo:* Atuação exclusiva B2B para instituições de ensino privadas (escolas, colégios, faculdades e cursos livres) — contratos educacionais anuais, gestão jurídica da inadimplência (Lei 9.870/1999), protocolos de Educação Inclusiva/PcD (LBI — Lei 13.146/2015), programas antibullying (Lei 14.811/2024), LGPD escolar e formação jurídica de gestores e docentes. Não atende alunos ou famílias contra escolas.
+  - *Prazos e Regras Principais:* Divulgação da proposta contratual e valor das anuidades em até 45 dias antes da data final de matrícula (Lei 9.870/1999); vedação de cobrança de taxa extra para aluno PcD (Art. 28, § 1º da LBI).
+- **Direito de Família (`https://advdourado.com.br/familia`):**
+  - *Escopo:* Atuação focada em soluções consensuais e extrajudiciais (em cartório ou via homologação amigável) — divórcio consensual extrajudicial (presencial ou digital via e-Notariado), reconhecimento e dissolução de união estável, pactos antenupciais, planejamento patrimonial e acordos amigáveis de guarda compartilhada, convivência e pensão alimentícia.
+- **Direito do Consumidor e Patrimonial (`https://advdourado.com.br/consumidor`):**
+  - *Escopo:* Defesa contra fraudes bancárias, golpes via PIX (Súmula 479 do STJ e protocolo MED), revisão de contratos bancários e juros abusivos, exclusão de negativação indevida (SPC/Serasa/Protesto) e consultoria preventiva em contratos de consumo.
+  - *Prazos e Regras Principais:* Prazo decadencial de 30 dias (serviços/produtos não duráveis) e 90 dias (duráveis) para vícios aparentes (Art. 26 do CDC); prazo prescricional de 5 anos para reparação de danos (Art. 27 do CDC); prazo de 5 dias úteis para baixa de restrição após quitação (Súmula 548 do STJ).
+- **Imóveis e Inventário (`https://advdourado.com.br/imobiliario`):**
+  - *Escopo:* Inventários consensuais extrajudiciais em Cartório de Notas (Resolução CNJ 571/2024), due diligence imobiliária para compra segura de imóveis residenciais e comerciais, contratos de compra e venda, permuta e locação (Lei 8.245/1991) e regularização registral.
+  - *Prazos e Regras Principais:* Prazo de 2 meses (60 dias) a contar do óbito para abertura do inventário (Art. 611 do CPC), evitando multa sobre o ITCMD (SEFAZ/BA); exigência de escritura pública para negócios imobiliários acima de 30 salários mínimos (Art. 108 do Código Civil).
+- **Planos de Saúde (`https://advdourado.com.br/saude`):**
+  - *Escopo:* Defesa exclusiva de beneficiários e pacientes contra negativas de cobertura de cirurgias, internações, exames, próteses/OPME, home care, terapias multidisciplinares (TEA/PcD), fornecimento de medicamentos de alto custo/oncológicos e revisão de reajustes abusivos por faixa etária ou sinistralidade.
+  - *Prazos e Regras Principais:* Limite máximo de 24 horas de carência para casos de urgência e emergência (Art. 35-C da Lei 9.656/98 e Súmula 597 do STJ); direito à justificativa formal da negativa por escrito (RN 395 da ANS); vedação ao cancelamento unilateral durante tratamento médico garantidor da sobrevivência ou incolumidade (Tema 1082 do STJ).
+
+## Artigos Jurídicos e Questões Respondidas (`/blog`)
+1. **Compliance Trabalhista para Empresas e RH:** Auditoria de jornada, banco de horas e prevenção de passivo (`https://advdourado.com.br/blog/compliance-trabalhista-empresas-salvador`)
+2. **Horas Extras e Prazos de 2 e 5 Anos na CLT:** Cálculo de jornada suplementar, intervalo intrajornada e prescrição trabalhista (`https://advdourado.com.br/blog/calculo-horas-extras-guia-completo`)
+3. **Rescisão do Contrato de Trabalho e Rescisão Indireta:** Modalidades de desligamento, verbas devidas e prazo legal de 10 dias do Art. 477 da CLT (`https://advdourado.com.br/blog/rescisao-contrato-trabalho-tipos-calculos-prazos`)
+4. **FGTS Não Depositado e Multa de 40%:** Como fiscalizar o extrato analítico e quando a omissão patronal configura falta grave (`https://advdourado.com.br/blog/fgts-multa-40-saque-rescisao-guia-completo`)
+5. **Contratos Educacionais Anuais e Inadimplência Escolar:** Diretrizes da Lei 9.870/1999 e antecedência de 45 dias para instituições de ensino (`https://advdourado.com.br/blog/contratos-educacionais-inadimplencia-escolas-b2b`)
+6. **Educação Inclusiva e Adequação à LBI (Lei 13.146/2015):** Como escolas estruturam o PDI/PEI e atas pedagógicas com segurança jurídica (`https://advdourado.com.br/blog/educacao-inclusiva-lbi-protocolos-escolas`)
+7. **Políticas Antibullying (Lei 14.811/2024) e LGPD Escolar:** Protocolos de prevenção, registro em ata e proteção de dados de menores (`https://advdourado.com.br/blog/politicas-antibullying-lgpd-escolar-instituicoes`)
+8. **Divórcio Consensual Extrajudicial em Cartório:** Requisitos, documentos e modalidade online via e-Notariado (`https://advdourado.com.br/blog/divorcio-consensual-extrajudicial-cartorio-guia`)
+9. **Pacto Antenupcial e Planejamento Patrimonial:** Escolha do regime de bens e proteção de quotas societárias (`https://advdourado.com.br/blog/pacto-antenupcial-protecao-patrimonial-empresarial`)
+10. **Acordos Amigáveis de Guarda Compartilhada, Convivência e Pensão:** Como detalhar rotinas e despesas para prevenir novos conflitos (`https://advdourado.com.br/blog/acordo-amigavel-guarda-convivencia-pensao`)
+11. **Adequação Contratual ao Código de Defesa do Consumidor:** Revisão de contratos de prestação de serviços, termos de garantia e resposta ao Procon (`https://advdourado.com.br/blog/compliance-consumerista-preventivo-empresas`)
+12. **Fraudes Bancárias e Golpes via PIX:** Responsabilidade objetiva dos bancos (Súmula 479 do STJ) e protocolo MED (`https://advdourado.com.br/blog/cobranca-indevida-como-contestar`)
+13. **Negativação Indevida em SPC/Serasa e Protesto:** Prazo legal de 5 dias úteis para baixa (Súmula 548 do STJ) e reparação de danos (`https://advdourado.com.br/blog/nome-negativado-injustamente`)
+14. **Revisão de Contratos Bancários e Juros Abusivos:** Parâmetros da taxa média do Banco Central e vedação à venda casada (`https://advdourado.com.br/blog/juros-abusivos-emprestimos`)
+15. **Inventário Consensual Extrajudicial em Cartório na Bahia:** Prazo de 60 dias (Art. 611 do CPC), ITCMD e regras da Resolução CNJ 571/2024 (`https://advdourado.com.br/blog/inventario-extrajudicial-cartorio-salvador-guia`)
+16. **Due Diligence Imobiliária na Compra de Imóveis:** Auditoria de certidões para prevenir fraude à execução e penhoras ocultas (`https://advdourado.com.br/blog/due-diligence-imobiliaria-compra-segura-imovel`)
+17. **Contratos de Locação, Permuta e Compra e Venda de Imóveis:** Garantias locatícias da Lei 8.245/1991, vistoria e cláusulas essenciais (`https://advdourado.com.br/blog/contratos-imobiliarios-locacao-comercial-compra-venda`)
+18. **Negativa de Cobertura pelo Plano de Saúde:** 5 providências documentais essenciais para tutela de urgência do paciente (`https://advdourado.com.br/blog/negativa-procedimento-5-passos`)
+19. **Reajuste Abusivo em Planos de Saúde:** Critérios da ANS, Estatuto do Idoso e Tema 952 do STJ para reajustes por faixa etária e sinistralidade (`https://advdourado.com.br/blog/reajuste-abusivo-plano-saude`)
+20. **Carência em Planos de Saúde para Urgência e Emergência:** Limite legal de 24 horas (Art. 35-C da Lei 9.656/98 e Súmula 597 do STJ) (`https://advdourado.com.br/blog/carencia-plano-saude`)
 
 ## Contato Oficial
 - WhatsApp / Telefone: +55 (71) 99236-3943
 - E-mail: contato@advdourado.com.br
 - Localização: Salvador e Região Metropolitana, Bahia, Brasil
 - Website Oficial: https://advdourado.com.br
-
+- Sitemap XML: https://advdourado.com.br/sitemap.xml

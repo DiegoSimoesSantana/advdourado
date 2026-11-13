@@ -1,11 +1,11 @@
 // Categorias do blog para filtros e navegação
 export const BLOG_CATEGORIES = {
-  trabalhista: { name: 'Direito Trabalhista (PF & PJ)' },
-  educacional: { name: 'Direito Educacional (B2B)' },
-  familia: { name: 'Família Consensual & Patrimônio' },
-  bancos: { name: 'Consumidor, Bancário & Compliance' },
-  imobiliario: { name: 'Imóveis & Inventário em Cartório' },
-  saude: { name: 'Planos de Saúde (Beneficiários)' },
+  trabalhista: { name: 'Direito Trabalhista' },
+  educacional: { name: 'Direito Educacional' },
+  familia: { name: 'Família e Patrimônio' },
+  bancos: { name: 'Consumidor e Bancário' },
+  imobiliario: { name: 'Imóveis e Inventário' },
+  saude: { name: 'Planos de Saúde' },
 }
 
 export type ArticleCategory = keyof typeof BLOG_CATEGORIES
@@ -367,7 +367,7 @@ export const blogArticles: BlogArticle[] = [
   {
     id: '9',
     slug: 'cobranca-indevida-como-contestar',
-    title: 'Fraudes bancárias, golpes via PIX e invasão de contas (PF e PJ): Súmula 479 do STJ e protocolo MED',
+    title: 'Fraudes bancárias, golpes via PIX e invasão de contas: Súmula 479 do STJ e protocolo MED',
     subtitle: 'Compreenda o dever objetivo de segurança das instituições financeiras e as providências imediatas para contenção de danos.',
     category: 'bancos',
     categoryName: 'Consumidor, Bancário & Compliance',

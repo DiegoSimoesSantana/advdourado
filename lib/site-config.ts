@@ -18,7 +18,7 @@ export type PracticeArea = {
   title: string
   shortTitle: string
   eyebrow: string
-  targetAudienceBadge: 'PF & PJ' | 'Exclusivo PJ (B2B)' | 'PF & Planejamento Societário' | 'PF & Planos Empresariais'
+  targetAudienceBadge: string
   scopeBadge: string
   summary: string
   scopeExplanation: string[]
@@ -89,7 +89,7 @@ export const siteConfig = {
     subheadline:
       'Em Salvador e Região Metropolitana (presencial e digital), seu primeiro contato não passa por robôs: a análise inicial é conduzida pessoalmente pela Dra. Bruna Dourado (OAB/BA 71507), que coordena sua banca de especialistas associados.',
     description:
-      'Unimos rigor técnico, didática e postura ética para orientar tanto demandas individuais e familiares (PF) quanto a governança preventiva de empresas e instituições de ensino (PJ).',
+      'Unimos rigor técnico, didática e postura ética para orientar demandas individuais, familiares e a assessoria preventiva de empresas e instituições de ensino.',
   },
   about: {
     title: 'Sobre a Dra. Bruna Dourado e a Banca Associada',
@@ -97,7 +97,7 @@ export const siteConfig = {
     credentials: [
       {
         label: 'Formação Jurídica',
-        value: 'Graduada em Direito pela Universidade do Estado da Bahia (UNEB)',
+        value: 'Bacharela em Direito',
       },
       {
         label: 'Especialização',
@@ -114,7 +114,7 @@ export const siteConfig = {
     ],
     text: [
       'O escritório Dra. Bruna Dourado — Advocacia e Assessoria Jurídica (OAB/BA 71507) atua no modelo de Banca Boutique Especializada em Salvador e Região Metropolitana, unindo atendimento artesanal, visão estratégica e comunicação clara.',
-      'Graduada em Direito pela Universidade do Estado da Bahia (UNEB) e Pós-Graduada em Direito e Processo do Trabalho, a Dra. Bruna Dourado construiu também sólida trajetória como docente de Filosofia e Sociologia em instituições tradicionais de ensino de Salvador. Essa vivência acadêmica e humanística reflete-se diretamente na advocacia: traz didática para traduzir termos jurídicos complexos, empatia na escuta e rigor analítico na mediação e prevenção de conflitos.',
+      'Bacharela em Direito e Pós-Graduada em Direito e Processo do Trabalho, a Dra. Bruna Dourado construiu também sólida trajetória como docente de Filosofia e Sociologia em instituições tradicionais de ensino de Salvador. Essa vivência acadêmica e humanística reflete-se diretamente na advocacia: traz didática para traduzir termos jurídicos complexos, empatia na escuta e rigor analítico na mediação e prevenção de conflitos.',
       'Diferente de estruturas massificadas com triagem automatizada, a Dra. Bruna Dourado conduz pessoalmente o atendimento inicial e o desenho estratégico de cada demanda, contando com uma banca de advogados associados especialistas para atuar de forma coordenada nas seis frentes do escritório.',
     ],
     bancaExplanation:
@@ -127,13 +127,13 @@ export const siteConfig = {
       route: '/trabalhista',
       title: 'Direito Trabalhista',
       shortTitle: 'Direito Trabalhista',
-      eyebrow: 'Empresas/RH (PJ) & Trabalhadores (PF)',
-      targetAudienceBadge: 'PF & PJ',
-      scopeBadge: 'Consultoria Preventiva B2B e Defesa do Trabalhador',
+      eyebrow: 'Empresas, RH e Trabalhadores',
+      targetAudienceBadge: 'Empresas e Trabalhadores',
+      scopeBadge: 'Consultoria Preventiva Empresarial e Defesa do Trabalhador',
       summary:
-        'Consultoria preventiva e Compliance para empresas/RH; defesa técnica dos direitos do trabalhador em rescisões, horas extras, assédio moral e desvio de função.',
+        'Consultoria preventiva e Compliance para empresas e RH; defesa técnica dos direitos do trabalhador em rescisões, horas extras, assédio moral e desvio de função.',
       scopeExplanation: [
-        'Nossa atuação trabalhista em Salvador e Região Metropolitana é estruturada em duas frentes complementares e bem delimitadas: a assessoria preventiva e contenciosa para Empresas e setores de RH (PJ), e a defesa técnica de Trabalhadores (PF).',
+        'Nossa atuação trabalhista em Salvador e Região Metropolitana é estruturada em duas frentes complementares e bem delimitadas: a assessoria preventiva e contenciosa para Empresas e setores de RH, e a defesa técnica de Trabalhadores.',
         'Cada demanda passa por análise documental minuciosa e cálculo prévio de cenários, evitando aventuras jurídicas e priorizando segurança técnica.',
       ],
       scopePillars: [
@@ -169,20 +169,20 @@ export const siteConfig = {
         { profile: 'PJ', label: 'Minha empresa recebeu notificação ou reclamação trabalhista e precisa de defesa técnica' },
       ],
       highlights: [
-        'Consultoria preventiva e Compliance para empresas e RH (PJ)',
-        'Defesa do trabalhador (PF): rescisão, horas extras, assédio moral e desvio de função',
+        'Consultoria preventiva e Compliance para empresas e RH',
+        'Defesa do trabalhador: rescisão, horas extras, assédio moral e desvio de função',
         'Atenção rigorosa aos prazos de 2 anos após desligamento e 5 anos retroativos',
       ],
       audience:
-        'Empresas e gestores de RH (PJ) que buscam segurança jurídica preventiva, e trabalhadores (PF) que necessitam resguardar direitos violados na relação de emprego.',
+        'Empresas e gestores de RH que buscam segurança jurídica preventiva, e trabalhadores que necessitam resguardar direitos violados na relação de emprego.',
       rights: [
-        'Trabalhador (PF): receber integralmente as verbas rescisórias no prazo legal de até 10 dias corridos após o término do contrato (Art. 477, § 6º da CLT).',
-        'Trabalhador (PF): remuneração correta de horas extraordinárias (mínimo de 50%), adicional de insalubridade/periculosidade e respeito à dignidade no ambiente laboral.',
-        'Empresa (PJ): exercer o poder diretivo, regulamentar e disciplinar dentro dos limites legais, prevenindo contingências financeiras com documentação idônea.',
+        'Trabalhador: receber integralmente as verbas rescisórias no prazo legal de até 10 dias corridos após o término do contrato (Art. 477, § 6º da CLT).',
+        'Trabalhador: remuneração correta de horas extraordinárias (mínimo de 50%), adicional de insalubridade/periculosidade e respeito à dignidade no ambiente laboral.',
+        'Empresa: exercer o poder diretivo, regulamentar e disciplinar dentro dos limites legais, prevenindo contingências financeiras com documentação idônea.',
       ],
       duties: [
-        'Trabalhador (PF): preservar provas documentais e digitais (contracheques, extrato de FGTS, registros de ponto, mensagens e testemunhas) e observar o prazo prescricional.',
-        'Empresa (PJ): manter controle fidedigno de jornada (acima de 20 empregados, ou preventivamente), recolher encargos em dia e formalizar alterações contratuais por escrito.',
+        'Trabalhador: preservar provas documentais e digitais (contracheques, extrato de FGTS, registros de ponto, mensagens e testemunhas) e observar o prazo prescricional.',
+        'Empresa: manter controle fidedigno de jornada (acima de 20 empregados, ou preventivamente), recolher encargos em dia e formalizar alterações contratuais por escrito.',
       ],
       deadlinesTitle: 'Prazos Legais Trabalhistas (Prescrição Bienal e Quinquenal)',
       deadlinesAndRules: [
@@ -240,9 +240,9 @@ export const siteConfig = {
       slug: 'educacional',
       route: '/educacional',
       title: 'Direito Educacional Institucional',
-      shortTitle: 'Direito Educacional (B2B)',
-      eyebrow: 'Exclusivo B2B para Instituições de Ensino (PJ)',
-      targetAudienceBadge: 'Exclusivo PJ (B2B)',
+      shortTitle: 'Direito Educacional',
+      eyebrow: 'Exclusivo para Instituições de Ensino',
+      targetAudienceBadge: 'Instituições de Ensino',
       scopeBadge: 'Atuação Exclusiva para Escolas, Faculdades e Cursos (Não atende alunos)',
       summary:
         'Assessoria jurídica exclusiva B2B para instituições de ensino: contratos educacionais anuais, inclusão PcD (LBI), regimentos antibullying, LGPD escolar e formação de equipes.',
@@ -351,8 +351,8 @@ export const siteConfig = {
       route: '/familia',
       title: 'Direito de Família Consensual',
       shortTitle: 'Família e Divórcios',
-      eyebrow: 'Vias Consensuais, Cartório & Proteção Societária',
-      targetAudienceBadge: 'PF & Planejamento Societário',
+      eyebrow: 'Vias Consensuais e Cartório',
+      targetAudienceBadge: 'Extrajudicial e Consensual',
       scopeBadge: 'Atuação Exclusiva em Acordos, Cartório e Planejamento Familiar',
       summary:
         'Atuação exclusiva em divórcio consensual extrajudicial (cartório) ou judicial amigável, pactos antenupciais, proteção patrimonial societária e acordos de guarda e pensão.',
@@ -461,35 +461,33 @@ export const siteConfig = {
       route: '/consumidor',
       title: 'Direito do Consumidor e Patrimonial',
       shortTitle: 'Consumidor e Patrimonial',
-      eyebrow: 'Proteção Patrimonial (PF) & Compliance (PJ)',
-      targetAudienceBadge: 'PF & PJ',
-      scopeBadge: 'Defesa Patrimonial contra Fraudes Bancárias e Compliance Empresarial',
+      eyebrow: 'Defesa Bancária e Proteção Patrimonial',
+      targetAudienceBadge: 'Defesa Patrimonial e Bancária',
+      scopeBadge: 'Defesa Patrimonial contra Fraudes Bancárias e Contratos Abusivos',
       summary:
-        'Defesa técnica contra fraudes bancárias/PIX, juros e contratos abusivos e negativações indevidas (CPF/CNPJ), além de compliance consumerista preventivo para empresas.',
+        'Defesa técnica contra fraudes bancárias/PIX, juros e contratos abusivos e negativações indevidas, além de consultoria preventiva em contratos de consumo.',
       scopeExplanation: [
-        'Nossa atuação em Direito do Consumidor tem recorte estritamente patrimonial: concentramo-nos em lesões que afetam de maneira relevante o patrimônio financeiro, o crédito e a estabilidade econômica de pessoas físicas (PF) e empresas (PJ) em Salvador e Região Metropolitana.',
-        'Atuamos com rigor técnico e probatório — sem promessas irreais de ganhos fáceis — na responsabilização de instituições financeiras e grandes fornecedores, bem como na consultoria preventiva para empresas que desejam adequar seus contratos ao Código de Defesa do Consumidor.',
+        'Nossa atuação em Direito do Consumidor tem recorte estritamente patrimonial: concentramo-nos em lesões que afetam de maneira relevante o patrimônio financeiro, o crédito e a estabilidade econômica em Salvador e Região Metropolitana.',
+        'Atuamos com rigor técnico e probatório — sem promessas irreais de ganhos fáceis — na responsabilização de instituições financeiras e grandes fornecedores, bem como na consultoria preventiva para adequação contratual ao Código de Defesa do Consumidor.',
       ],
       scopePillars: [
         {
-          title: 'Defesa Patrimonial e Direito Bancário (PF e Contas PJ)',
+          title: 'Defesa Patrimonial e Direito Bancário',
           subtitle: 'Responsabilização objetiva de bancos e proteção do patrimônio e do crédito',
-          profileBadge: 'PF & PJ',
           items: [
             'Atuação em fraudes bancárias, golpes do PIX/boleto falso, invasão de aplicativo bancário e empréstimos não reconhecidos (Súmula 479 do STJ)',
             'Revisão técnica de contratos bancários, capital de giro, tarifas ocultas, venda casada e abusividades contratuais',
-            'Defesa contra negativação ou protesto indevido de CPF ou CNPJ (SPC/Serasa/Cartório) e manutenção irregular após quitação',
+            'Defesa contra negativação ou protesto indevido (SPC/Serasa/Cartório) e manutenção irregular após quitação',
             'Reparação por falhas graves em serviços essenciais e contratos de alto impacto financeiro',
           ],
         },
         {
-          title: 'Compliance Consumerista Preventivo para Empresas',
-          subtitle: 'Adequação de contratos com clientes, termos de garantia e defesa no Procon',
-          profileBadge: 'PJ',
+          title: 'Consultoria e Adequação Contratual ao CDC',
+          subtitle: 'Revisão de contratos com clientes, termos de garantia e defesa no Procon',
           items: [
-            'Revisão de contratos de adesão, termos de serviço e políticas de troca/reembolso conforme o CDC',
+            'Revisão de contratos de prestação de serviços, termos de garantia e políticas de cancelamento conforme o CDC',
             'Estruturação de respostas jurídicas em notificações do Procon, Codecon, Senacon e Ministério Público',
-            'Prevenção de passivo consumerista e treinamento de equipes de atendimento e pós-venda',
+            'Prevenção de passivo consumerista e alinhamento de rotinas de atendimento e pós-venda',
           ],
         },
       ],
@@ -575,14 +573,14 @@ export const siteConfig = {
       legacySlugs: ['imoveis-inventario'],
       title: 'Imóveis e Inventário Consensual',
       shortTitle: 'Imóveis e Inventário',
-      eyebrow: 'Inventário em Cartório (PF) & Contratos / Due Diligence (PF/PJ)',
-      targetAudienceBadge: 'PF & PJ',
+      eyebrow: 'Inventário em Cartório, Contratos e Due Diligence',
+      targetAudienceBadge: 'Cartório e Negócios Imobiliários',
       scopeBadge: 'Atuação Exclusiva em Vias Consensuais, Cartório e Due Diligence',
       summary:
-        'Atuação exclusiva em inventários consensuais extrajudiciais (cartório), partilha amigável, due diligence imobiliária para compra segura e contratos residenciais/comerciais.',
+        'Atuação exclusiva em inventários consensuais extrajudiciais (cartório), partilha amigável, due diligence imobiliária para compra segura e contratos residenciais e comerciais.',
       scopeExplanation: [
-        'No eixo de Direito Imobiliário e Sucessório, nossa atuação concentra-se exclusivamente em procedimentos consensuais e extrajudiciais. Ajudamos famílias (PF), investidores e empresas (PJ) em Salvador e Região Metropolitana a regularizar heranças e negócios imobiliários com agilidade, economia tributária lícita e segurança documental.',
-        'Atuamos desde o inventário amigável em Tabelionato de Notas até a auditoria jurídica prévia (due diligence) na aquisição de imóveis e redação de contratos de compra e venda e locação comercial.',
+        'No eixo de Direito Imobiliário e Sucessório, nossa atuação concentra-se exclusivamente em procedimentos consensuais e extrajudiciais. Ajudamos famílias, compradores, proprietários e empresas em Salvador e Região Metropolitana a regularizar heranças e negócios imobiliários com agilidade e segurança documental.',
+        'Atuamos desde o inventário amigável em Tabelionato de Notas até a auditoria jurídica prévia (due diligence) na aquisição de imóveis e redação de contratos de compra e venda e locação.',
       ],
       scopePillars: [
         {
@@ -686,11 +684,11 @@ export const siteConfig = {
       legacySlugs: ['planos-saude'],
       title: 'Direito à Saúde e Planos de Saúde',
       shortTitle: 'Planos de Saúde',
-      eyebrow: 'Defesa Exclusiva de Beneficiários (PF & Planos PME)',
-      targetAudienceBadge: 'PF & Planos Empresariais',
+      eyebrow: 'Defesa Exclusiva de Beneficiários e Pacientes',
+      targetAudienceBadge: 'Defesa de Beneficiários',
       scopeBadge: 'Atuação Exclusiva em Favor do Paciente / Beneficiário',
       summary:
-        'Defesa exclusiva de beneficiários e pacientes (planos individuais, coletivos por adesão ou empresariais PME) contra negativas de cobertura, cirurgias, medicamentos de alto custo e reajustes abusivos.',
+        'Defesa exclusiva de beneficiários e pacientes contra negativas de cobertura, cirurgias, internações, home care, medicamentos de alto custo e reajustes abusivos.',
       scopeExplanation: [
         'No eixo de Direito à Saúde Suplementar, nossa atuação é dedicada exclusivamente à defesa de pacientes, beneficiários e pequenas empresas estipulantes de planos coletivos (MEI/PME). Não representamos operadoras de planos de saúde.',
         'Compreendemos que demandas de saúde envolvem urgência clínica e vulnerabilidade. Por isso, a triagem de negativas médicas recebe atenção imediata da Dra. Bruna Dourado e de sua banca associada para análise de medidas administrativas e judiciais cabíveis (incluindo pedidos de tutela de urgência/liminar quando presentes os requisitos legais).',
@@ -798,14 +796,14 @@ export const siteConfig = {
         'Seu primeiro contato não passa por robôs nem filtros frios: a Dra. Bruna Dourado analisa pessoalmente seu relato e coordena a estratégia.',
     },
     {
-      title: 'Soluções para PF e PJ',
+      title: 'Atuação Consultiva e Contenciosa',
       description:
-        'Atuação integrada tanto na defesa de trabalhadores, pacientes e famílias (PF) quanto no compliance preventivo de empresas e escolas (PJ).',
+        'Atuação integrada tanto na defesa de direitos individuais e familiares quanto na assessoria preventiva de empresas e instituições de ensino.',
     },
     {
       title: 'Didática e Rigor Humanístico',
       description:
-        'Formação jurídica pela UNEB aliada à vivência como docente de Filosofia e Sociologia: clareza na explicação e empatia na condução.',
+        'Sólida formação jurídica e trabalhista aliada à vivência como docente de Filosofia e Sociologia: clareza na explicação e empatia na condução.',
     },
     {
       title: 'Ética OAB e Sigilo Absoluto',
@@ -815,9 +813,9 @@ export const siteConfig = {
   ],
   steps: [
     {
-      title: '1. Escolha do Eixo ou Áudio',
+      title: '1. Escolha da Área ou Áudio',
       description:
-        'Você acessa o eixo da sua necessidade (PF ou PJ) e envia um resumo estruturado ou mensagem de áudio diretamente para o WhatsApp do escritório.',
+        'Você acessa a área da sua necessidade e envia um resumo estruturado ou mensagem de áudio diretamente para o WhatsApp do escritório.',
     },
     {
       title: '2. Análise Pessoal da Dra. Bruna',

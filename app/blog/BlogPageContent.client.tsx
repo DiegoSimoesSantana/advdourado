@@ -6,7 +6,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { blogArticles, BLOG_CATEGORIES } from '@/lib/blog-data'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Search, ArrowRight, UserCheck, Building2 } from 'lucide-react'
+import { Search, ArrowRight } from 'lucide-react'
 import { siteConfig } from '@/lib/site-config'
 import { ContactFooterSection } from '@/components/contact-footer-section'
 import { BrandEmblem } from '@/components/brand-emblem'
@@ -26,10 +26,10 @@ const categoryToRoute: Record<string, string> = {
 const blogSchema = {
   '@context': 'https://schema.org',
   '@type': 'Blog',
-  name: `${siteConfig.brand.legalName} — Artigos Informativos PF e PJ`,
+  name: `${siteConfig.brand.legalName} — Artigos`,
   url: `${siteConfig.contact.siteUrl}/blog`,
   description:
-    'Artigos educativos e informativos para Pessoas Físicas (PF) e Pessoas Jurídicas (PJ) do escritório Dra. Bruna Dourado (OAB/BA 71507) em Salvador/BA.',
+    'Artigos educativos e informativos do escritório Dra. Bruna Dourado (OAB/BA 71507) em Salvador/BA.',
   publisher: {
     '@type': 'LegalService',
     name: siteConfig.brand.legalName,
@@ -43,10 +43,8 @@ export default function BlogPageContent() {
   const categoryFromUrl = searchParams.get('category')
   const tagFromUrl = searchParams.get('tag')
   const queryFromUrl = searchParams.get('q')
-  const profileFromUrl = searchParams.get('perfil')
 
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
-  const [selectedProfile, setSelectedProfile] = useState<'ALL' | 'PF' | 'PJ'>('ALL')
   const [searchQuery, setSearchQuery] = useState('')
 
   useEffect(() => {
@@ -54,32 +52,15 @@ export default function BlogPageContent() {
   }, [categoryFromUrl])
 
   useEffect(() => {
-    if (profileFromUrl === 'PF' || profileFromUrl === 'PJ') {
-      setSelectedProfile(profileFromUrl)
-    } else {
-      setSelectedProfile('ALL')
-    }
-  }, [profileFromUrl])
-
-  useEffect(() => {
     setSearchQuery(queryFromUrl ?? '')
   }, [queryFromUrl])
 
-  const updateUrlParams = (
-    nextCategory: string | null,
-    nextQuery: string,
-    nextProfile: 'ALL' | 'PF' | 'PJ' = selectedProfile,
-  ) => {
+  const updateUrlParams = (nextCategory: string | null, nextQuery: string) => {
     const params = new URLSearchParams(searchParams.toString())
     if (nextCategory) {
       params.set('category', nextCategory)
     } else {
       params.delete('category')
-    }
-    if (nextProfile !== 'ALL') {
-      params.set('perfil', nextProfile)
-    } else {
-      params.delete('perfil')
     }
     if (nextQuery.trim()) {
       params.set('q', nextQuery.trim())
@@ -93,12 +74,6 @@ export default function BlogPageContent() {
 
   const filteredArticles = useMemo(() => {
     let results = blogArticles
-    if (selectedProfile !== 'ALL') {
-      results = results.filter(
-        (article) =>
-          article.targetProfile === selectedProfile || article.targetProfile === 'PF e PJ',
-      )
-    }
     if (selectedCategory) {
       results = results.filter((article) => article.category === selectedCategory)
     }
@@ -119,7 +94,7 @@ export default function BlogPageContent() {
       )
     }
     return results
-  }, [selectedCategory, selectedProfile, searchQuery, tagFromUrl, queryFromUrl])
+  }, [selectedCategory, searchQuery, tagFromUrl, queryFromUrl])
 
   return (
     <main className="min-h-screen bg-background">
@@ -135,7 +110,7 @@ export default function BlogPageContent() {
               Início
             </Link>
             <span className="mx-2">/</span>
-            <span className="font-semibold text-foreground">Artigos Informativos (PF & PJ)</span>
+            <span className="font-semibold text-foreground">Artigos</span>
           </nav>
 
           <div className="inline-flex items-center gap-2 rounded-full border border-primary/35 bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary">
@@ -145,44 +120,14 @@ export default function BlogPageContent() {
         </div>
 
         <h1 className="font-serif text-4xl font-bold text-foreground md:text-5xl">
-          Artigos e Orientações Jurídicas para PF e PJ
+          Artigos e Orientações Jurídicas
         </h1>
         <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted-foreground">
-          Publicações educativas sob coordenação da Dra. Bruna Dourado ({siteConfig.brand.oab}), voltadas para <strong>Pessoas Físicas</strong> e <strong>Empresas / Instituições de Ensino</strong>.
+          Publicações educativas sobre direitos, deveres e prazos legais sob coordenação da Dra. Bruna Dourado ({siteConfig.brand.oab}), conforme o Provimento nº 205/2021 da OAB.
         </p>
 
-        {/* Seletor de Perfil PF vs PJ */}
-        <div className="mt-10 flex flex-wrap items-center gap-3">
-          <Button
-            variant={selectedProfile === 'ALL' ? 'default' : 'outline'}
-            onClick={() => updateUrlParams(selectedCategory, searchQuery, 'ALL')}
-            size="lg"
-            className="rounded-xl text-base font-bold"
-          >
-            Todos os Perfis (PF & PJ)
-          </Button>
-          <Button
-            variant={selectedProfile === 'PF' ? 'default' : 'outline'}
-            onClick={() => updateUrlParams(selectedCategory, searchQuery, 'PF')}
-            size="lg"
-            className="inline-flex items-center gap-2 rounded-xl text-base font-bold"
-          >
-            <UserCheck className="h-4 w-4" />
-            Para Pessoa Física (PF)
-          </Button>
-          <Button
-            variant={selectedProfile === 'PJ' ? 'default' : 'outline'}
-            onClick={() => updateUrlParams(selectedCategory, searchQuery, 'PJ')}
-            size="lg"
-            className="inline-flex items-center gap-2 rounded-xl text-base font-bold"
-          >
-            <Building2 className="h-4 w-4" />
-            Para Empresas e Escolas (PJ)
-          </Button>
-        </div>
-
-        {/* Filtros por Eixo e Busca */}
-        <section className="mt-6">
+        {/* Filtros por Área e Busca */}
+        <section className="mt-10">
           <div className="mb-10 flex flex-col items-start justify-between gap-4 lg:flex-row lg:items-center">
             <div className="flex flex-wrap gap-2">
               <Button
@@ -245,7 +190,6 @@ export default function BlogPageContent() {
                       <EditorialArticleCover
                         category={article.category}
                         categoryName={article.categoryName}
-                        targetProfile={article.targetProfile}
                         variant="card"
                       />
                     </Link>

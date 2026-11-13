@@ -36,7 +36,7 @@ export function HeroSection() {
             </div>
             <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-sm font-medium text-[#faf9f6]/90">
               <ShieldCheck className="h-4 w-4 text-[#c5a880]" />
-              Salvador e Região Metropolitana • PF e PJ
+              Salvador e Região Metropolitana
             </span>
           </div>
 

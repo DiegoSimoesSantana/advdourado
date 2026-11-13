@@ -23,9 +23,12 @@ export function CaseTriageForm({
   defaultProfile = 'PF',
   prefilledSummary = '',
 }: CaseTriageFormProps) {
+  const isLaborAxis = areaId === 'trabalhista'
+  const isEducationAxis = areaId === 'educacional'
+
   const [name, setName] = useState('')
   const [profile, setProfile] = useState<'PF' | 'PJ'>(
-    areaId === 'educacional' ? 'PJ' : defaultProfile,
+    isEducationAxis ? 'PJ' : defaultProfile,
   )
   const [returnPreference, setReturnPreference] = useState<'WhatsApp' | 'Ligação'>('WhatsApp')
   const [phone, setPhone] = useState('')
@@ -40,15 +43,14 @@ export function CaseTriageForm({
 
   useEffect(() => {
     if (defaultProfile) {
-      setProfile(areaId === 'educacional' ? 'PJ' : defaultProfile)
+      setProfile(isEducationAxis ? 'PJ' : defaultProfile)
     }
-  }, [defaultProfile, areaId])
+  }, [defaultProfile, isEducationAxis])
 
   const audioWhatsAppLink = createWhatsAppLink(
     [
       'Olá, Dra. Bruna Dourado.',
-      `Vim pelo eixo de *${areaTitle}* no site (${originPath}).`,
-      `Perfil: *${profile === 'PJ' ? 'Empresa / Instituição (PJ)' : 'Pessoa Física (PF)'}*`,
+      `Vim pela área de *${areaTitle}* no site (${originPath}).`,
       'Prefiro explicar o contexto do meu caso enviando uma *mensagem de áudio* por aqui.',
       'Aguardo sua sinalização para enviar o áudio com sigilo.',
     ].join('\n'),
@@ -58,25 +60,25 @@ export function CaseTriageForm({
     e.preventDefault()
     setIsSubmitting(true)
 
-    const profileLabel =
-      profile === 'PJ' ? 'Pessoa Jurídica (Empresa / Instituição)' : 'Pessoa Física (Individual / Família)'
-
-    const structuredReport = [
+    const reportLines = [
       `*RELATÓRIO DE TRIAGEM INICIAL — SITE OFICIAL*`,
-      `• *Eixo:* ${areaTitle}`,
-      `• *Perfil:* ${profileLabel}`,
-      `• *Nome / Instituição:* ${name.trim()}`,
+      `• *Área:* ${areaTitle}`,
+      ...(isLaborAxis
+        ? [`• *Atendimento:* ${profile === 'PJ' ? 'Empresa / RH' : 'Trabalhador(a)'}`]
+        : []),
+      `• *Nome:* ${name.trim()}`,
       `• *Preferência de Retorno:* ${returnPreference}${phone.trim() ? ` (${phone.trim()})` : ''}`,
       `• *Resumo do Caso:* ${summary.trim()}`,
       `• *Origem:* ${originPath}`,
       `---`,
       `Olá, Dra. Bruna Dourado. Enviei os dados acima pelo formulário do site para sua análise inicial.`,
-    ].join('\n')
+    ]
+
+    const structuredReport = reportLines.join('\n')
 
     sendGTMEvent('triage_form_submit', {
       area_id: areaId,
       area_title: areaTitle,
-      client_profile: profile,
       return_preference: returnPreference,
       page_path: originPath,
     })
@@ -89,8 +91,8 @@ export function CaseTriageForm({
           name: name.trim(),
           email: '',
           phone: phone.trim(),
-          area: `${areaTitle} (${profile})`,
-          subject: `Triagem [${profile}] (${areaTitle}) — Retorno via ${returnPreference}`,
+          area: areaTitle,
+          subject: `Triagem (${areaTitle}) — Retorno via ${returnPreference}`,
           message: summary.trim(),
         }),
       })
@@ -111,7 +113,7 @@ export function CaseTriageForm({
             Atendimento Direto com a Dra. Bruna Dourado (Sem Robôs)
           </div>
           <span className="text-sm font-medium text-muted-foreground">
-            Atendimento PF e PJ • {siteConfig.brand.oab}
+            {siteConfig.brand.oab} • Salvador/BA
           </span>
         </div>
         <h3 className="mt-4 font-serif text-2xl font-bold text-foreground sm:text-3xl">
@@ -124,42 +126,44 @@ export function CaseTriageForm({
 
       <div className={compact ? 'space-y-6' : 'grid gap-8 lg:grid-cols-[1.25fr_0.75fr] lg:items-start'}>
         <form onSubmit={handleSubmit} className="space-y-5">
-          {/* Seletor de Perfil PF vs PJ */}
-          <div>
-            <span className="mb-2 block text-base font-semibold text-foreground">
-              Perfil de Atendimento *
-            </span>
-            <div className="grid grid-cols-2 gap-3">
-              <button
-                type="button"
-                onClick={() => setProfile('PF')}
-                className={`flex items-center justify-center gap-2 rounded-xl border px-4 py-3 text-base font-semibold transition-all ${
-                  profile === 'PF'
-                    ? 'border-primary bg-primary text-primary-foreground shadow-xs'
-                    : 'border-border bg-input text-foreground hover:border-primary/50'
-                }`}
-              >
-                <User className="h-4 w-4 shrink-0" />
-                <span>Para Mim / Família (PF)</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => setProfile('PJ')}
-                className={`flex items-center justify-center gap-2 rounded-xl border px-4 py-3 text-base font-semibold transition-all ${
-                  profile === 'PJ'
-                    ? 'border-primary bg-primary text-primary-foreground shadow-xs'
-                    : 'border-border bg-input text-foreground hover:border-primary/50'
-                }`}
-              >
-                <Building2 className="h-4 w-4 shrink-0" />
-                <span>Empresa / Escola (PJ)</span>
-              </button>
+          {/* Seletor exibido apenas em Direito Trabalhista (onde há distinção natural Trabalhador vs Empresa/RH) */}
+          {isLaborAxis && (
+            <div>
+              <span className="mb-2 block text-base font-semibold text-foreground">
+                Você busca atendimento como:
+              </span>
+              <div className="grid grid-cols-2 gap-3">
+                <button
+                  type="button"
+                  onClick={() => setProfile('PF')}
+                  className={`flex items-center justify-center gap-2 rounded-xl border px-4 py-3 text-base font-semibold transition-all ${
+                    profile === 'PF'
+                      ? 'border-primary bg-primary text-primary-foreground shadow-xs'
+                      : 'border-border bg-input text-foreground hover:border-primary/50'
+                  }`}
+                >
+                  <User className="h-4 w-4 shrink-0" />
+                  <span>Trabalhador(a)</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setProfile('PJ')}
+                  className={`flex items-center justify-center gap-2 rounded-xl border px-4 py-3 text-base font-semibold transition-all ${
+                    profile === 'PJ'
+                      ? 'border-primary bg-primary text-primary-foreground shadow-xs'
+                      : 'border-border bg-input text-foreground hover:border-primary/50'
+                  }`}
+                >
+                  <Building2 className="h-4 w-4 shrink-0" />
+                  <span>Empresa / RH</span>
+                </button>
+              </div>
             </div>
-          </div>
+          )}
 
           <div>
             <label htmlFor={`triage-name-${areaId}`} className="mb-2 block text-base font-semibold text-foreground">
-              1. {profile === 'PJ' ? 'Seu Nome e Nome da Empresa / Instituição *' : 'Seu Nome Completo *'}
+              1. {isEducationAxis || (isLaborAxis && profile === 'PJ') ? 'Seu Nome e Instituição / Empresa *' : 'Seu Nome Completo *'}
             </label>
             <input
               id={`triage-name-${areaId}`}
@@ -168,8 +172,8 @@ export function CaseTriageForm({
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder={
-                profile === 'PJ'
-                  ? 'Ex.: Carlos Mendes — Diretor do Colégio / Empresa X'
+                isEducationAxis
+                  ? 'Ex.: Carlos Mendes — Diretor Escolar'
                   : 'Ex.: Maria Silva'
               }
               className="w-full rounded-xl border border-border bg-input px-4 py-3.5 text-base text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
@@ -234,11 +238,7 @@ export function CaseTriageForm({
               rows={4}
               value={summary}
               onChange={(e) => setSummary(e.target.value)}
-              placeholder={
-                profile === 'PJ'
-                  ? `Descreva a demanda preventiva, contratual ou contenciosa da sua empresa/instituição em ${areaTitle}...`
-                  : `Descreva brevemente o contexto da sua situação em ${areaTitle} (datas principais, documentos ou dúvida)...`
-              }
+              placeholder={`Descreva brevemente o contexto da sua necessidade em ${areaTitle} (datas principais, documentos ou dúvida)...`}
               className="w-full resize-none rounded-xl border border-border bg-input px-4 py-3.5 text-base text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
             />
           </div>
@@ -273,7 +273,6 @@ export function CaseTriageForm({
                 sendGTMEvent('audio_cta_click', {
                   area_id: areaId,
                   area_title: areaTitle,
-                  client_profile: profile,
                   page_path: originPath,
                 })
               }

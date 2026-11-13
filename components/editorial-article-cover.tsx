@@ -12,7 +12,6 @@ import { BrandEmblem } from '@/components/brand-emblem'
 type EditorialArticleCoverProps = {
   category: string
   categoryName: string
-  targetProfile?: 'PF' | 'PJ' | 'PF e PJ'
   variant?: 'card' | 'hero'
 }
 
@@ -31,7 +30,7 @@ const categoryVisuals: Record<
   },
   educacional: {
     icon: Building2,
-    accentLabel: 'Consultoria B2B • Instituições de Ensino',
+    accentLabel: 'Instituições de Ensino',
     patternClass: 'from-[#0a0a0a] via-[#11151c] to-[#1a1610]',
   },
   familia: {
@@ -69,7 +68,6 @@ const categoryVisuals: Record<
 export function EditorialArticleCover({
   category,
   categoryName,
-  targetProfile = 'PF',
   variant = 'card',
 }: EditorialArticleCoverProps) {
   const visual = categoryVisuals[category] ?? {
@@ -78,7 +76,6 @@ export function EditorialArticleCover({
     patternClass: 'from-[#0a0a0a] via-[#141414] to-[#1f1a12]',
   }
   const Icon = visual.icon
-  const isPJ = targetProfile === 'PJ'
 
   return (
     <div
@@ -113,14 +110,8 @@ export function EditorialArticleCover({
             </span>
           </div>
 
-          <span
-            className={`rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider ${
-              isPJ
-                ? 'border border-amber-400/50 bg-[#0a0a0a]/80 text-amber-300'
-                : 'border border-[#c5a880]/50 bg-[#0a0a0a]/80 text-[#c5a880]'
-            }`}
-          >
-            {targetProfile}
+          <span className="rounded-full border border-[#c5a880]/40 bg-[#0a0a0a]/80 px-3 py-1 text-xs font-semibold tracking-wider text-[#c5a880]">
+            OAB/BA 71507
           </span>
         </div>
 
@@ -141,4 +132,3 @@ export function EditorialArticleCover({
     </div>
   )
 }
-

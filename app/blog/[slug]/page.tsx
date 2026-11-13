@@ -83,9 +83,6 @@ export default async function BlogArticlePage({ params }: Props) {
     title: article.categoryName,
   }
 
-  const defaultProfile: 'PF' | 'PJ' =
-    article.targetProfile === 'PJ' ? 'PJ' : 'PF'
-
   return (
     <main className="min-h-screen bg-background">
       <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 md:py-24">
@@ -109,11 +106,10 @@ export default async function BlogArticlePage({ params }: Props) {
         </div>
 
         <article className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
-          {/* Capa Editorial Temática (sem repetir foto da advogada no topo do artigo) */}
+          {/* Capa Editorial Temática */}
           <EditorialArticleCover
             category={article.category}
             categoryName={article.categoryName}
-            targetProfile={article.targetProfile}
             variant="hero"
           />
 
@@ -122,11 +118,6 @@ export default async function BlogArticlePage({ params }: Props) {
               <span className="inline-block rounded-full border border-primary/30 bg-primary/10 px-4 py-1 text-sm font-semibold text-primary">
                 {article.categoryName} • Provimento 205/2021 OAB
               </span>
-              {article.targetProfile && (
-                <span className="inline-block rounded-full border border-border bg-secondary px-3.5 py-1 text-sm font-bold text-foreground">
-                  Público: {article.targetProfile}
-                </span>
-              )}
             </div>
 
             <h1 className="mt-5 font-serif text-3xl font-bold leading-tight text-foreground sm:text-4xl">
@@ -190,7 +181,6 @@ export default async function BlogArticlePage({ params }: Props) {
             areaId={article.category}
             areaTitle={relatedAxis.title}
             originPath={`/blog/${article.slug}`}
-            defaultProfile={defaultProfile}
           />
         </div>
       </div>

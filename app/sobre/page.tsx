@@ -15,14 +15,14 @@ import {
 export const metadata: Metadata = {
   title: 'Sobre a Dra. Bruna Dourado e a Banca Associada',
   description:
-    'Conheça a trajetória da Dra. Bruna Dourado (OAB/BA 71507), graduada pela UNEB, pós-graduada em Direito e Processo do Trabalho e docente de Filosofia e Sociologia em Salvador/BA.',
+    'Conheça a trajetória da Dra. Bruna Dourado (OAB/BA 71507), pós-graduada em Direito e Processo do Trabalho e docente de Filosofia e Sociologia em Salvador/BA.',
   alternates: {
     canonical: `${siteConfig.contact.siteUrl}/sobre`,
   },
   openGraph: {
     title: 'Sobre a Dra. Bruna Dourado (OAB/BA 71507) — Banca Boutique em Salvador/BA',
     description:
-      'Formação pela UNEB, Pós-Graduação em Direito e Processo do Trabalho, diferencial humanístico e coordenação de Banca Associada Especializada em Salvador.',
+      'Pós-Graduação em Direito e Processo do Trabalho, diferencial humanístico e coordenação de Banca Associada Especializada em Salvador.',
     url: `${siteConfig.contact.siteUrl}/sobre`,
     type: 'profile',
   },
@@ -80,10 +80,10 @@ export default function SobrePage() {
               <div className="rounded-xl border border-border bg-secondary/40 p-6">
                 <GraduationCap className="h-6 w-6 text-primary" />
                 <h2 className="mt-3 font-serif text-xl font-bold text-foreground">
-                  Graduação UNEB
+                  Formação Jurídica
                 </h2>
                 <p className="mt-2 text-base leading-relaxed text-muted-foreground line-clamp-2">
-                  Formação jurídica pública pautada pelo rigor constitucional e responsabilidade social.
+                  Bacharela em Direito com atuação pautada pelo rigor técnico, ética e responsabilidade social.
                 </p>
               </div>
 
@@ -93,7 +93,7 @@ export default function SobrePage() {
                   Pós-Graduação Trabalhista
                 </h2>
                 <p className="mt-2 text-base leading-relaxed text-muted-foreground line-clamp-2">
-                  Especialização em Direito e Processo do Trabalho para empresas (PJ) e trabalhadores (PF).
+                  Especialização em Direito e Processo do Trabalho para consultoria preventiva e defesa técnica.
                 </p>
               </div>
 
@@ -113,7 +113,7 @@ export default function SobrePage() {
                   Banca Associada
                 </h2>
                 <p className="mt-2 text-base leading-relaxed text-muted-foreground line-clamp-2">
-                  Triagem pessoal pela Dra. Bruna aliada a especialistas em cada eixo de atuação.
+                  Triagem pessoal pela Dra. Bruna aliada a especialistas em cada área de atuação.
                 </p>
               </div>
             </div>

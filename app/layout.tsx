@@ -96,10 +96,6 @@ const globalStructuredData = {
         '@type': 'Person',
         name: 'Dra. Bruna Dourado da Silva',
         jobTitle: 'Advogada Titular (OAB/BA 71507)',
-        alumniOf: {
-          '@type': 'CollegeOrUniversity',
-          name: 'Universidade do Estado da Bahia (UNEB)',
-        },
       },
       knowsAbout: [
         'Direito Trabalhista',

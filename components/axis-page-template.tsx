@@ -12,8 +12,6 @@ import {
   Scale,
   FileCheck2,
   Sparkles,
-  UserCheck,
-  Building2,
   HelpCircle,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -56,7 +54,7 @@ export function AxisPageTemplate({ areaData }: AxisPageTemplateProps) {
     setSelectedScenarioIndex(index)
     setSelectedProfile(profile)
     setSelectedScenarioText(
-      `Identifiquei meu caso na situação [${profile}]: "${scenarioText}". Gostaria de orientação jurídica sobre prazos, documentos e próximos passos.`,
+      `Identifiquei meu caso na situação: "${scenarioText}". Gostaria de orientação jurídica sobre prazos, documentos e próximos passos.`,
     )
   }
 
@@ -72,7 +70,6 @@ export function AxisPageTemplate({ areaData }: AxisPageTemplateProps) {
       ? areaData.interactiveScenarios[selectedScenarioIndex]
       : null
 
-  // Seleciona dinamicamente o direito e o prazo mais pertinentes ao cenário clicado
   const dynamicRight =
     selectedScenarioIndex !== null
       ? areaData.rights[selectedScenarioIndex % areaData.rights.length]
@@ -85,6 +82,16 @@ export function AxisPageTemplate({ areaData }: AxisPageTemplateProps) {
     selectedScenarioIndex !== null
       ? areaData.duties[selectedScenarioIndex % areaData.duties.length]
       : areaData.duties[0]
+
+  const getScenarioContextTag = (profile: 'PF' | 'PJ') => {
+    if (areaData.id === 'trabalhista') {
+      return profile === 'PJ' ? 'Para Empresa / RH' : 'Para Trabalhador(a)'
+    }
+    if (areaData.id === 'educacional') {
+      return 'Gestão Escolar'
+    }
+    return 'Situação Comum'
+  }
 
   const structuredData = {
     '@context': 'https://schema.org',
@@ -148,7 +155,7 @@ export function AxisPageTemplate({ areaData }: AxisPageTemplateProps) {
         ]}
       />
 
-      {/* TOPO ENXUTO DA PÁGINA INTERNA: Sem foto repetida, Título Direto + Máx 2 Linhas de Descrição */}
+      {/* TOPO ENXUTO DA PÁGINA INTERNA */}
       <section className="border-b border-border bg-[#0a0a0a] px-4 py-16 text-[#faf9f6] sm:px-6 md:px-8 md:py-24">
         <div className="mx-auto max-w-5xl">
           <div className="mb-8 flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-5">
@@ -174,9 +181,6 @@ export function AxisPageTemplate({ areaData }: AxisPageTemplateProps) {
             <span className="inline-flex items-center gap-2 rounded-full border border-[#c5a880]/40 bg-[#c5a880]/10 px-4 py-1.5 text-sm font-semibold text-[#c5a880]">
               <ShieldCheck className="h-4 w-4" />
               {areaData.scopeBadge}
-            </span>
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-sm font-semibold text-[#faf9f6]/90">
-              {areaData.targetAudienceBadge}
             </span>
           </div>
 
@@ -234,8 +238,8 @@ export function AxisPageTemplate({ areaData }: AxisPageTemplateProps) {
 
           <div className="mt-8 grid gap-5 md:grid-cols-2">
             {areaData.interactiveScenarios.map((scenario, idx) => {
-              const isPJ = scenario.profile === 'PJ'
               const isSelected = selectedScenarioIndex === idx
+              const contextTag = getScenarioContextTag(scenario.profile)
 
               return (
                 <button
@@ -250,19 +254,8 @@ export function AxisPageTemplate({ areaData }: AxisPageTemplateProps) {
                 >
                   <div>
                     <div className="flex items-center justify-between gap-3">
-                      <span
-                        className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1 text-xs font-bold uppercase tracking-wider ${
-                          isPJ
-                            ? 'border border-amber-500/40 bg-amber-500/15 text-amber-700 dark:text-amber-300'
-                            : 'border border-primary/40 bg-primary/15 text-primary'
-                        }`}
-                      >
-                        {isPJ ? (
-                          <Building2 className="h-3.5 w-3.5" />
-                        ) : (
-                          <UserCheck className="h-3.5 w-3.5" />
-                        )}
-                        Perfil {scenario.profile}
+                      <span className="inline-flex items-center gap-1.5 rounded-lg border border-primary/35 bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">
+                        {contextTag}
                       </span>
 
                       <span className="text-sm font-semibold text-primary">
@@ -285,7 +278,7 @@ export function AxisPageTemplate({ areaData }: AxisPageTemplateProps) {
               <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border pb-4">
                 <span className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-primary">
                   <CheckCircle2 className="h-5 w-5" />
-                  Resumo de Direitos e Prazos para o Cenário Selecionado ({activeScenario.profile})
+                  Resumo de Direitos e Prazos para a Situação Selecionada
                 </span>
                 <span className="text-sm font-medium text-muted-foreground">
                   Relatório pré-preenchido abaixo
@@ -360,7 +353,6 @@ export function AxisPageTemplate({ areaData }: AxisPageTemplateProps) {
             </p>
           </div>
 
-          {/* Accordion sem defaultValue aberto (recolhido por padrão) */}
           <Accordion type="single" collapsible className="w-full space-y-4">
             {/* Item A: Direitos, Deveres e Prazos Legais */}
             <AccordionItem
@@ -397,11 +389,6 @@ export function AxisPageTemplate({ areaData }: AxisPageTemplateProps) {
                       key={pillar.title}
                       className="rounded-xl border border-border bg-secondary/40 p-6"
                     >
-                      {pillar.profileBadge && (
-                        <span className="mb-2 inline-block rounded-full border border-primary/35 bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">
-                          {pillar.profileBadge}
-                        </span>
-                      )}
                       <h4 className="font-serif text-xl font-bold text-foreground">
                         {pillar.title}
                       </h4>
@@ -543,13 +530,13 @@ export function AxisPageTemplate({ areaData }: AxisPageTemplateProps) {
           />
         </section>
 
-        {/* ETAPA 4: Artigos Relacionados com Capas Editoriais Temáticas (Sem Foto da Advogada) */}
+        {/* ETAPA 4: Artigos Relacionados */}
         {relatedArticles.length > 0 && (
           <section id="artigos-eixo" className="scroll-mt-24">
             <div className="mb-8 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
-                  Leitura Complementar • PF & PJ
+                  Leitura Complementar
                 </p>
                 <h2 className="mt-2 font-serif text-3xl font-bold text-foreground">
                   Artigos sobre {areaData.shortTitle}
@@ -573,7 +560,6 @@ export function AxisPageTemplate({ areaData }: AxisPageTemplateProps) {
                   <EditorialArticleCover
                     category={article.category}
                     categoryName={article.categoryName}
-                    targetProfile={article.targetProfile}
                     variant="card"
                   />
 

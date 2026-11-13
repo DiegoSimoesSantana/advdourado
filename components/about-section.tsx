@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import { GraduationCap, Scale, BookOpen, Users, MessageCircle, ArrowRight } from 'lucide-react'
+import { Scale, BookOpen, Users, MessageCircle, ArrowRight } from 'lucide-react'
 import { createWhatsAppLink, siteConfig } from '@/lib/site-config'
 import { SafePortraitImage } from '@/components/safe-portrait-image'
 import {
@@ -38,7 +38,7 @@ export function AboutSection() {
                   Dra. Bruna Dourado da Silva
                 </p>
                 <p className="mt-0.5 text-sm text-[#faf9f6]/85">
-                  {siteConfig.brand.oab} • UNEB • Salvador/BA
+                  {siteConfig.brand.oab} • Salvador e Região Metropolitana
                 </p>
               </div>
             </div>
@@ -54,18 +54,18 @@ export function AboutSection() {
           </h2>
 
           <p className="mt-5 text-lg leading-relaxed text-foreground/90">
-            Graduada em Direito pela <strong>UNEB</strong>, Pós-Graduada em <strong>Direito e Processo do Trabalho</strong> e docente de Filosofia e Sociologia, a Dra. Bruna Dourado conduz pessoalmente o seu primeiro atendimento e coordena especialistas associados para cada demanda.
+            Bacharela em Direito, Pós-Graduada em <strong>Direito e Processo do Trabalho</strong> e docente de Filosofia e Sociologia, a Dra. Bruna Dourado conduz pessoalmente o seu primeiro atendimento e coordena especialistas associados para cada demanda.
           </p>
 
           {/* Cards de Credenciais Enxutos */}
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
             <div className="rounded-xl border border-border bg-card p-6">
               <div className="flex items-center gap-2.5 text-primary">
-                <GraduationCap className="h-5 w-5 shrink-0" />
-                <span className="text-base font-bold text-foreground">Formação UNEB</span>
+                <Scale className="h-5 w-5 shrink-0" />
+                <span className="text-base font-bold text-foreground">Especialização Trabalhista</span>
               </div>
               <p className="mt-2 text-base leading-relaxed text-muted-foreground line-clamp-2">
-                Bacharela pela Universidade do Estado da Bahia e Especialista em Direito do Trabalho.
+                Pós-Graduada em Direito e Processo do Trabalho, com sólida vivência consultiva e contenciosa.
               </p>
             </div>
 

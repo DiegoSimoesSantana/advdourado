@@ -59,7 +59,7 @@ export function HeaderNav() {
   const navItems = [
     { href: '/', label: 'Início' },
     { href: '/sobre', label: 'A Banca' },
-    { href: '/blog', label: 'Artigos PF & PJ' },
+    { href: '/blog', label: 'Artigos' },
     { href: '/contato', label: 'Contato' },
   ]
 
@@ -87,13 +87,13 @@ export function HeaderNav() {
             Início
           </Link>
 
-          {/* Dropdown de Eixos */}
+          {/* Dropdown de Áreas */}
           <div className="group relative">
             <button
               type="button"
               className="inline-flex items-center gap-1.5 py-2 text-sm font-medium text-foreground/85 transition-colors hover:text-primary"
             >
-              <span>Eixos de Atuação</span>
+              <span>Áreas de Atuação</span>
               <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
             </button>
             <div className="invisible absolute left-0 top-full z-50 w-80 rounded-xl border border-border bg-card p-2 opacity-0 shadow-xl transition-all duration-150 group-hover:visible group-hover:opacity-100">
@@ -101,15 +101,10 @@ export function HeaderNav() {
                 <Link
                   key={area.id}
                   href={area.route}
-                  className="flex items-center justify-between rounded-lg px-3.5 py-2.5 transition-colors hover:bg-secondary"
+                  className="block rounded-lg px-3.5 py-2.5 transition-colors hover:bg-secondary"
                 >
-                  <div>
-                    <p className="font-serif text-sm font-semibold text-foreground">{area.shortTitle}</p>
-                    <p className="text-xs text-muted-foreground line-clamp-1">{area.eyebrow}</p>
-                  </div>
-                  <span className="ml-2 shrink-0 rounded border border-primary/30 bg-primary/10 px-2 py-0.5 text-[10px] font-bold text-primary">
-                    {area.targetAudienceBadge.includes('Exclusivo PJ') ? 'PJ' : 'PF/PJ'}
-                  </span>
+                  <p className="font-serif text-sm font-semibold text-foreground">{area.shortTitle}</p>
+                  <p className="text-xs text-muted-foreground line-clamp-1">{area.eyebrow}</p>
                 </Link>
               ))}
             </div>
@@ -173,7 +168,7 @@ export function HeaderNav() {
             <div className="mx-auto max-w-6xl space-y-4 px-4 py-5 sm:px-6">
               <div className="space-y-1">
                 <p className="px-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">
-                  6 Eixos de Atuação (PF & PJ)
+                  Áreas de Atuação
                 </p>
                 <div className="grid grid-cols-1 gap-1 sm:grid-cols-2">
                   {siteConfig.areas.map((area) => (
@@ -181,12 +176,9 @@ export function HeaderNav() {
                       key={area.id}
                       href={area.route}
                       onClick={() => setIsOpen(false)}
-                      className="flex items-center justify-between rounded-lg px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+                      className="block rounded-lg px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
                     >
-                      <span>{area.shortTitle}</span>
-                      <span className="rounded bg-primary/10 px-1.5 py-0.5 text-[10px] font-bold text-primary">
-                        {area.targetAudienceBadge.includes('Exclusivo PJ') ? 'B2B' : 'PF/PJ'}
-                      </span>
+                      {area.shortTitle}
                     </Link>
                   ))}
                 </div>

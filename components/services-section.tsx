@@ -52,10 +52,10 @@ export function ServicesSection() {
           </h2>
 
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            Filtre pelo seu perfil e escolha a área para consultar situações comuns, prazos legais e iniciar sua triagem.
+            Escolha a área correspondente à sua necessidade para consultar situações comuns, prazos legais e iniciar sua triagem.
           </p>
 
-          {/* Filtro PF vs PJ com Tipografia Ampliada */}
+          {/* Filtro Limpo e Natural */}
           <div className="mt-8 inline-flex flex-wrap items-center justify-center gap-2 rounded-xl border border-border bg-secondary/60 p-2">
             <button
               type="button"
@@ -66,7 +66,7 @@ export function ServicesSection() {
                   : 'text-muted-foreground hover:text-foreground'
               }`}
             >
-              Todas as Áreas (6)
+              Todas as Áreas
             </button>
             <button
               type="button"
@@ -78,7 +78,7 @@ export function ServicesSection() {
               }`}
             >
               <UserCheck className="h-4 w-4" />
-              Para Você e Família (PF)
+              Para Você e Família
             </button>
             <button
               type="button"
@@ -90,7 +90,7 @@ export function ServicesSection() {
               }`}
             >
               <Building2 className="h-4 w-4" />
-              Para Empresas e Escolas (PJ)
+              Para Empresas e Escolas
             </button>
           </div>
         </div>
@@ -110,7 +110,7 @@ export function ServicesSection() {
                     <div className="flex h-13 w-13 items-center justify-center rounded-xl border border-primary/30 bg-primary/10 text-primary">
                       <Icon className="h-6 w-6" />
                     </div>
-                    <span className="rounded-full border border-primary/35 bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">
+                    <span className="rounded-full border border-border bg-secondary px-3 py-1 text-xs font-semibold text-muted-foreground">
                       {area.targetAudienceBadge}
                     </span>
                   </div>
