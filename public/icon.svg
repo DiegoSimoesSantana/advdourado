@@ -11,7 +11,7 @@
     </linearGradient>
   </defs>
 
-  <!-- Fundo Boutique Escuro -->
+  <!-- Fundo Institucional Escuro -->
   <rect width="180" height="180" rx="38" fill="url(#bgGrad)" />
   <rect x="8" y="8" width="164" height="164" rx="31" stroke="url(#goldGrad)" stroke-width="2.5" stroke-opacity="0.65" />
   <rect x="15" y="15" width="150" height="150" rx="25" stroke="url(#goldGrad)" stroke-width="1" stroke-opacity="0.25" />

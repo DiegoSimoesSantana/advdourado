@@ -58,7 +58,7 @@ export function HeaderNav() {
 
   const navItems = [
     { href: '/', label: 'Início' },
-    { href: '/sobre', label: 'A Banca' },
+    { href: '/sobre', label: 'Sobre' },
     { href: '/blog', label: 'Artigos' },
     { href: '/contato', label: 'Contato' },
   ]

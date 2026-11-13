@@ -62,7 +62,7 @@ export default async function Image() {
                   color: '#c5a880',
                 }}
               >
-                Advocacia Boutique • Salvador/BA
+                Advocacia Especializada • Salvador/BA
               </span>
               <span
                 style={{

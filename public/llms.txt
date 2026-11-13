@@ -1,11 +1,11 @@
 # Dra. Bruna Dourado — Advocacia e Assessoria Jurídica (OAB/BA 71507)
-> Escritório de advocacia boutique sediado em Salvador/BA, com atendimento presencial e digital. Triagem e coordenação feitas pessoalmente pela Dra. Bruna Dourado, com apoio de banca associada especializada.
+> Escritório de advocacia especializada sediado em Salvador/BA, com atendimento presencial e digital. O atendimento inicial, a análise de viabilidade e a condução jurídica são realizados diretamente no escritório da Dra. Bruna Dourado.
 
-## Credenciais e Coordenação Institucional
-- **Titular:** Dra. Bruna Dourado da Silva — OAB/BA 71507
-- **Qualificação:** Bacharela em Direito; Pós-Graduada em Direito e Processo do Trabalho.
-- **Diferencial Humanístico:** Vivência como docente de Filosofia e Sociologia em instituições tradicionais de ensino de Salvador/BA, integrando didática, escuta qualificada e rigor técnico na prevenção e resolução de conflitos.
-- **Modelo de Atuação:** Banca Boutique Especializada — o primeiro contato não passa por robôs de triagem; a análise inicial é conduzida pessoalmente pela Dra. Bruna Dourado em atuação coordenada com advogados associados por especialidade.
+## Credenciais e Atuação Institucional
+- **Titular:** Dra. Bruna Dourado da Silva — Advogada (OAB/BA 71507)
+- **Qualificação:** Advogada (OAB/BA 71507), Pós-Graduada em Direito e Processo do Trabalho.
+- **Diferencial Humanístico:** Docente de Filosofia e Sociologia em instituições tradicionais de Salvador/BA, integrando didática, escuta qualificada e rigor técnico na prevenção e resolução de conflitos.
+- **Modelo de Atuação:** Advocacia Especializada — o primeiro contato não passa por robôs de triagem; o atendimento, a análise inicial e a condução jurídica são realizados diretamente no escritório da Dra. Bruna Dourado.
 
 ## Áreas de Atuação, Escopo e Prazos Legais
 - **Direito Trabalhista (`https://advdourado.com.br/trabalhista`):**
@@ -17,7 +17,7 @@
 - **Direito de Família (`https://advdourado.com.br/familia`):**
   - *Escopo:* Atuação focada em soluções consensuais e extrajudiciais (em cartório ou via homologação amigável) — divórcio consensual extrajudicial (presencial ou digital via e-Notariado), reconhecimento e dissolução de união estável, pactos antenupciais, planejamento patrimonial e acordos amigáveis de guarda compartilhada, convivência e pensão alimentícia.
 - **Direito do Consumidor e Patrimonial (`https://advdourado.com.br/consumidor`):**
-  - *Escopo:* Defesa contra fraudes bancárias, golpes via PIX (Súmula 479 do STJ e protocolo MED), revisão de contratos bancários e juros abusivos, exclusão de negativação indevida (SPC/Serasa/Protesto) e consultoria preventiva em contratos de consumo.
+  - *Escopo:* Defesa contra fraudes em operações financeiras e golpes via PIX (Súmula 479 do STJ e protocolo MED), revisão de contratos e juros abusivos, exclusão de negativação indevida (SPC/Serasa/Protesto) e consultoria preventiva em contratos de consumo.
   - *Prazos e Regras Principais:* Prazo decadencial de 30 dias (serviços/produtos não duráveis) e 90 dias (duráveis) para vícios aparentes (Art. 26 do CDC); prazo prescricional de 5 anos para reparação de danos (Art. 27 do CDC); prazo de 5 dias úteis para baixa de restrição após quitação (Súmula 548 do STJ).
 - **Imóveis e Inventário (`https://advdourado.com.br/imobiliario`):**
   - *Escopo:* Inventários consensuais extrajudiciais em Cartório de Notas (Resolução CNJ 571/2024), due diligence imobiliária para compra segura de imóveis residenciais e comerciais, contratos de compra e venda, permuta e locação (Lei 8.245/1991) e regularização registral.
@@ -38,9 +38,9 @@
 9. **Pacto Antenupcial e Planejamento Patrimonial:** Escolha do regime de bens e proteção de quotas societárias (`https://advdourado.com.br/blog/pacto-antenupcial-protecao-patrimonial-empresarial`)
 10. **Acordos Amigáveis de Guarda Compartilhada, Convivência e Pensão:** Como detalhar rotinas e despesas para prevenir novos conflitos (`https://advdourado.com.br/blog/acordo-amigavel-guarda-convivencia-pensao`)
 11. **Adequação Contratual ao Código de Defesa do Consumidor:** Revisão de contratos de prestação de serviços, termos de garantia e resposta ao Procon (`https://advdourado.com.br/blog/compliance-consumerista-preventivo-empresas`)
-12. **Fraudes Bancárias e Golpes via PIX:** Responsabilidade objetiva dos bancos (Súmula 479 do STJ) e protocolo MED (`https://advdourado.com.br/blog/cobranca-indevida-como-contestar`)
+12. **Fraudes em Contas e Golpes via PIX:** Responsabilidade objetiva das instituições financeiras (Súmula 479 do STJ) e protocolo MED (`https://advdourado.com.br/blog/cobranca-indevida-como-contestar`)
 13. **Negativação Indevida em SPC/Serasa e Protesto:** Prazo legal de 5 dias úteis para baixa (Súmula 548 do STJ) e reparação de danos (`https://advdourado.com.br/blog/nome-negativado-injustamente`)
-14. **Revisão de Contratos Bancários e Juros Abusivos:** Parâmetros da taxa média do Banco Central e vedação à venda casada (`https://advdourado.com.br/blog/juros-abusivos-emprestimos`)
+14. **Revisão de Contratos Financeiros e Juros Abusivos:** Parâmetros da taxa média do Banco Central e vedação à venda casada (`https://advdourado.com.br/blog/juros-abusivos-emprestimos`)
 15. **Inventário Consensual Extrajudicial em Cartório na Bahia:** Prazo de 60 dias (Art. 611 do CPC), ITCMD e regras da Resolução CNJ 571/2024 (`https://advdourado.com.br/blog/inventario-extrajudicial-cartorio-salvador-guia`)
 16. **Due Diligence Imobiliária na Compra de Imóveis:** Auditoria de certidões para prevenir fraude à execução e penhoras ocultas (`https://advdourado.com.br/blog/due-diligence-imobiliaria-compra-segura-imovel`)
 17. **Contratos de Locação, Permuta e Compra e Venda de Imóveis:** Garantias locatícias da Lei 8.245/1991, vistoria e cláusulas essenciais (`https://advdourado.com.br/blog/contratos-imobiliarios-locacao-comercial-compra-venda`)

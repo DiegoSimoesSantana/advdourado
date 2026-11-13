@@ -56,25 +56,25 @@ export function CaseTriageForm({
     ].join('\n'),
   )
 
+  const reportLines = [
+    `*RELATÓRIO DE TRIAGEM INICIAL — SITE OFICIAL*`,
+    `• *Área:* ${areaTitle}`,
+    ...(isLaborAxis
+      ? [`• *Atendimento:* ${profile === 'PJ' ? 'Empresa / RH' : 'Trabalhador(a)'}`]
+      : []),
+    `• *Nome:* ${name.trim() || '(seu nome)'}`,
+    `• *Preferência de Retorno:* ${returnPreference}${phone.trim() ? ` (${phone.trim()})` : ''}`,
+    `• *Resumo do Caso:* ${summary.trim() || '(resumo da sua necessidade jurídica)'}`,
+    `• *Origem:* ${originPath}`,
+    `---`,
+    `Olá, Dra. Bruna Dourado. Enviei os dados acima pelo formulário do site para sua análise inicial.`,
+  ]
+
+  const structuredReport = reportLines.join('\n')
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-
-    const reportLines = [
-      `*RELATÓRIO DE TRIAGEM INICIAL — SITE OFICIAL*`,
-      `• *Área:* ${areaTitle}`,
-      ...(isLaborAxis
-        ? [`• *Atendimento:* ${profile === 'PJ' ? 'Empresa / RH' : 'Trabalhador(a)'}`]
-        : []),
-      `• *Nome:* ${name.trim()}`,
-      `• *Preferência de Retorno:* ${returnPreference}${phone.trim() ? ` (${phone.trim()})` : ''}`,
-      `• *Resumo do Caso:* ${summary.trim()}`,
-      `• *Origem:* ${originPath}`,
-      `---`,
-      `Olá, Dra. Bruna Dourado. Enviei os dados acima pelo formulário do site para sua análise inicial.`,
-    ]
-
-    const structuredReport = reportLines.join('\n')
 
     sendGTMEvent('triage_form_submit', {
       area_id: areaId,
@@ -105,64 +105,72 @@ export function CaseTriageForm({
   }
 
   return (
-    <div className="rounded-2xl border border-border bg-card p-7 text-card-foreground shadow-sm sm:p-8">
-      <div className="mb-8 border-b border-border pb-6">
+    <div className="w-full max-w-full min-w-0 overflow-hidden rounded-2xl border border-border bg-card p-5 text-card-foreground shadow-sm sm:p-8">
+      <div className="mb-8 w-full max-w-full min-w-0 border-b border-border pb-6">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary/35 bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary">
-            <ShieldCheck className="h-4 w-4" />
-            Atendimento Direto com a Dra. Bruna Dourado (Sem Robôs)
+          <div className="inline-flex max-w-full items-center gap-2 rounded-full border border-primary/35 bg-primary/10 px-3.5 py-1.5 text-xs font-semibold text-primary sm:px-4 sm:text-sm">
+            <ShieldCheck className="h-4 w-4 shrink-0" />
+            <span className="break-words">
+              Atendimento Direto com a Dra. Bruna Dourado (Sem Robôs)
+            </span>
           </div>
           <span className="text-sm font-medium text-muted-foreground">
             {siteConfig.brand.oab} • Salvador/BA
           </span>
         </div>
-        <h3 className="mt-4 font-serif text-2xl font-bold text-foreground sm:text-3xl">
+        <h3 className="mt-4 font-serif text-2xl font-bold break-words text-foreground sm:text-3xl">
           Relatório Rápido para Triagem no WhatsApp
         </h3>
-        <p className="mt-2 text-lg leading-relaxed text-muted-foreground">
-          Preencha os campos abaixo para abrir o WhatsApp oficial ({siteConfig.contact.phoneDisplay}) com seu relato pronto, ou envie uma mensagem de áudio ao lado.
+        <p className="mt-2 text-base leading-relaxed break-words text-muted-foreground sm:text-lg">
+          Preencha os campos abaixo para abrir o WhatsApp oficial ({siteConfig.contact.phoneDisplay}) com seu relato pronto, ou envie uma mensagem de áudio.
         </p>
       </div>
 
-      <div className={compact ? 'space-y-6' : 'grid gap-8 lg:grid-cols-[1.25fr_0.75fr] lg:items-start'}>
-        <form onSubmit={handleSubmit} className="space-y-5">
-          {/* Seletor exibido apenas em Direito Trabalhista (onde há distinção natural Trabalhador vs Empresa/RH) */}
+      <div
+        className={
+          compact
+            ? 'w-full max-w-full min-w-0 space-y-6'
+            : 'grid w-full max-w-full min-w-0 gap-8 lg:grid-cols-[1.25fr_0.75fr] lg:items-start'
+        }
+      >
+        <form onSubmit={handleSubmit} className="w-full max-w-full min-w-0 space-y-5">
+          {/* Seletor exibido apenas em Direito Trabalhista */}
           {isLaborAxis && (
-            <div>
+            <div className="w-full max-w-full min-w-0">
               <span className="mb-2 block text-base font-semibold text-foreground">
                 Você busca atendimento como:
               </span>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid w-full max-w-full min-w-0 grid-cols-1 gap-2.5 sm:grid-cols-2 sm:gap-3">
                 <button
                   type="button"
                   onClick={() => setProfile('PF')}
-                  className={`flex items-center justify-center gap-2 rounded-xl border px-4 py-3 text-base font-semibold transition-all ${
+                  className={`flex w-full max-w-full min-w-0 items-center justify-center gap-2 rounded-xl border px-3 py-3 text-sm font-semibold transition-all sm:px-4 sm:text-base ${
                     profile === 'PF'
                       ? 'border-primary bg-primary text-primary-foreground shadow-xs'
                       : 'border-border bg-input text-foreground hover:border-primary/50'
                   }`}
                 >
                   <User className="h-4 w-4 shrink-0" />
-                  <span>Trabalhador(a)</span>
+                  <span className="break-words">Trabalhador(a)</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setProfile('PJ')}
-                  className={`flex items-center justify-center gap-2 rounded-xl border px-4 py-3 text-base font-semibold transition-all ${
+                  className={`flex w-full max-w-full min-w-0 items-center justify-center gap-2 rounded-xl border px-3 py-3 text-sm font-semibold transition-all sm:px-4 sm:text-base ${
                     profile === 'PJ'
                       ? 'border-primary bg-primary text-primary-foreground shadow-xs'
                       : 'border-border bg-input text-foreground hover:border-primary/50'
                   }`}
                 >
                   <Building2 className="h-4 w-4 shrink-0" />
-                  <span>Empresa / RH</span>
+                  <span className="break-words">Empresa / RH</span>
                 </button>
               </div>
             </div>
           )}
 
-          <div>
-            <label htmlFor={`triage-name-${areaId}`} className="mb-2 block text-base font-semibold text-foreground">
+          <div className="w-full max-w-full min-w-0">
+            <label htmlFor={`triage-name-${areaId}`} className="mb-2 block text-base font-semibold break-words text-foreground">
               1. {isEducationAxis || (isLaborAxis && profile === 'PJ') ? 'Seu Nome e Instituição / Empresa *' : 'Seu Nome Completo *'}
             </label>
             <input
@@ -176,44 +184,44 @@ export function CaseTriageForm({
                   ? 'Ex.: Carlos Mendes — Diretor Escolar'
                   : 'Ex.: Maria Silva'
               }
-              className="w-full rounded-xl border border-border bg-input px-4 py-3.5 text-base text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+              className="w-full max-w-full min-w-0 rounded-xl border border-border bg-input px-4 py-3.5 text-base text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
             />
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div>
+          <div className="grid w-full max-w-full min-w-0 gap-4 sm:grid-cols-2">
+            <div className="w-full max-w-full min-w-0">
               <span className="mb-2 block text-base font-semibold text-foreground">
                 2. Preferência de Retorno *
               </span>
-              <div className="grid grid-cols-2 gap-2.5">
+              <div className="grid w-full max-w-full min-w-0 grid-cols-2 gap-2">
                 <button
                   type="button"
                   onClick={() => setReturnPreference('WhatsApp')}
-                  className={`flex items-center justify-center gap-2 rounded-xl border px-4 py-3 text-base font-semibold transition-colors ${
+                  className={`flex w-full max-w-full min-w-0 items-center justify-center gap-1.5 rounded-xl border px-3 py-3 text-sm font-semibold transition-colors sm:px-4 sm:text-base ${
                     returnPreference === 'WhatsApp'
                       ? 'border-primary bg-primary text-primary-foreground'
                       : 'border-border bg-input text-foreground hover:border-primary/50'
                   }`}
                 >
-                  <MessageCircle className="h-4 w-4" />
-                  WhatsApp
+                  <MessageCircle className="h-4 w-4 shrink-0" />
+                  <span className="truncate">WhatsApp</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setReturnPreference('Ligação')}
-                  className={`flex items-center justify-center gap-2 rounded-xl border px-4 py-3 text-base font-semibold transition-colors ${
+                  className={`flex w-full max-w-full min-w-0 items-center justify-center gap-1.5 rounded-xl border px-3 py-3 text-sm font-semibold transition-colors sm:px-4 sm:text-base ${
                     returnPreference === 'Ligação'
                       ? 'border-primary bg-primary text-primary-foreground'
                       : 'border-border bg-input text-foreground hover:border-primary/50'
                   }`}
                 >
-                  <PhoneCall className="h-4 w-4" />
-                  Ligação
+                  <PhoneCall className="h-4 w-4 shrink-0" />
+                  <span className="truncate">Ligação</span>
                 </button>
               </div>
             </div>
 
-            <div>
+            <div className="w-full max-w-full min-w-0">
               <label htmlFor={`triage-phone-${areaId}`} className="mb-2 block text-base font-semibold text-foreground">
                 Telefone / WhatsApp (opcional)
               </label>
@@ -223,12 +231,12 @@ export function CaseTriageForm({
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="(71) 99999-9999"
-                className="w-full rounded-xl border border-border bg-input px-4 py-3 text-base text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+                className="w-full max-w-full min-w-0 rounded-xl border border-border bg-input px-4 py-3 text-base text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
               />
             </div>
           </div>
 
-          <div>
+          <div className="w-full max-w-full min-w-0">
             <label htmlFor={`triage-summary-${areaId}`} className="mb-2 block text-base font-semibold text-foreground">
               3. Resumo do Caso *
             </label>
@@ -239,31 +247,43 @@ export function CaseTriageForm({
               value={summary}
               onChange={(e) => setSummary(e.target.value)}
               placeholder={`Descreva brevemente o contexto da sua necessidade em ${areaTitle} (datas principais, documentos ou dúvida)...`}
-              className="w-full resize-none rounded-xl border border-border bg-input px-4 py-3.5 text-base text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+              className="w-full max-w-full min-w-0 resize-none rounded-xl border border-border bg-input px-4 py-3.5 text-base text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
             />
+          </div>
+
+          {/* Caixa de Pré-visualização da Mensagem Gerada (Responsiva sem estouro horizontal) */}
+          <div className="w-full max-w-full min-w-0 overflow-hidden rounded-xl border border-border bg-secondary/40 p-4">
+            <p className="mb-2 text-xs font-bold uppercase tracking-wider text-primary">
+              Pré-visualização do Relatório para o WhatsApp
+            </p>
+            <div className="w-full max-w-full min-w-0 overflow-hidden text-sm leading-relaxed text-muted-foreground whitespace-pre-wrap break-words">
+              {structuredReport}
+            </div>
           </div>
 
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="w-full rounded-xl bg-primary py-6 text-base font-bold text-primary-foreground shadow-sm transition hover:bg-primary/90"
+            className="h-auto w-full max-w-full min-w-0 rounded-xl bg-primary px-4 py-4 text-center text-base font-bold leading-snug whitespace-normal break-words text-primary-foreground shadow-sm transition hover:bg-primary/90 sm:py-5"
           >
-            <MessageCircle className="mr-2 h-5 w-5" />
-            {isSubmitting ? 'Formatando Relatório...' : 'Compilar Relatório e Abrir WhatsApp da Doutora'}
+            <MessageCircle className="mr-2 h-5 w-5 shrink-0" />
+            <span>
+              {isSubmitting ? 'Formatando Relatório...' : 'Enviar Relatório no WhatsApp'}
+            </span>
           </Button>
         </form>
 
         {/* Coluna Lateral: Opção de Áudio + Avisos OAB e LGPD */}
-        <div className="flex flex-col justify-between space-y-5 rounded-2xl border border-primary/30 bg-secondary/60 p-7">
-          <div>
+        <div className="flex w-full max-w-full min-w-0 flex-col justify-between space-y-5 overflow-hidden rounded-2xl border border-primary/30 bg-secondary/60 p-5 sm:p-7">
+          <div className="w-full max-w-full min-w-0">
             <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/15 text-primary">
               <Mic className="h-6 w-6" />
             </div>
-            <h4 className="font-serif text-2xl font-bold text-foreground">
+            <h4 className="font-serif text-xl font-bold break-words text-foreground sm:text-2xl">
               Prefere explicar por áudio?
             </h4>
-            <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-              Clique abaixo para abrir o WhatsApp da Dra. Bruna Dourado e explicar sua demanda enviando uma mensagem de áudio com total sigilo.
+            <p className="mt-3 text-base leading-relaxed break-words text-muted-foreground">
+              Clique abaixo para abrir o WhatsApp do escritório da Dra. Bruna Dourado e explicar sua demanda enviando uma mensagem de áudio com total sigilo.
             </p>
             <a
               href={audioWhatsAppLink}
@@ -276,19 +296,19 @@ export function CaseTriageForm({
                   page_path: originPath,
                 })
               }
-              className="mt-5 inline-flex w-full items-center justify-center gap-2.5 rounded-xl border-2 border-primary bg-background px-5 py-4 text-center text-base font-bold text-foreground shadow-xs transition hover:bg-primary hover:text-primary-foreground"
+              className="mt-5 flex h-auto w-full max-w-full min-w-0 items-center justify-center gap-2.5 rounded-xl border-2 border-primary bg-background px-4 py-4 text-center text-sm font-bold leading-snug whitespace-normal break-words text-foreground shadow-xs transition hover:bg-primary hover:text-primary-foreground sm:px-5 sm:text-base"
             >
               <Mic className="h-5 w-5 shrink-0 text-primary" />
-              <span>Enviar Mensagem de Áudio no WhatsApp</span>
+              <span>Prefiro enviar mensagem de áudio no WhatsApp</span>
             </a>
           </div>
 
-          <div className="border-t border-border pt-5 text-sm leading-relaxed text-muted-foreground space-y-2">
+          <div className="w-full max-w-full min-w-0 border-t border-border pt-5 text-sm leading-relaxed break-words text-muted-foreground space-y-2">
             <p className="flex items-start gap-2 font-semibold text-foreground">
               <Lock className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-              <span>Sigilo Profissional (Art. 34 do Estatuto da OAB) e LGPD</span>
+              <span className="break-words">Sigilo Profissional (Art. 34 do Estatuto da OAB) e LGPD</span>
             </p>
-            <p>{siteConfig.compliance.contractDisclaimer}</p>
+            <p className="break-words">{siteConfig.compliance.contractDisclaimer}</p>
           </div>
         </div>
       </div>

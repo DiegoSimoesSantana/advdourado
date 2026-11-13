@@ -16,7 +16,7 @@ export function ProcessSection() {
             Do seu relato por texto ou áudio até a estratégia jurídica
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Estruturamos um fluxo transparente para que você saiba exatamente o que acontece desde o primeiro contato no WhatsApp até a condução técnica pela banca.
+            Estruturamos um fluxo transparente para que você saiba exatamente o que acontece desde o primeiro contato no WhatsApp até a condução técnica pelo escritório.
           </p>
         </div>
 

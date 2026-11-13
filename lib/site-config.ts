@@ -45,7 +45,7 @@ export const siteConfig = {
     name: 'Dra. Bruna Dourado',
     legalName: 'Dra. Bruna Dourado — Advocacia e Assessoria Jurídica',
     shortName: 'Dra. Bruna Dourado',
-    title: 'Advocacia Boutique e Assessoria Jurídica Estratégica',
+    title: 'Advocacia Especializada e Assessoria Jurídica Estratégica',
     oab: 'OAB/BA 71507',
     oabNumber: '71507',
     oabState: 'BA',
@@ -68,36 +68,36 @@ export const siteConfig = {
   },
   seo: {
     title:
-      'Dra. Bruna Dourado (OAB/BA 71507) | Advocacia Boutique em Salvador e Região Metropolitana',
+      'Dra. Bruna Dourado (OAB/BA 71507) | Advocacia Especializada em Salvador e Região Metropolitana',
     description:
-      'Escritório de advocacia boutique sediado em Salvador/BA (OAB/BA 71507). Atendimento direto com a Dra. Bruna Dourado e banca associada para Pessoas Físicas (PF) e Empresas/Instituições (PJ) em Direito Trabalhista, Educacional B2B, Família Consensual, Consumidor Patrimonial, Imóveis/Inventário e Planos de Saúde.',
+      'Escritório de advocacia sediado em Salvador/BA (OAB/BA 71507). Atendimento, análise e condução jurídica realizados diretamente no escritório da Dra. Bruna Dourado em Direito Trabalhista, Educacional Institucional, Família Consensual, Consumidor Patrimonial, Imóveis/Inventário e Planos de Saúde.',
     keywords: [
       'advogada em salvador',
-      'advocacia boutique salvador ba',
+      'advocacia especializada salvador ba',
       'dra bruna dourado oab ba 71507',
       'advogado trabalhista salvador empresas e trabalhadores',
       'direito educacional salvador escolas b2b',
       'divorcio extrajudicial cartorio salvador',
       'advogado plano de saude salvador',
       'inventario extrajudicial salvador',
-      'direito do consumidor fraude bancaria salvador',
+      'direito do consumidor pme e familiar salvador',
     ],
   },
   positioning: {
     badge: 'Atendimento Direto com a Doutora • Sem Triagem Robótica',
-    headline: 'Advocacia boutique para Pessoas, Famílias, Empresas e Instituições de Ensino.',
+    headline: 'Advocacia especializada para Pessoas, Famílias, Empresas e Instituições de Ensino.',
     subheadline:
-      'Em Salvador e Região Metropolitana (presencial e digital), seu primeiro contato não passa por robôs: a análise inicial é conduzida pessoalmente pela Dra. Bruna Dourado (OAB/BA 71507), que coordena sua banca de especialistas associados.',
+      'Em Salvador e Região Metropolitana (presencial e digital), seu primeiro contato não passa por robôs: o atendimento, a análise inicial e a condução jurídica são realizados diretamente no escritório da Dra. Bruna Dourado (OAB/BA 71507).',
     description:
       'Unimos rigor técnico, didática e postura ética para orientar demandas individuais, familiares e a assessoria preventiva de empresas e instituições de ensino.',
   },
   about: {
-    title: 'Sobre a Dra. Bruna Dourado e a Banca Associada',
-    subtitle: 'Banca Boutique Especializada • Salvador e Região Metropolitana',
+    title: 'Sobre a Dra. Bruna Dourado',
+    subtitle: 'Advocacia Especializada • Salvador e Região Metropolitana',
     credentials: [
       {
-        label: 'Formação Jurídica',
-        value: 'Bacharela em Direito',
+        label: 'Atuação Jurídica',
+        value: 'Advogada (OAB/BA 71507)',
       },
       {
         label: 'Especialização',
@@ -108,17 +108,17 @@ export const siteConfig = {
         value: 'Docente de Filosofia e Sociologia em instituições tradicionais de Salvador/BA',
       },
       {
-        label: 'Inscrição OAB',
-        value: 'OAB/BA 71507 — Coordenação de Banca Associada Especializada',
+        label: 'Atendimento e Condução',
+        value: 'Atendimento e condução direta no escritório da Dra. Bruna Dourado',
       },
     ],
     text: [
-      'O escritório Dra. Bruna Dourado — Advocacia e Assessoria Jurídica (OAB/BA 71507) atua no modelo de Banca Boutique Especializada em Salvador e Região Metropolitana, unindo atendimento artesanal, visão estratégica e comunicação clara.',
-      'Bacharela em Direito e Pós-Graduada em Direito e Processo do Trabalho, a Dra. Bruna Dourado construiu também sólida trajetória como docente de Filosofia e Sociologia em instituições tradicionais de ensino de Salvador. Essa vivência acadêmica e humanística reflete-se diretamente na advocacia: traz didática para traduzir termos jurídicos complexos, empatia na escuta e rigor analítico na mediação e prevenção de conflitos.',
-      'Diferente de estruturas massificadas com triagem automatizada, a Dra. Bruna Dourado conduz pessoalmente o atendimento inicial e o desenho estratégico de cada demanda, contando com uma banca de advogados associados especialistas para atuar de forma coordenada nas seis frentes do escritório.',
+      'O escritório Dra. Bruna Dourado — Advocacia e Assessoria Jurídica (OAB/BA 71507) atua com advocacia especializada em Salvador e Região Metropolitana, unindo atendimento personalizado, visão estratégica e comunicação clara.',
+      'Advogada (OAB/BA 71507) e Pós-Graduada em Direito e Processo do Trabalho, a Dra. Bruna Dourado construiu também sólida trajetória como docente de Filosofia e Sociologia em instituições tradicionais de ensino de Salvador/BA. Essa vivência acadêmica e humanística reflete-se diretamente na advocacia: traz didática para traduzir termos jurídicos complexos, empatia na escuta e rigor analítico na mediação e prevenção de conflitos.',
+      'Diferente de estruturas massificadas com triagem automatizada, o atendimento inicial, a análise de viabilidade e a condução jurídica de cada demanda são realizados diretamente no escritório da Dra. Bruna Dourado.',
     ],
-    bancaExplanation:
-      'No modelo de Banca Associada sob coordenação direta, você sempre sabe com quem está falando: a Dra. Bruna realiza a escuta inicial, analisa a viabilidade técnica e articula os especialistas associados conforme a especificidade de cada caso, mantendo unidade institucional, sigilo e acompanhamento próximo.',
+    officeExplanation:
+      'No escritório da Dra. Bruna Dourado, você sempre sabe com quem está falando: a própria advogada realiza a escuta inicial, analisa a viabilidade técnica e conduz a estratégia jurídica de cada caso com sigilo profissional, transparência e acompanhamento próximo.',
   },
   areas: [
     {
@@ -691,7 +691,7 @@ export const siteConfig = {
         'Defesa exclusiva de beneficiários e pacientes contra negativas de cobertura, cirurgias, internações, home care, medicamentos de alto custo e reajustes abusivos.',
       scopeExplanation: [
         'No eixo de Direito à Saúde Suplementar, nossa atuação é dedicada exclusivamente à defesa de pacientes, beneficiários e pequenas empresas estipulantes de planos coletivos (MEI/PME). Não representamos operadoras de planos de saúde.',
-        'Compreendemos que demandas de saúde envolvem urgência clínica e vulnerabilidade. Por isso, a triagem de negativas médicas recebe atenção imediata da Dra. Bruna Dourado e de sua banca associada para análise de medidas administrativas e judiciais cabíveis (incluindo pedidos de tutela de urgência/liminar quando presentes os requisitos legais).',
+        'Compreendemos que demandas de saúde envolvem urgência clínica e vulnerabilidade. Por isso, a triagem de negativas médicas recebe atenção imediata no escritório da Dra. Bruna Dourado para análise das medidas administrativas e judiciais cabíveis (incluindo pedidos de tutela de urgência/liminar quando presentes os requisitos legais).',
       ],
       scopePillars: [
         {
@@ -828,16 +828,16 @@ export const siteConfig = {
         'Na consulta formal, apresentamos o parecer técnico de viabilidade, riscos, prazos e o plano de atuação (preventivo, extrajudicial ou judicial).',
     },
     {
-      title: '4. Execução pela Banca Associada',
+      title: '4. Condução Direta pelo Escritório',
       description:
-        'Com contrato de honorários formalizado, a Dra. Bruna e sua banca associada conduzem a demanda com comunicação transparente em cada etapa.',
+        'Com contrato de honorários formalizado, o escritório da Dra. Bruna Dourado conduz a demanda com comunicação transparente em cada etapa.',
     },
   ],
   faqs: [
     {
       question: 'O primeiro contato no WhatsApp é respondido por um robô?',
       answer:
-        'Não. Nosso posicionamento é de Banca Boutique: não utilizamos chatbots automatizados que deixam o cliente sem resposta. O relato enviado por texto ou áudio no site chega diretamente para análise e coordenação da Dra. Bruna Dourado.',
+        'Não. Nosso posicionamento é de advocacia especializada com atendimento humano: não utilizamos chatbots automatizados que deixam o cliente sem resposta. O relato enviado por texto ou áudio no site chega diretamente para análise e condução no escritório da Dra. Bruna Dourado.',
     },
     {
       question: 'O escritório atende tanto Pessoas Físicas (PF) quanto Empresas e Escolas (PJ)?',

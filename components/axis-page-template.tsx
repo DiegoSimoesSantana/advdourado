@@ -138,7 +138,7 @@ export function AxisPageTemplate({ areaData }: AxisPageTemplateProps) {
   }
 
   return (
-    <main className="min-h-screen bg-background pb-24 md:pb-0">
+    <main className="min-h-screen w-full max-w-full overflow-x-hidden bg-background pb-24 md:pb-0">
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -193,15 +193,15 @@ export function AxisPageTemplate({ areaData }: AxisPageTemplateProps) {
             {areaData.summary}
           </p>
 
-          <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+          <div className="mt-9 flex w-full max-w-full min-w-0 flex-col gap-3.5 sm:flex-row sm:flex-wrap sm:gap-4">
             <Button
               asChild
               size="lg"
-              className="rounded-xl bg-[#c5a880] px-7 py-6 text-base font-bold text-[#0a0a0a] hover:bg-[#9a7c56] hover:text-[#faf9f6]"
+              className="h-auto w-full max-w-full min-w-0 rounded-xl bg-[#c5a880] px-5 py-4 text-center text-base font-bold leading-snug whitespace-normal break-words text-[#0a0a0a] hover:bg-[#9a7c56] hover:text-[#faf9f6] sm:w-auto sm:px-7 sm:py-5"
             >
               <a href="#situacoes-comuns">
-                <Sparkles className="mr-2.5 h-5 w-5" />
-                Identificar Minha Situação
+                <Sparkles className="mr-2 h-5 w-5 shrink-0" />
+                <span>Identificar Minha Situação</span>
               </a>
             </Button>
 
@@ -209,11 +209,11 @@ export function AxisPageTemplate({ areaData }: AxisPageTemplateProps) {
               asChild
               variant="outline"
               size="lg"
-              className="rounded-xl border-[#c5a880]/60 bg-[#121212] px-7 py-6 text-base font-semibold text-[#faf9f6] hover:bg-[#c5a880]/20 hover:text-[#faf9f6]"
+              className="h-auto w-full max-w-full min-w-0 rounded-xl border-[#c5a880]/60 bg-[#121212] px-5 py-4 text-center text-base font-semibold leading-snug whitespace-normal break-words text-[#faf9f6] hover:bg-[#c5a880]/20 hover:text-[#faf9f6] sm:w-auto sm:px-7 sm:py-5"
             >
               <a href={audioWhatsAppLink} target="_blank" rel="noopener noreferrer">
-                <Mic className="mr-2.5 h-5 w-5 text-[#c5a880]" />
-                Prefiro enviar mensagem de áudio no WhatsApp
+                <Mic className="mr-2 h-5 w-5 shrink-0 text-[#c5a880]" />
+                <span>Prefiro enviar mensagem de áudio no WhatsApp</span>
               </a>
             </Button>
           </div>
@@ -329,10 +329,10 @@ export function AxisPageTemplate({ areaData }: AxisPageTemplateProps) {
                   type="button"
                   size="lg"
                   onClick={handleScrollToForm}
-                  className="rounded-xl bg-primary px-7 py-6 text-base font-bold text-primary-foreground hover:bg-primary/90"
+                  className="h-auto w-full max-w-full min-w-0 rounded-xl bg-primary px-5 py-4 text-center text-base font-bold leading-snug whitespace-normal break-words text-primary-foreground hover:bg-primary/90 sm:w-auto sm:px-7 sm:py-5"
                 >
-                  <MessageCircle className="mr-2 h-5 w-5" />
-                  Continuar para o Relatório no WhatsApp
+                  <MessageCircle className="mr-2 h-5 w-5 shrink-0" />
+                  <span>Continuar para o Relatório no WhatsApp</span>
                 </Button>
               </div>
             </div>
@@ -583,23 +583,23 @@ export function AxisPageTemplate({ areaData }: AxisPageTemplateProps) {
         )}
       </div>
 
-      {/* Barra Fixa Mobile para Conversão Rápida sem Atrito */}
-      <div className="fixed bottom-0 left-0 right-0 z-40 flex items-center gap-2.5 border-t border-[#c5a880]/30 bg-[#0a0a0a]/95 p-3.5 backdrop-blur-md md:hidden">
+      {/* Barra Fixa Mobile para Conversão Rápida sem Atrito (Ajustada para 320px-390px) */}
+      <div className="fixed bottom-0 left-0 right-0 z-40 flex w-full max-w-full min-w-0 items-center gap-2 overflow-hidden border-t border-[#c5a880]/30 bg-[#0a0a0a]/95 px-3 py-3 backdrop-blur-md md:hidden">
         <a
           href="#triagem-whatsapp"
-          className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-[#c5a880] px-4 py-3.5 text-sm font-bold text-[#0a0a0a]"
+          className="flex min-w-0 flex-1 items-center justify-center gap-1.5 rounded-xl bg-[#c5a880] px-2.5 py-3 text-center text-xs font-bold leading-tight text-[#0a0a0a] sm:px-4 sm:py-3.5 sm:text-sm"
         >
-          <MessageCircle className="h-4 w-4" />
-          <span>Relatório Rápido</span>
+          <MessageCircle className="h-4 w-4 shrink-0" />
+          <span className="truncate">Enviar Relatório</span>
         </a>
         <a
           href={audioWhatsAppLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-[#c5a880]/50 bg-[#121212] px-4 py-3.5 text-sm font-semibold text-[#faf9f6]"
+          className="flex min-w-0 flex-1 items-center justify-center gap-1.5 rounded-xl border border-[#c5a880]/50 bg-[#121212] px-2.5 py-3 text-center text-xs font-semibold leading-tight text-[#faf9f6] sm:px-4 sm:py-3.5 sm:text-sm"
         >
-          <Mic className="h-4 w-4 text-[#c5a880]" />
-          <span>Enviar Áudio</span>
+          <Mic className="h-4 w-4 shrink-0 text-[#c5a880]" />
+          <span className="truncate">Enviar Áudio</span>
         </a>
       </div>
 

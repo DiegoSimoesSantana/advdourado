@@ -387,7 +387,7 @@ export const blogArticles: BlogArticle[] = [
         <li>Comunicar imediatamente o banco e exigir a abertura formal do <strong>MED (Mecanismo Especial de Devolução)</strong> nas operações via PIX;</li>
         <li>Registrar Boletim de Ocorrência detalhando horários, valores e contas destinatárias;</li>
         <li>Preservar extratos, comprovantes, prints de tela e protocolos de contestação;</li>
-        <li>Submeter a documentação à análise técnica da banca para avaliação das medidas extrajudiciais e judiciais cabíveis.</li>
+        <li>Submeter a documentação à análise técnica do escritório para avaliação das medidas extrajudiciais e judiciais cabíveis.</li>
       </ol>
     `,
     tags: ['fraude bancária', 'golpe do PIX', 'proteção patrimonial', 'Súmula 479 STJ'],
@@ -521,7 +521,7 @@ export const blogArticles: BlogArticle[] = [
     tags: ['contratos imobiliários', 'locação comercial', 'Lei do Inquilinato', 'permuta'],
     relatedArticles: ['due-diligence-imobiliaria-compra-segura-imovel', 'inventario-extrajudicial-cartorio-salvador-guia'],
     seoKeywords: ['contrato locação comercial advogado salvador', 'revisão contrato imobiliário salvador', 'direito imobiliário'],
-    cta: 'Precisa elaborar ou revisar um contrato imobiliário residencial ou comercial? Converse com nossa banca.',
+    cta: 'Precisa elaborar ou revisar um contrato imobiliário residencial ou comercial? Converse com nosso escritório.',
   },
 
   // ==========================================

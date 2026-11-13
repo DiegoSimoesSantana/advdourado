@@ -128,7 +128,7 @@ export default function LinksPageContent() {
             Advogada • {siteConfig.brand.oab}
           </p>
           <p className="text-sm text-muted-foreground max-w-xs mt-3 leading-relaxed">
-            Banca Boutique Especializada em Salvador/BA. Triagem conduzida pessoalmente pela Doutora, sem robôs.
+            Advocacia Especializada em Salvador/BA. Atendimento e condução direta no escritório da Dra. Bruna Dourado, sem robôs.
           </p>
         </div>
 

@@ -22,7 +22,7 @@ export function FAQSection() {
             Perguntas Frequentes
           </p>
           <h2 className="mt-3 font-serif text-3xl font-bold text-foreground sm:text-4xl">
-            Dúvidas sobre a triagem e o atendimento da banca
+            Dúvidas sobre a triagem e o atendimento do escritório
           </h2>
           <p className="mt-3 text-base text-muted-foreground">
             Transparência sobre como funciona o contato direto com a Dra. Bruna Dourado.

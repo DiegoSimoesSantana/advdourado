@@ -10,7 +10,7 @@ export function SocialProofSection() {
       <div className="mx-auto max-w-6xl">
         <div className="mx-auto mb-14 max-w-3xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.24em] text-primary">
-            Pilares da Banca Boutique
+            Pilares do Escritório
           </p>
           <h2 className="mt-3 font-serif text-3xl font-bold text-foreground sm:text-4xl md:text-5xl">
             Autoridade construída por método, escuta e transparência ética
